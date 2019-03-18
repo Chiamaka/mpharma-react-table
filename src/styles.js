@@ -25,6 +25,7 @@ export const Divider = styled.div`
 `;
 
 export const TableWrapper = styled.table`
+  ${props => props.style};
   width: 80%;
   border-collapse: collapse;
   margin: 0 auto;

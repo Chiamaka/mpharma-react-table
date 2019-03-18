@@ -109,6 +109,6 @@ const StyledIcon = withStyles(styles)(Icon);
 
 export default class App extends Component {
   render() {
-    return <Table headers={headers} data={data} renderIcon={() => <StyledIcon />} />;
+    return <Table headers={headers} data={data} renderIcon={() => <StyledIcon />} tableStyle={{ width: '100%' }} />;
   }
 }

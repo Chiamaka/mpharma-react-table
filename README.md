@@ -54,7 +54,7 @@ function Example() {
 | \*headers  | array[objects] | None    | The headers of the table. See Header props for more info |
 | \*data     | array[objects] | None    | Data to be rendered                                      |
 | renderIcon | function       | None    | Funtion which returns icon menu for additional actions   |
-|            |                |         |                                                          |
+| tableStyle | object         | None    | Style for the table wrapper                              |
 
 ## Headers Props
 
@@ -63,7 +63,7 @@ function Example() {
 | \*title   | string                      | None    | Title of the header                                                                             |
 | align     | string: left, center, right | left    | How you want the header and the corresponding data to be aligned                                |
 | dataIndex | string                      | None    | Key that ties data to the header. Should be the key of the data that you want under this header |
-|width           |number |  inherit | Specify width for the header|
+| width     | number                      | inherit | Specify width for the header                                                                    |
 
 ## Contributing
 

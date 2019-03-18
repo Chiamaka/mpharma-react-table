@@ -5,9 +5,9 @@ import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import { extractDataIndexes, DataIndexContext } from './utils/';
 
-function Table ({ headers, data, renderIcon }) {
+function Table ({ headers, data, renderIcon, tableStyle }) {
   return (
-    <TableWrapper>
+    <TableWrapper style={tableStyle}>
       <TableHeader headers={headers} />
       <DataIndexContext.Provider value={extractDataIndexes(headers)}>
         <TableBody data={data} renderIcon={renderIcon} />
@@ -19,13 +19,15 @@ function Table ({ headers, data, renderIcon }) {
 Table.propTypes = {
   headers: PropTypes.arrayOf(PropTypes.object),
   data: PropTypes.arrayOf(PropTypes.object),
-  renderIcon: PropTypes.func
+  renderIcon: PropTypes.func,
+  tableStyle: PropTypes.object
 };
 
 Table.defaultProps = {
   headers: [],
   data: [],
-  renderIcon: () => {}
+  renderIcon: () => {},
+  tableStyle: {}
 };
 
 export default Table;
