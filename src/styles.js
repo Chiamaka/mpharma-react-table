@@ -18,21 +18,10 @@ export const Text = styled.p`
   font-weight: ${props => props.bold && 500};
 `;
 
-export const CurrencyRow = styled(FlexRow)`
-  padding-bottom: 20px;
-  justify-content: flex-end;
-`;
-
 export const Divider = styled.div`
   width: 100px;
   height: 1px;
   background-color: rgba(0, 0, 0, 0.12);
-`;
-
-export const Currency = styled.p`
-  ${text}
-  padding: 0px 5px;
-  font-weight: 500;
 `;
 
 export const TableWrapper = styled.table`
