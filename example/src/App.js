@@ -8,35 +8,27 @@ import MoreVertIcon from './assets/MoreVertIcon';
 import { withStyles } from '@material-ui/core/styles';
 
 const headers = [
-  { title: 'Facility', align: 'left', dataIndex: 'facility', width: 200 },
+  { title: 'Name', align: 'left', dataIndex: 'name', width: 200 },
   { title: 'Country', align: 'left', dataIndex: 'country' },
-  { title: 'Status', align: 'left', dataIndex: 'status' },
-  { title: 'Products in Use', align: 'left', dataIndex: 'products_in_use' },
-  { title: 'Last recorded sale', align: 'left', dataIndex: 'last_recorded_sale' },
+  { title: 'Age', align: 'left', dataIndex: 'age' },
   { title: 'Actions', align: 'right' }
 ];
 
 const data = [
   {
-    facility: 'Alpha Facility',
-    country: 'Zimbabwe',
-    status: 'Pending review',
-    products_in_use: 'VMI',
-    last_recorded_sale: '10 days ago'
-  },
-  {
-    facility: 'Beta Facility',
-    country: 'Ghana',
-    status: 'Pending review',
-    products_in_use: 'VMI',
-    last_recorded_sale: '10 days ago'
-  },
-  {
-    facility: 'Delta Facility',
+    name: 'Chiamaka',
     country: 'Nigeria',
-    status: 'Active',
-    products_in_use: 'VMI',
-    last_recorded_sale: '10 days ago'
+    age: 25
+  },
+  {
+    name: 'Nick',
+    country: 'Ghana',
+    age: 30
+  },
+  {
+    name: 'Alfred',
+    country: 'USA',
+    age: 30
   }
 ];
 
@@ -79,13 +71,10 @@ function Icon({ classes }) {
         onClose={handleClose}
       >
         <MenuItem classes={{ root: classes.menuItem }} onClick={handleClose}>
-          Add a user to this facility
-        </MenuItem>
-        <MenuItem classes={{ root: classes.menuItem }} onClick={() => {}}>
-          View users
+          Edit details
         </MenuItem>
         <MenuItem classes={{ root: classes.menuItem }} onClick={handleClose}>
-          Activate facility
+          View profile
         </MenuItem>
       </Menu>
     </td>
