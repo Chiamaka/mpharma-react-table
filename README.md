@@ -8,7 +8,11 @@
 
 ```bash
 npm install --save mpharma-react-table
+-- or --
 yarn add mpharma-react-table
+
+> I havent uploaded to the npm registry yet so if you want to use this code, do this for now:
+npm install --save chiamaka/mpharma-react-table#master
 ```
 
 ## Usage
