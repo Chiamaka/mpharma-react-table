@@ -22,21 +22,21 @@ import React from 'react';
 import Table from 'mpharma-react-table';
 
 const headers = [
-  { title: 'Visit Date', align: 'left', dataIndex: 'visit_date' },
-  { title: 'Patient ID', align: 'left', dataIndex: 'patient_id' },
-  { title: 'Drug name', align: 'left', dataIndex: 'drug_name' }
+  { title: 'Name', align: 'left', dataIndex: 'name' },
+  { title: 'Age', align: 'left', dataIndex: 'age' },
+  { title: 'Country', align: 'left', dataIndex: 'country' }
 ];
 
 const data = [
   {
-    visit_date: '05/27/2017',
-    patient_id: 9194593,
-    drug_name: 'AUGMENTIN'
+    name: 'Chiamaka',
+    age: 25,
+    country: 'Nigeria'
   },
   {
-    visit_date: '09/18/2017',
-    patient_id: 631924,
-    drug_name: 'AUGMENTIN'
+    name: 'Nick',
+    age: 30,
+    country: 'Ghana'
   }
 ];
 
