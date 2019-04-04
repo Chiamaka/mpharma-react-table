@@ -161,7 +161,7 @@ function TableRow(_ref) {
         item[idx]
       );
     }),
-    renderIcon()
+    renderIcon(item)
   );
 }
 

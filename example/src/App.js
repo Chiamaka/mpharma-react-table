@@ -32,11 +32,15 @@ const data = [
   }
 ];
 
-function Icon({ classes }) {
+function Icon({ classes, data }) {
   const [anchorEl, setAnchorEl] = useState(null);
 
   function handleMenu(event) {
     setAnchorEl(event.currentTarget);
+  }
+
+  function handleName() {
+    handleClose();
   }
 
   function handleClose() {
@@ -70,10 +74,10 @@ function Icon({ classes }) {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem classes={{ root: classes.menuItem }} onClick={handleClose}>
+        <MenuItem classes={{ root: classes.menuItem }} onClick={handleName}>
           Edit details
         </MenuItem>
-        <MenuItem classes={{ root: classes.menuItem }} onClick={handleClose}>
+        <MenuItem classes={{ root: classes.menuItem }} onClick={handleName}>
           View profile
         </MenuItem>
       </Menu>
@@ -95,9 +99,15 @@ const styles = {
 };
 
 const StyledIcon = withStyles(styles)(Icon);
-
 export default class App extends Component {
   render() {
-    return <Table headers={headers} data={data} renderIcon={() => <StyledIcon />} tableStyle={{ width: '100%' }} />;
+    return (
+      <Table
+        headers={headers}
+        data={data}
+        renderIcon={data => <StyledIcon data={data} />}
+        tableStyle={{ width: '100%' }}
+      />
+    );
   }
 }

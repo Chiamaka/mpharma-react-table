@@ -14,7 +14,7 @@ function TableRow ({ item, renderIcon }) {
           </TableBodyData>
         );
       })}
-      {renderIcon()}
+      {renderIcon(item)}
     </TableBodyRow>
   );
 }
