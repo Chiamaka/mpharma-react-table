@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { TableWrapper } from './styles';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
-import { extractDataIndexes, DataIndexContext } from './utils/';
+import { extractDataIndexes, DataIndexContext } from './context/DataIndexContext';
 
 function Table ({ headers, data, renderIcon, tableStyle }) {
+  const indexes = extractDataIndexes(headers);
   return (
     <TableWrapper style={tableStyle}>
       <TableHeader headers={headers} />
-      <DataIndexContext.Provider value={extractDataIndexes(headers)}>
+      <DataIndexContext.Provider value={indexes}>
         <TableBody data={data} renderIcon={renderIcon} />
       </DataIndexContext.Provider>
     </TableWrapper>

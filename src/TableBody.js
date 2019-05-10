@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import TableRow from './TableRow';
 
 function TableBody ({ data, renderIcon }) {
+  console.log('data', data);
   return (
     <tbody>
       {data.map((item, index) => {

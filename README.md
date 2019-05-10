@@ -8,8 +8,6 @@
 
 ```bash
 npm install --save mpharma-react-table
--- or --
-yarn add mpharma-react-table
 
 > I havent uploaded to the npm registry yet so if you want to use this code, do this for now:
 npm install --save chiamaka/mpharma-react-table#master
@@ -49,21 +47,21 @@ function Example() {
 
 ## Table Props
 
-| Name       | Type           | Default | Description                                              |
-| ---------- | -------------- | ------- | -------------------------------------------------------- |
-| \*headers  | array[objects] | None    | The headers of the table. See Header props for more info |
-| \*data     | array[objects] | None    | Data to be rendered                                      |
-| renderIcon | function       | None    | Funtion which returns icon menu for additional actions   |
-| tableStyle | object         | None    | Style for the table wrapper                              |
+| Name       | Type           | Default | Description                                                                      |
+| ---------- | -------------- | ------- | -------------------------------------------------------------------------------- |
+| \*headers  | array[objects] | None    | The headers of the table. See Header props for more info                         |
+| \*data     | array[objects] | None    | Data to be rendered                                                              |
+| renderIcon | function       | None    | Funtion which renders any icon passed into it. The icon can be a react component |
+| tableStyle | object         | None    | Style for the table wrapper                                                      |
 
 ## Headers Props
 
-| Name      | Type                        | Default | Description                                                                                     |
-| --------- | --------------------------- | ------- | ----------------------------------------------------------------------------------------------- |
-| \*title   | string                      | None    | Title of the header                                                                             |
-| align     | string: left, center, right | left    | How you want the header and the corresponding data to be aligned                                |
-| dataIndex | string                      | None    | Key that ties data to the header. Should be the key of the data that you want under this header |
-| width     | number                      | inherit | Specify width for the header                                                                    |
+| Name      | Type                          | Default | Description                                                                                     |
+| --------- | ----------------------------- | ------- | ----------------------------------------------------------------------------------------------- |
+| \*title   | string                        | None    | Title of the header                                                                             |
+| align     | string: (left, center, right) | left    | How you want the header and the corresponding data to be aligned                                |
+| dataIndex | string                        | None    | Key that ties data to the header. Should be the key of the data that you want under this header |
+| width     | number                        | inherit | Specify width for the header                                                                    |
 
 ## Contributing
 
