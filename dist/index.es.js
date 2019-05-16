@@ -5832,7 +5832,6 @@ function TableBody(_ref) {
   var data = _ref.data,
       renderIcon = _ref.renderIcon;
 
-  console.log('data', data);
   return React.createElement(
     'tbody',
     null,
@@ -5854,6 +5853,15 @@ function Table(_ref) {
       tableStyle = _ref.tableStyle;
 
   var indexes = extractDataIndexes(headers);
+
+  if (data.length === 0) {
+    return React.createElement(
+      'p',
+      null,
+      'No data available!'
+    );
+  }
+
   return React.createElement(
     TableWrapper,
     { style: tableStyle },

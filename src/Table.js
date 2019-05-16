@@ -7,6 +7,11 @@ import { extractDataIndexes, DataIndexContext } from './context/DataIndexContext
 
 function Table ({ headers, data, renderIcon, tableStyle }) {
   const indexes = extractDataIndexes(headers);
+
+  if (data.length === 0) {
+    return <p>No data available!</p>;
+  }
+
   return (
     <TableWrapper style={tableStyle}>
       <TableHeader headers={headers} />
