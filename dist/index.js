@@ -16,95 +16,59 @@ var taggedTemplateLiteral = function (strings, raw) {
   }));
 };
 
-var _templateObject = taggedTemplateLiteral(['\n  display: flex;\n  align-items: center;\n'], ['\n  display: flex;\n  align-items: center;\n']),
-    _templateObject2 = taggedTemplateLiteral(['\n  font-size: 12px;\n  margin: 0;\n  color: rgba(0, 0, 0, 0.89);\n  letter-spacing: 0.44px;\n'], ['\n  font-size: 12px;\n  margin: 0;\n  color: rgba(0, 0, 0, 0.89);\n  letter-spacing: 0.44px;\n']),
-    _templateObject3 = taggedTemplateLiteral(['\n  ', '\n  font-size: ', ';\n  font-weight: ', ';\n'], ['\n  ', '\n  font-size: ', ';\n  font-weight: ', ';\n']),
-    _templateObject4 = taggedTemplateLiteral(['\n  width: 100px;\n  height: 1px;\n  background-color: rgba(0, 0, 0, 0.12);\n'], ['\n  width: 100px;\n  height: 1px;\n  background-color: rgba(0, 0, 0, 0.12);\n']),
-    _templateObject5 = taggedTemplateLiteral(['\n  ', ';\n  width: 80%;\n  border-collapse: collapse;\n  margin: 0 auto;\n'], ['\n  ', ';\n  width: 80%;\n  border-collapse: collapse;\n  margin: 0 auto;\n']),
-    _templateObject6 = taggedTemplateLiteral(['\n  height: 40px;\n'], ['\n  height: 40px;\n']),
-    _templateObject7 = taggedTemplateLiteral(['\n  ', '\n  letter-spacing: 0.38px;\n  text-align: ', ';\n'], ['\n  ', '\n  letter-spacing: 0.38px;\n  text-align: ', ';\n']),
-    _templateObject8 = taggedTemplateLiteral(['\n  height: 40px;\n  border-bottom: ', ';\n'], ['\n  height: 40px;\n  border-bottom: ', ';\n']),
-    _templateObject9 = taggedTemplateLiteral(['\n  ', '\n  letter-spacing: 0.54px;\n  text-align: ', ';\n  text-transform: ', ';\n'], ['\n  ', '\n  letter-spacing: 0.54px;\n  text-align: ', ';\n  text-transform: ', ';\n']),
-    _templateObject10 = taggedTemplateLiteral(['\n  height: 20px;\n'], ['\n  height: 20px;\n']),
-    _templateObject11 = taggedTemplateLiteral(['\n  height: 50px;\n  background: ', ';\n'], ['\n  height: 50px;\n  background: ', ';\n']),
-    _templateObject12 = taggedTemplateLiteral(['\n  ', '\n  color: rgba(0,0,0,0.6);\n  font-weight: ', ';\n  letter-spacing: 0.54px;\n  text-align: ', ';\n\n  ', '\n\n  ', '\n\n  ', '\n\n'], ['\n  ', '\n  color: rgba(0,0,0,0.6);\n  font-weight: ', ';\n  letter-spacing: 0.54px;\n  text-align: ', ';\n\n  ', '\n\n  ', '\n\n  ', '\n\n']),
-    _templateObject13 = taggedTemplateLiteral(['\n      border-top-left-radius: ', ';\n      padding-left: 10px;\n    '], ['\n      border-top-left-radius: ', ';\n      padding-left: 10px;\n    ']),
-    _templateObject14 = taggedTemplateLiteral(['\n      border-top-right-radius: ', ';\n      padding-right: 10px;\n    '], ['\n      border-top-right-radius: ', ';\n      padding-right: 10px;\n    ']),
-    _templateObject15 = taggedTemplateLiteral(['\n      border-bottom-left-radius: ', ';\n      padding-left: 10px;\n    '], ['\n      border-bottom-left-radius: ', ';\n      padding-left: 10px;\n    ']),
-    _templateObject16 = taggedTemplateLiteral(['\n  ', '\n  font-size: 13px;\n  letter-spacing: 0.58px;\n  padding-top: 5px;\n  color: #000000;\n  font-weight: 500;\n'], ['\n  ', '\n  font-size: 13px;\n  letter-spacing: 0.58px;\n  padding-top: 5px;\n  color: #000000;\n  font-weight: 500;\n']),
-    _templateObject17 = taggedTemplateLiteral(['\n  font-size: 16px;\n  color: #000000;\n  font-weight: 500;\n  letter-spacing: 0.71px;\n  text-align: ', ';\n  ', '\n'], ['\n  font-size: 16px;\n  color: #000000;\n  font-weight: 500;\n  letter-spacing: 0.71px;\n  text-align: ', ';\n  ', '\n']),
-    _templateObject18 = taggedTemplateLiteral(['\n      border-bottom-right-radius: ', ';\n      padding-right: 10px;\n    '], ['\n      border-bottom-right-radius: ', ';\n      padding-right: 10px;\n    ']);
+var _templateObject = taggedTemplateLiteral(['\n  ', ';\n  width: 80%;\n  border-collapse: collapse;\n  margin: 20px auto;\n  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);\n'], ['\n  ', ';\n  width: 80%;\n  border-collapse: collapse;\n  margin: 20px auto;\n  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);\n']);
 
-var FlexRow = styled__default.section(_templateObject);
+var TableWrapper = styled__default.table(_templateObject, function (props) {
+  return props.style;
+});
+
+var _templateObject$1 = taggedTemplateLiteral(['\n  display: flex;\n  align-items: center;\n'], ['\n  display: flex;\n  align-items: center;\n']),
+    _templateObject2 = taggedTemplateLiteral(['\n  font-size: 13px;\n  margin: 0;\n  color: rgba(0, 0, 0, 0.89);\n  letter-spacing: 0.44px;\n'], ['\n  font-size: 13px;\n  margin: 0;\n  color: rgba(0, 0, 0, 0.89);\n  letter-spacing: 0.44px;\n']),
+    _templateObject3 = taggedTemplateLiteral(['\n  ', '\n  font-size: ', ';\n  font-weight: ', ';\n'], ['\n  ', '\n  font-size: ', ';\n  font-weight: ', ';\n']),
+    _templateObject4 = taggedTemplateLiteral(['\n  height: 55px;\n'], ['\n  height: 55px;\n']),
+    _templateObject5 = taggedTemplateLiteral(['\n  ', '\n  letter-spacing: 0.38px;\n  text-align: ', ';\n  padding: 4px 40px 4px 24px;\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  font-family: \'Sofia Pro Bold\';\n'], ['\n  ', '\n  letter-spacing: 0.38px;\n  text-align: ', ';\n  padding: 4px 40px 4px 24px;\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  font-family: \'Sofia Pro Bold\';\n']),
+    _templateObject6 = taggedTemplateLiteral(['\n  border-bottom: ', ';\n  text-transform: capitalize;\n'], ['\n  border-bottom: ', ';\n  text-transform: capitalize;\n']),
+    _templateObject7 = taggedTemplateLiteral(['\n  ', '\n  letter-spacing: 0.54px;\n  text-align: ', ';\n  text-transform: ', ';\n  padding: 4px 40px 4px 24px;\n'], ['\n  ', '\n  letter-spacing: 0.54px;\n  text-align: ', ';\n  text-transform: ', ';\n  padding: 4px 40px 4px 24px;\n']),
+    _templateObject8 = taggedTemplateLiteral(['\n  border-radius: 17px;\n  background-color: ', ';\n  color: ', ';\n  border: ', ';\n  padding: ', '\n  font-size: 12px;\n'], ['\n  border-radius: 17px;\n  background-color: ', ';\n  color: ', ';\n  border: ', ';\n  padding: ', '\n  font-size: 12px;\n']);
+
+var FlexRow = styled__default.section(_templateObject$1);
 
 var text = styled.css(_templateObject2);
 
 var Text = styled__default.p(_templateObject3, text, function (props) {
-  return props.size ? props.size + 'px' : '12px';
+  return props.size ? props.size + 'px' : '13px';
 }, function (props) {
   return props.bold && 500;
 });
 
-var Divider = styled__default.div(_templateObject4);
+var TableHeadRow = styled__default.tr(_templateObject4);
 
-var TableWrapper = styled__default.table(_templateObject5, function (props) {
-  return props.style;
-});
-
-var TableHeadRow = styled__default.tr(_templateObject6);
-
-var TableHeader = styled__default.th(_templateObject7, text, function (props) {
+var TableHeader = styled__default.th(_templateObject5, text, function (props) {
   return props.align;
 });
 
-var TableBodyRow = styled__default.tr(_templateObject8, function (props) {
-  return !props.last ? '1px solid rgba(0, 0, 0, 0.12)' : 'none';
+var TableBodyRow = styled__default.tr(_templateObject6, function (props) {
+  return !props.last ? '0.5px solid rgba(221, 221, 221, 0.4)' : 'none';
 });
 
-var TableBodyData = styled__default.td(_templateObject9, text, function (props) {
+var TableBodyData = styled__default.td(_templateObject7, text, function (props) {
   return props.align;
 }, function (props) {
   return props.uppercase && 'uppercase';
 });
 
-var TableData = styled__default.td(_templateObject9, text, function (props) {
-  return props.align;
+var Pill = styled__default.span.attrs(function (props) {
+  return {
+    'aria-label': props.children
+  };
+})(_templateObject8, function (props) {
+  return props.active ? 'rgba(63,218,152,0.17)' : 'rgba(255, 100, 124, 0.17)';
 }, function (props) {
-  return props.uppercase && 'uppercase';
-});
-
-var TableSpacer = styled__default.tr(_templateObject10);
-
-var TableFooterRow = styled__default.tr(_templateObject11, function (props) {
-  return props.backgroundColor || '#eee';
-});
-
-var TableFooterData = styled__default.td(_templateObject12, text, function (props) {
-  return !props.normal ? 500 : 400;
+  return props.active ? '#3FDA98' : '#FF647C';
 }, function (props) {
-  return props.align;
+  return props.active ? '1px solid #3FDA98' : '1px solid #FF647C';
 }, function (props) {
-  return props.borderTopLeftRadius && styled.css(_templateObject13, function (props) {
-    return props.borderTopLeftRadius + 'px';
-  });
-}, function (props) {
-  return props.borderTopRightRadius && styled.css(_templateObject14, function (props) {
-    return props.borderTopRightRadius + 'px';
-  });
-}, function (props) {
-  return props.borderBottomLeftRadius && styled.css(_templateObject15, function (props) {
-    return props.borderBottomLeftRadius + 'px';
-  });
-});
-
-var NumbersData = styled__default.p(_templateObject16, text);
-
-var AmountDue = styled__default.td(_templateObject17, function (props) {
-  return props.align;
-}, function (props) {
-  return props.borderBottomRightRadius && styled.css(_templateObject18, function (props) {
-    return props.borderBottomRightRadius + 'px';
-  });
+  return props.active ? '5px 15px' : '5px 10px';
 });
 
 function TableHeader$1(_ref) {
@@ -5775,7 +5739,7 @@ function extractDataIndexes(headers) {
   var dataIndexes = [];
   headers.forEach(function (header) {
     if (header.dataIndex) {
-      dataIndexes.push({ dataIndex: header.dataIndex, align: header.align });
+      dataIndexes.push({ dataIndex: header.dataIndex, align: header.align, style: header.style });
     }
   });
   return dataIndexes;
@@ -5796,7 +5760,15 @@ function formatDate(item) {
 
 function formatActive(item) {
   if (typeof item === 'boolean') {
-    return item ? 'Active' : 'InActive';
+    return item ? React__default.createElement(
+      Pill,
+      { active: true },
+      'Active'
+    ) : React__default.createElement(
+      Pill,
+      { inactive: true },
+      'Inactive'
+    );
   }
 }
 
@@ -5808,20 +5780,22 @@ function formatCountry(item, key) {
 
 function TableRow(_ref) {
   var item = _ref.item,
-      renderIcon = _ref.renderIcon;
+      renderIcon = _ref.renderIcon,
+      last = _ref.last;
 
   var dataIndexes = React.useContext(DataIndexContext);
   return React__default.createElement(
     TableBodyRow,
-    null,
+    { last: last },
     dataIndexes.map(function (_ref2, index) {
       var key = _ref2.dataIndex,
           _ref2$align = _ref2.align,
-          align = _ref2$align === undefined ? 'left' : _ref2$align;
+          align = _ref2$align === undefined ? 'left' : _ref2$align,
+          style = _ref2.style;
 
       return React__default.createElement(
         TableBodyData,
-        { key: index, align: align },
+        { key: index, align: align, style: style },
         formatDate(item[key]) || formatActive(item[key]) || formatCountry(item[key], key) || item[key] || '-'
       );
     }),
@@ -5831,18 +5805,20 @@ function TableRow(_ref) {
 
 TableRow.propTypes = {
   item: PropTypes.object.isRequired,
-  renderIcon: PropTypes.func
+  renderIcon: PropTypes.func,
+  last: PropTypes.bool
 };
 
 function TableBody(_ref) {
   var data = _ref.data,
       renderIcon = _ref.renderIcon;
 
+  var length = data.length - 1;
   return React__default.createElement(
     'tbody',
     null,
     data.map(function (item, index) {
-      return React__default.createElement(TableRow, { item: item, key: index, renderIcon: renderIcon });
+      return React__default.createElement(TableRow, { item: item, key: index, renderIcon: renderIcon, last: index === length });
     })
   );
 }

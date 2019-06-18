@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import TableRow from './TableRow';
 
 function TableBody ({ data, renderIcon }) {
+  const length = data.length - 1;
   return (
     <tbody>
       {data.map((item, index) => {
-        return <TableRow item={item} key={index} renderIcon={renderIcon} />;
+        return <TableRow item={item} key={index} renderIcon={renderIcon} last={index === length} />;
       })}
     </tbody>
   );
