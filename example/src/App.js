@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Table from 'mpharma-react-table';
 import MoreActions from './components/MoreActions';
-import { headers, data } from './testData/users';
+import { headers, data } from './testData/facilities';
 
 // const headers = [
 //   { title: 'Name', align: 'left', dataIndex: 'name', width: 200 },
@@ -30,6 +30,16 @@ import { headers, data } from './testData/users';
 
 export default class App extends Component {
   render() {
-    return <Table headers={headers} data={data} renderIcon={data => <MoreActions data={data} />} />;
+    return (
+      <Table
+        headers={headers}
+        data={data}
+        hover={true}
+        handleRowClick={row => console.log(row)}
+        renderIcon={data => <MoreActions data={data} />}
+        rowsPerPageOptions={[5, 10, 20]}
+        emptyMessage="Phew! sorry mate"
+      />
+    );
   }
 }

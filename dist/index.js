@@ -8,98 +8,6 @@ var React = require('react');
 var React__default = _interopDefault(React);
 var PropTypes = _interopDefault(require('prop-types'));
 
-var taggedTemplateLiteral = function (strings, raw) {
-  return Object.freeze(Object.defineProperties(strings, {
-    raw: {
-      value: Object.freeze(raw)
-    }
-  }));
-};
-
-var _templateObject = taggedTemplateLiteral(['\n  ', ';\n  width: 80%;\n  border-collapse: collapse;\n  margin: 20px auto;\n  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);\n'], ['\n  ', ';\n  width: 80%;\n  border-collapse: collapse;\n  margin: 20px auto;\n  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);\n']);
-
-var TableWrapper = styled__default.table(_templateObject, function (props) {
-  return props.style;
-});
-
-var _templateObject$1 = taggedTemplateLiteral(['\n  display: flex;\n  align-items: center;\n'], ['\n  display: flex;\n  align-items: center;\n']),
-    _templateObject2 = taggedTemplateLiteral(['\n  font-size: 13px;\n  margin: 0;\n  color: rgba(0, 0, 0, 0.89);\n  letter-spacing: 0.44px;\n'], ['\n  font-size: 13px;\n  margin: 0;\n  color: rgba(0, 0, 0, 0.89);\n  letter-spacing: 0.44px;\n']),
-    _templateObject3 = taggedTemplateLiteral(['\n  ', '\n  font-size: ', ';\n  font-weight: ', ';\n'], ['\n  ', '\n  font-size: ', ';\n  font-weight: ', ';\n']),
-    _templateObject4 = taggedTemplateLiteral(['\n  height: 55px;\n'], ['\n  height: 55px;\n']),
-    _templateObject5 = taggedTemplateLiteral(['\n  ', '\n  letter-spacing: 0.38px;\n  text-align: ', ';\n  padding: 4px 40px 4px 24px;\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  font-family: \'Sofia Pro Bold\';\n'], ['\n  ', '\n  letter-spacing: 0.38px;\n  text-align: ', ';\n  padding: 4px 40px 4px 24px;\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  font-family: \'Sofia Pro Bold\';\n']),
-    _templateObject6 = taggedTemplateLiteral(['\n  border-bottom: ', ';\n  text-transform: capitalize;\n'], ['\n  border-bottom: ', ';\n  text-transform: capitalize;\n']),
-    _templateObject7 = taggedTemplateLiteral(['\n  ', '\n  letter-spacing: 0.54px;\n  text-align: ', ';\n  text-transform: ', ';\n  padding: 4px 40px 4px 24px;\n'], ['\n  ', '\n  letter-spacing: 0.54px;\n  text-align: ', ';\n  text-transform: ', ';\n  padding: 4px 40px 4px 24px;\n']),
-    _templateObject8 = taggedTemplateLiteral(['\n  border-radius: 17px;\n  background-color: ', ';\n  color: ', ';\n  border: ', ';\n  padding: ', '\n  font-size: 12px;\n'], ['\n  border-radius: 17px;\n  background-color: ', ';\n  color: ', ';\n  border: ', ';\n  padding: ', '\n  font-size: 12px;\n']);
-
-var FlexRow = styled__default.section(_templateObject$1);
-
-var text = styled.css(_templateObject2);
-
-var Text = styled__default.p(_templateObject3, text, function (props) {
-  return props.size ? props.size + 'px' : '13px';
-}, function (props) {
-  return props.bold && 500;
-});
-
-var TableHeadRow = styled__default.tr(_templateObject4);
-
-var TableHeader = styled__default.th(_templateObject5, text, function (props) {
-  return props.align;
-});
-
-var TableBodyRow = styled__default.tr(_templateObject6, function (props) {
-  return !props.last ? '0.5px solid rgba(221, 221, 221, 0.4)' : 'none';
-});
-
-var TableBodyData = styled__default.td(_templateObject7, text, function (props) {
-  return props.align;
-}, function (props) {
-  return props.uppercase && 'uppercase';
-});
-
-var Pill = styled__default.span.attrs(function (props) {
-  return {
-    'aria-label': props.children
-  };
-})(_templateObject8, function (props) {
-  return props.active ? 'rgba(63,218,152,0.17)' : 'rgba(255, 100, 124, 0.17)';
-}, function (props) {
-  return props.active ? '#3FDA98' : '#FF647C';
-}, function (props) {
-  return props.active ? '1px solid #3FDA98' : '1px solid #FF647C';
-}, function (props) {
-  return props.active ? '5px 15px' : '5px 10px';
-});
-
-function TableHeader$1(_ref) {
-  var headers = _ref.headers;
-
-  return React__default.createElement(
-    'thead',
-    null,
-    React__default.createElement(
-      TableHeadRow,
-      null,
-      headers.map(function (_ref2, index) {
-        var title = _ref2.title,
-            _ref2$align = _ref2.align,
-            align = _ref2$align === undefined ? 'left' : _ref2$align,
-            width = _ref2.width;
-
-        return React__default.createElement(
-          TableHeader,
-          { align: align, key: index, width: width },
-          title
-        );
-      })
-    )
-  );
-}
-
-TableHeader$1.propTypes = {
-  headers: PropTypes.arrayOf(PropTypes.object).isRequired
-};
-
 var MILLISECONDS_IN_MINUTE = 60000;
 
 /**
@@ -5733,22 +5641,174 @@ var dateFns = {
 };
 var dateFns_50 = dateFns.format;
 
-var DataIndexContext = React.createContext();
+var CaretDown = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAR0lEQVR4Ae3OMREAIBDEQCQgBf8qkIID+P4qqnyRnUmfIUmS1NesdnU/O9VqMJUz5FTMAFPcTE7xMzHFz8QUPxNT/IwkSUoPu7I4F2kEFg8AAAAASUVORK5CYII=";
 
-function extractDataIndexes(headers) {
-  var dataIndexes = [];
-  headers.forEach(function (header) {
-    if (header.dataIndex) {
-      dataIndexes.push({ dataIndex: header.dataIndex, align: header.align, style: header.style });
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var inherits = function (subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
     }
   });
-  return dataIndexes;
-}
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+};
+
+var possibleConstructorReturn = function (self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+};
+
+var taggedTemplateLiteral = function (strings, raw) {
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
+};
+
+var _templateObject = taggedTemplateLiteral(['\n  display: flex;\n  align-items: center;\n'], ['\n  display: flex;\n  align-items: center;\n']),
+    _templateObject2 = taggedTemplateLiteral(['\n  font-size: 13px;\n  margin: 0;\n  color: rgba(0, 0, 0, 0.89);\n  letter-spacing: 0.44px;\n'], ['\n  font-size: 13px;\n  margin: 0;\n  color: rgba(0, 0, 0, 0.89);\n  letter-spacing: 0.44px;\n']),
+    _templateObject3 = taggedTemplateLiteral(['\n  ', ';\n  width: max-content;\n  margin: 50px auto;\n  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);\n'], ['\n  ', ';\n  width: max-content;\n  margin: 50px auto;\n  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);\n']),
+    _templateObject4 = taggedTemplateLiteral(['\n  width: 100%;\n  border-collapse: collapse;\n'], ['\n  width: 100%;\n  border-collapse: collapse;\n']),
+    _templateObject5 = taggedTemplateLiteral(['\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  width: 100%;\n  height: 60px;\n  color: #757575;\n  font-size: 12px;\n\n  .buttons {\n    margin-left: 20px;\n  }\n\n  .select {\n    display: flex;\n    margin-left: 32px;\n    margin-right: 32px;\n  }\n'], ['\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  width: 100%;\n  height: 60px;\n  color: #757575;\n  font-size: 12px;\n\n  .buttons {\n    margin-left: 20px;\n  }\n\n  .select {\n    display: flex;\n    margin-left: 32px;\n    margin-right: 32px;\n  }\n']),
+    _templateObject6 = taggedTemplateLiteral(['\n  height: 55px;\n  cursor: pointer;\n'], ['\n  height: 55px;\n  cursor: pointer;\n']),
+    _templateObject7 = taggedTemplateLiteral(['\n  ', '\n  letter-spacing: 0.38px;\n  text-align: ', ';\n  padding: 4px 40px 4px 24px;\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  font-family: \'Sofia Pro Bold\';\n\n  svg {\n    vertical-align: middle;\n    color: rgba(0, 0, 0, 0.87);\n  }\n'], ['\n  ', '\n  letter-spacing: 0.38px;\n  text-align: ', ';\n  padding: 4px 40px 4px 24px;\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  font-family: \'Sofia Pro Bold\';\n\n  svg {\n    vertical-align: middle;\n    color: rgba(0, 0, 0, 0.87);\n  }\n']),
+    _templateObject8 = taggedTemplateLiteral(['\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  text-transform: capitalize;\n  cursor: pointer;\n  :hover {\n    background-color: ', ';\n  }\n'], ['\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  text-transform: capitalize;\n  cursor: pointer;\n  :hover {\n    background-color: ', ';\n  }\n']),
+    _templateObject9 = taggedTemplateLiteral(['\n  ', '\n  letter-spacing: 0.54px;\n  text-align: ', ';\n  text-transform: ', ';\n  padding: 4px 40px 4px 24px;\n'], ['\n  ', '\n  letter-spacing: 0.54px;\n  text-align: ', ';\n  text-transform: ', ';\n  padding: 4px 40px 4px 24px;\n']),
+    _templateObject10 = taggedTemplateLiteral(['\n  border-radius: 17px;\n  background-color: ', ';\n  color: ', ';\n  border: ', ';\n  padding: ', '\n  font-size: 12px;\n  font-family: Sofia Pro Bold;\n'], ['\n  border-radius: 17px;\n  background-color: ', ';\n  color: ', ';\n  border: ', ';\n  padding: ', '\n  font-size: 12px;\n  font-family: Sofia Pro Bold;\n']),
+    _templateObject11 = taggedTemplateLiteral(['\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  background: none;\n  border: none;\n  outline: none;\n  width: 50px;\n  color: #757575;\n  cursor: pointer;\n  background: url(', ') 50% / 50% no-repeat #fff;\n'], ['\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  background: none;\n  border: none;\n  outline: none;\n  width: 50px;\n  color: #757575;\n  cursor: pointer;\n  background: url(', ') 50% / 50% no-repeat #fff;\n']),
+    _templateObject12 = taggedTemplateLiteral(['\n  pointer-events: ', ';\n  border: none;\n  outline: none;\n  padding: 12px;\n  cursor: pointer;\n  svg {\n    fill: ', ';\n  }\n'], ['\n  pointer-events: ', ';\n  border: none;\n  outline: none;\n  padding: 12px;\n  cursor: pointer;\n  svg {\n    fill: ', ';\n  }\n']);
+
+var FlexRow = styled__default.section(_templateObject);
+
+var text = styled.css(_templateObject2);
+
+var Paper = styled__default.div(_templateObject3, function (props) {
+  return props.style;
+});
+var TableWrapper = styled__default.table(_templateObject4);
+
+var TableFooter = styled__default.div(_templateObject5);
+
+var TableHeadRow = styled__default.tr(_templateObject6);
+
+var TableHeader = styled__default.th(_templateObject7, text, function (props) {
+  return props.align;
+});
+
+var TableBodyRow = styled__default.tr(_templateObject8, function (props) {
+  return props.hover && 'rgba(0, 0, 0, 0.07)';
+});
+
+var TableBodyData = styled__default.td(_templateObject9, text, function (props) {
+  return props.align;
+}, function (props) {
+  return props.uppercase && 'uppercase';
+});
+
+var Pill = styled__default.span.attrs(function (props) {
+  return {
+    'aria-label': props.children
+  };
+})(_templateObject10, function (props) {
+  return props.active ? 'rgba(63,218,152,0.17)' : 'rgba(255, 100, 124, 0.17)';
+}, function (props) {
+  return props.active ? '#3FDA98' : '#FF647C';
+}, function (props) {
+  return props.active ? '1px solid #3FDA98' : '1px solid #FF647C';
+}, function (props) {
+  return props.active ? '5px 15px' : '5px 10px';
+});
+
+var Select = styled__default.select(_templateObject11, CaretDown);
+
+var IconButton = styled__default.button(_templateObject12, function (props) {
+  return props.disabled ? 'none' : 'auto';
+}, function (props) {
+  return props.disabled ? 'rgba(0, 0, 0, 0.26)' : 'inherit';
+});
 
 var countries = {
   GH: 'Ghana',
   NG: 'Nigeria'
 };
+
+function tableSort(array, cmp) {
+  return array.map(function (el, index) {
+    return [el, index];
+  }).sort(function (a, b) {
+    var order = cmp(a[0], b[0]);
+    if (order !== 0) return order;
+    return a[1] - b[1];
+  }).map(function (el) {
+    return el[0];
+  });
+}
+
+function desc(a, b, orderBy) {
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    return 1;
+  }
+  return 0;
+}
+
+function getSortingFn(order, orderBy) {
+  return order ? function (a, b) {
+    return desc(a, b, orderBy);
+  } : function (a, b) {
+    return -desc(a, b, orderBy);
+  };
+}
 
 function formatDate(item) {
   if (typeof item === 'string') {
@@ -5778,16 +5838,222 @@ function formatCountry(item, key) {
   }
 }
 
+var DataContext = React.createContext(null);
+var withDataContext = function withDataContext(Component) {
+  return function (props) {
+    return React__default.createElement(
+      DataContext.Consumer,
+      null,
+      function (context) {
+        return React__default.createElement(Component, _extends({}, props, { context: context }));
+      }
+    );
+  };
+};
+
+// get the array of data indexes that map to the data prop
+function extractDataIndexes(headers) {
+  var dataIndexes = [];
+  headers.forEach(function (header) {
+    if (header.dataIndex) {
+      dataIndexes.push({ dataIndex: header.dataIndex, align: header.align, style: header.style });
+    }
+  });
+  return dataIndexes;
+}
+
+var DataStore = function (_PureComponent) {
+  inherits(DataStore, _PureComponent);
+
+  function DataStore() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    classCallCheck(this, DataStore);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = DataStore.__proto__ || Object.getPrototypeOf(DataStore)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      data: [],
+      dataIndexes: [],
+      desc: false,
+      active: null,
+      rowsPerPageOptions: [],
+      rowsPerPage: 0,
+      currentPage: 0,
+      count: 0
+    }, _this.sortData = function (key) {
+      var _this$state = _this.state,
+          data = _this$state.data,
+          desc = _this$state.desc;
+
+      _this.setState({ data: tableSort(data, getSortingFn(desc, key)) }, function () {
+        return _this.setState({ desc: !desc, active: key });
+      });
+    }, _this.loadData = function (data) {
+      _this.setState(_extends({}, data));
+    }, _this.setCurrentPage = function (page) {
+      _this.setState({ currentPage: page });
+    }, _this.setRowsPerPage = function (rows) {
+      _this.setState({ rowsPerPage: rows });
+    }, _temp), possibleConstructorReturn(_this, _ret);
+  }
+
+  createClass(DataStore, [{
+    key: 'render',
+    value: function render() {
+      console.log('state', this.state);
+      return React__default.createElement(
+        DataContext.Provider,
+        { value: this.value },
+        this.props.children
+      );
+    }
+  }, {
+    key: 'value',
+    get: function get$$1() {
+      return _extends({}, this.state, {
+        sortData: this.sortData,
+        loadData: this.loadData,
+        setCurrentPage: this.setCurrentPage,
+        setRowsPerPage: this.setRowsPerPage
+      });
+    }
+  }]);
+  return DataStore;
+}(React.PureComponent);
+
+DataStore.propTypes = {
+  children: PropTypes.node
+};
+
+function _extends$1() {
+  _extends$1 = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }return target;
+  };return _extends$1.apply(this, arguments);
+}
+
+var _ref =
+/*#__PURE__*/
+React__default.createElement("path", {
+  fill: "none",
+  d: "M0 0h24v24H0V0z"
+});
+
+var _ref2 =
+/*#__PURE__*/
+React__default.createElement("path", {
+  d: "M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
+});
+
+var SvgComponent = function SvgComponent(props) {
+  return React__default.createElement("svg", _extends$1({
+    width: 15,
+    height: 15,
+    viewBox: "0 0 24 24"
+  }, props), _ref, _ref2);
+};
+
+function _extends$2() {
+  _extends$2 = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }return target;
+  };return _extends$2.apply(this, arguments);
+}
+
+var _ref$1 =
+/*#__PURE__*/
+React__default.createElement("path", {
+  fill: "none",
+  d: "M0 0h24v24H0V0z"
+});
+
+var _ref2$1 =
+/*#__PURE__*/
+React__default.createElement("path", {
+  fill: "#010101",
+  d: "M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+});
+
+var SvgComponent$1 = function SvgComponent(props) {
+  return React__default.createElement("svg", _extends$2({
+    width: 15,
+    height: 15,
+    viewBox: "0 0 24 24"
+  }, props), _ref$1, _ref2$1);
+};
+
+function TableHeader$1(props) {
+  var headers = props.headers,
+      context = props.context;
+
+
+  function sortData(dataIndex) {
+    return function () {
+      context.sortData(dataIndex);
+    };
+  }
+
+  return React__default.createElement(
+    'thead',
+    null,
+    React__default.createElement(
+      TableHeadRow,
+      null,
+      headers.map(function (_ref, index) {
+        var title = _ref.title,
+            _ref$align = _ref.align,
+            align = _ref$align === undefined ? 'left' : _ref$align,
+            width = _ref.width,
+            dataIndex = _ref.dataIndex;
+
+        return React__default.createElement(
+          TableHeader,
+          { key: index, align: align, width: width, onClick: sortData(dataIndex) },
+          title,
+          ' ',
+          context.active === dataIndex && (context.desc ? React__default.createElement(SvgComponent$1, null) : React__default.createElement(SvgComponent, null))
+        );
+      })
+    )
+  );
+}
+
+TableHeader$1.propTypes = {
+  headers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  context: PropTypes.object
+};
+
+var TableHeader$2 = withDataContext(React__default.memo(TableHeader$1));
+
 function TableRow(_ref) {
   var item = _ref.item,
+      hover = _ref.hover,
+      handleRowClick = _ref.handleRowClick,
       renderIcon = _ref.renderIcon,
-      last = _ref.last;
+      context = _ref.context;
 
-  var dataIndexes = React.useContext(DataIndexContext);
+  function handleClick() {
+    return handleRowClick(item);
+  }
   return React__default.createElement(
     TableBodyRow,
-    { last: last },
-    dataIndexes.map(function (_ref2, index) {
+    { hover: hover, onClick: handleClick },
+    context.dataIndexes.map(function (_ref2, index) {
       var key = _ref2.dataIndex,
           _ref2$align = _ref2.align,
           align = _ref2$align === undefined ? 'left' : _ref2$align,
@@ -5806,59 +6072,247 @@ function TableRow(_ref) {
 TableRow.propTypes = {
   item: PropTypes.object.isRequired,
   renderIcon: PropTypes.func,
-  last: PropTypes.bool
+  hover: PropTypes.bool,
+  handleRowClick: PropTypes.func,
+  context: PropTypes.object
 };
 
-function TableBody(_ref) {
-  var data = _ref.data,
-      renderIcon = _ref.renderIcon;
+var TableRow$1 = withDataContext(TableRow);
 
-  var length = data.length - 1;
+function TableBody(props) {
+  var data = props.data,
+      dataIndexes = props.dataIndexes,
+      hover = props.hover,
+      handleRowClick = props.handleRowClick,
+      rowsPerPageOptions = props.rowsPerPageOptions,
+      renderIcon = props.renderIcon,
+      context = props.context;
+  var loadData = context.loadData,
+      currentPage = context.currentPage,
+      rowsPerPage = context.rowsPerPage;
+
+  var upperBound = currentPage * rowsPerPage;
+  var lowerBound = currentPage * rowsPerPage + rowsPerPage;
+
+  React.useEffect(function () {
+    loadData({ data: data, dataIndexes: dataIndexes, rowsPerPageOptions: rowsPerPageOptions, count: data.length, rowsPerPage: rowsPerPageOptions[0] });
+  }, []);
+
   return React__default.createElement(
     'tbody',
     null,
-    data.map(function (item, index) {
-      return React__default.createElement(TableRow, { item: item, key: index, renderIcon: renderIcon, last: index === length });
+    context.data.slice(upperBound, lowerBound).map(function (item, index) {
+      return React__default.createElement(TableRow$1, { item: item, key: index, renderIcon: renderIcon, hover: hover, handleRowClick: handleRowClick });
     })
   );
 }
 
 TableBody.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  renderIcon: PropTypes.func
+  dataIndexes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  hover: PropTypes.bool,
+  handleRowClick: PropTypes.func,
+  renderIcon: PropTypes.func,
+  rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
+  context: PropTypes.object
 };
 
-function Table(_ref) {
-  var headers = _ref.headers,
-      data = _ref.data,
-      renderIcon = _ref.renderIcon,
-      tableStyle = _ref.tableStyle;
+var TableBody$1 = withDataContext(TableBody);
 
-  var indexes = extractDataIndexes(headers);
+function _extends$3() {
+  _extends$3 = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }return target;
+  };return _extends$3.apply(this, arguments);
+}
 
-  if (data.length === 0) {
-    return React__default.createElement(
-      'p',
-      null,
-      'No data available!'
-    );
+var _ref$2 =
+/*#__PURE__*/
+React__default.createElement("path", {
+  d: "M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"
+});
+
+var _ref2$2 =
+/*#__PURE__*/
+React__default.createElement("path", {
+  fill: "none",
+  d: "M0 0h24v24H0V0z"
+});
+
+var SvgComponent$2 = function SvgComponent(props) {
+  return React__default.createElement("svg", _extends$3({
+    width: 24,
+    height: 24
+  }, props), _ref$2, _ref2$2);
+};
+
+function _extends$4() {
+  _extends$4 = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }return target;
+  };return _extends$4.apply(this, arguments);
+}
+
+var _ref$3 =
+/*#__PURE__*/
+React__default.createElement("path", {
+  d: "M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
+});
+
+var _ref2$3 =
+/*#__PURE__*/
+React__default.createElement("path", {
+  fill: "none",
+  d: "M0 0h24v24H0V0z"
+});
+
+var SvgComponent$3 = function SvgComponent(props) {
+  return React__default.createElement("svg", _extends$4({
+    width: 24,
+    height: 24
+  }, props), _ref$3, _ref2$3);
+};
+
+function TableFooter$1(props) {
+  var _props$context = props.context,
+      rowsPerPageOptions = _props$context.rowsPerPageOptions,
+      count = _props$context.count,
+      rowsPerPage = _props$context.rowsPerPage,
+      currentPage = _props$context.currentPage,
+      setCurrentPage = _props$context.setCurrentPage,
+      setRowsPerPage = _props$context.setRowsPerPage;
+
+
+  var to = Math.min(count, (currentPage + 1) * rowsPerPage);
+  var from = count === 0 ? 0 : currentPage * rowsPerPage + 1;
+
+  function handleSelectChange(_ref) {
+    var target = _ref.target;
+
+    setRowsPerPage(+target.value);
+  }
+
+  function handlePrevPage() {
+    setCurrentPage(currentPage - 1);
+  }
+  function handleNextPage() {
+    setCurrentPage(currentPage + 1);
   }
 
   return React__default.createElement(
-    TableWrapper,
-    { style: tableStyle },
-    React__default.createElement(TableHeader$1, { headers: headers }),
+    TableFooter,
+    null,
     React__default.createElement(
-      DataIndexContext.Provider,
-      { value: indexes },
-      React__default.createElement(TableBody, { data: data, renderIcon: renderIcon })
+      'span',
+      { 'aria-label': 'rows-label' },
+      'Rows per page:'
+    ),
+    React__default.createElement(
+      Select,
+      { onChange: handleSelectChange, 'aria-label': 'select pages', className: 'select' },
+      rowsPerPageOptions.map(function (option) {
+        return React__default.createElement(
+          'option',
+          { key: option, value: option },
+          option
+        );
+      })
+    ),
+    React__default.createElement(
+      'span',
+      { 'aria-label': 'label rows per page' },
+      from,
+      '-',
+      to,
+      ' of ',
+      count
+    ),
+    React__default.createElement(
+      'div',
+      { className: 'buttons' },
+      React__default.createElement(
+        IconButton,
+        { disabled: currentPage === 0, onClick: handlePrevPage },
+        React__default.createElement(SvgComponent$2, { 'aria-label': 'previous page', 'data-testid': 'previous page' })
+      ),
+      React__default.createElement(
+        IconButton,
+        { disabled: currentPage >= Math.ceil(count / rowsPerPage) - 1, onClick: handleNextPage },
+        React__default.createElement(SvgComponent$3, { 'aria-label': 'next page', onClick: handleNextPage, 'data-testid': 'next page' })
+      )
+    )
+  );
+}
+
+TableFooter$1.propTypes = {
+  context: PropTypes.object
+};
+
+var TableFooter$2 = withDataContext(TableFooter$1);
+
+function Table(props) {
+  var headers = props.headers,
+      data = props.data,
+      hover = props.hover,
+      handleRowClick = props.handleRowClick,
+      renderIcon = props.renderIcon,
+      tableStyle = props.tableStyle,
+      rowsPerPageOptions = props.rowsPerPageOptions,
+      emptyMessage = props.emptyMessage,
+      emptyMessageStyle = props.emptyMessageStyle;
+
+  var indexes = extractDataIndexes(headers);
+
+  return React__default.createElement(
+    DataStore,
+    null,
+    React__default.createElement(
+      Paper,
+      { style: tableStyle },
+      React__default.createElement(
+        'div',
+        { style: { maxHeight: '75vh', overflow: 'auto' } },
+        React__default.createElement(
+          TableWrapper,
+          null,
+          React__default.createElement(TableHeader$2, { headers: headers }),
+          data.length === 0 ? React__default.createElement(
+            'p',
+            { style: emptyMessageStyle },
+            emptyMessage || 'No data available!'
+          ) : React__default.createElement(TableBody$1, {
+            data: data,
+            dataIndexes: indexes,
+            hover: hover,
+            handleRowClick: handleRowClick,
+            renderIcon: renderIcon,
+            rowsPerPageOptions: rowsPerPageOptions
+          })
+        )
+      ),
+      data.length > 0 && React__default.createElement(TableFooter$2, null)
     )
   );
 }
 
 Table.propTypes = {
-  headers: PropTypes.arrayOf(PropTypes.object),
-  data: PropTypes.arrayOf(PropTypes.object),
+  headers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  hover: PropTypes.bool,
+  handleRowClick: PropTypes.func,
+  rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
+  emptyMessage: PropTypes.string,
+  emptyMessageStyle: PropTypes.object,
   renderIcon: PropTypes.func,
   tableStyle: PropTypes.object
 };
@@ -5866,6 +6320,8 @@ Table.propTypes = {
 Table.defaultProps = {
   headers: [],
   data: [],
+  rowsPerPageOptions: [25, 50, 100],
+  handleRowClick: function handleRowClick() {},
   renderIcon: function renderIcon() {},
   tableStyle: {}
 };

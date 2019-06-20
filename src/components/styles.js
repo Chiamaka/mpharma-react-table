@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import CaretDown from '../icons/CaretDown.png';
 
 export const FlexRow = styled.section`
   display: flex;
@@ -12,14 +13,40 @@ export const text = css`
   letter-spacing: 0.44px;
 `;
 
-export const Text = styled.p`
-  ${text}
-  font-size: ${props => (props.size ? `${props.size}px` : '13px')};
-  font-weight: ${props => props.bold && 500};
+export const Paper = styled.div`
+  ${props => props.style};
+  width: max-content;
+  margin: 50px auto;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);
+`;
+export const TableWrapper = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+export const TableFooter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 60px;
+  color: #757575;
+  font-size: 12px;
+
+  .buttons {
+    margin-left: 20px;
+  }
+
+  .select {
+    display: flex;
+    margin-left: 32px;
+    margin-right: 32px;
+  }
 `;
 
 export const TableHeadRow = styled.tr`
   height: 55px;
+  cursor: pointer;
 `;
 
 export const TableHeader = styled.th`
@@ -29,11 +56,20 @@ export const TableHeader = styled.th`
   padding: 4px 40px 4px 24px;
   border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);
   font-family: 'Sofia Pro Bold';
+
+  svg {
+    vertical-align: middle;
+    color: rgba(0, 0, 0, 0.87);
+  }
 `;
 
 export const TableBodyRow = styled.tr`
-  border-bottom: ${props => (!props.last ? '0.5px solid rgba(221, 221, 221, 0.4)' : 'none')};
+  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);
   text-transform: capitalize;
+  cursor: pointer;
+  :hover {
+    background-color: ${props => props.hover && 'rgba(0, 0, 0, 0.07)'};
+  }
 `;
 
 export const TableBodyData = styled.td`
@@ -53,4 +89,29 @@ export const Pill = styled.span.attrs(props => ({
   border: ${props => (props.active ? '1px solid #3FDA98' : '1px solid #FF647C')};
   padding: ${props => (props.active ? '5px 15px' : '5px 10px')}
   font-size: 12px;
+  font-family: Sofia Pro Bold;
+`;
+
+export const Select = styled.select`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  width: 50px;
+  color: #757575;
+  cursor: pointer;
+  background: url(${CaretDown}) 50% / 50% no-repeat #fff;
+`;
+
+export const IconButton = styled.button`
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
+  border: none;
+  outline: none;
+  padding: 12px;
+  cursor: pointer;
+  svg {
+    fill: ${props => (props.disabled ? 'rgba(0, 0, 0, 0.26)' : 'inherit')};
+  }
 `;

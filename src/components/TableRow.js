@@ -1,35 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { format } from 'date-fns';
-import { TableBodyRow, TableBodyData, Pill } from './styles';
-import { DataIndexContext } from '../context/DataIndexContext';
-import { countries } from '../utils/';
+import { withDataContext } from '../context/DataStore';
+import { TableBodyRow, TableBodyData } from './styles';
+import { formatDate, formatActive, formatCountry } from '../utils/';
 
-function formatDate (item) {
-  if (typeof item === 'string') {
-    const date = new Date(item).getFullYear();
-    if (!isNaN(date)) return format(new Date(item), 'ddd Do MMM YYYY');
-    return false;
+function TableRow ({ item, hover, handleRowClick, renderIcon, context }) {
+  function handleClick () {
+    return handleRowClick(item);
   }
-}
-
-function formatActive (item) {
-  if (typeof item === 'boolean') {
-    return item ? <Pill active>Active</Pill> : <Pill inactive>Inactive</Pill>;
-  }
-}
-
-function formatCountry (item, key) {
-  if (typeof item === 'string' && key === 'country') {
-    return countries[item];
-  }
-}
-
-function TableRow ({ item, renderIcon, last }) {
-  const dataIndexes = useContext(DataIndexContext);
   return (
-    <TableBodyRow last={last}>
-      {dataIndexes.map(({ dataIndex: key, align = 'left', style }, index) => {
+    <TableBodyRow hover={hover} onClick={handleClick}>
+      {context.dataIndexes.map(({ dataIndex: key, align = 'left', style }, index) => {
         return (
           <TableBodyData key={index} align={align} style={style}>
             {formatDate(item[key]) || formatActive(item[key]) || formatCountry(item[key], key) || item[key] || '-'}
@@ -44,7 +25,9 @@ function TableRow ({ item, renderIcon, last }) {
 TableRow.propTypes = {
   item: PropTypes.object.isRequired,
   renderIcon: PropTypes.func,
-  last: PropTypes.bool
+  hover: PropTypes.bool,
+  handleRowClick: PropTypes.func,
+  context: PropTypes.object
 };
 
-export default TableRow;
+export default withDataContext(TableRow);

@@ -47,12 +47,19 @@ function Example() {
 
 ## Table Props
 
-| Name       | Type           | Default | Description                                                                      |
-| ---------- | -------------- | ------- | -------------------------------------------------------------------------------- |
-| \*headers  | array[objects] | None    | The headers of the table. See Header props for more info                         |
-| \*data     | array[objects] | None    | Data to be rendered                                                              |
-| renderIcon | function       | None    | Funtion which renders any icon passed into it. The icon can be a react component |
-| tableStyle | object         | None    | Style for the table wrapper                                                      |
+| Name               | Type           | Default              | Description                                                                      |
+| ------------------ | -------------- | -------------------- | -------------------------------------------------------------------------------- |
+| \*headers          | array[objects] | None                 | The headers of the table. See Header props for more info                         |
+| \*data             | array[objects] | None                 | Data to be rendered                                                              |
+| renderIcon         | function       | None                 | Funtion which renders any icon passed into it. The icon can be a react component |
+| tableStyle         | object         | None                 | Style for the table wrapper                                                      |
+| rowsPerPageOptions | array[numbers] | [25, 50, 100]        | Customizes the options of the rows per page select field                         |
+| hover              | bool           | false                | If true, the table row will shade on hover                                       |
+| handleRowClick     | function       | () => {}             | Function to call when a row is clicked                                           |
+| emptyMessage       | string         | 'No data available!' | Customizes the message when there is no data to display                          |
+| emptyMessageStyle  | object         | None                 | Customizes the styling of the empty message                                      |
+
+handleRowClick
 
 ## Headers Props
 
