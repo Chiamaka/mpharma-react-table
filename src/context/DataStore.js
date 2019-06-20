@@ -10,7 +10,7 @@ export const withDataContext = Component => {
 };
 
 // get the array of data indexes that map to the data prop
-export function extractDataIndexes (headers) {
+export function extractDataIndexes(headers) {
   const dataIndexes = [];
   headers.forEach(header => {
     if (header.dataIndex) {
@@ -51,7 +51,7 @@ class DataStore extends PureComponent {
     this.setState({ rowsPerPage: rows });
   };
 
-  get value () {
+  get value() {
     return {
       ...this.state,
       sortData: this.sortData,
@@ -61,8 +61,7 @@ class DataStore extends PureComponent {
     };
   }
 
-  render () {
-    console.log('state', this.state);
+  render() {
     return <DataContext.Provider value={this.value}>{this.props.children}</DataContext.Provider>;
   }
 }

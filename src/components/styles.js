@@ -44,25 +44,6 @@ export const TableFooter = styled.div`
   }
 `;
 
-export const TableHeadRow = styled.tr`
-  height: 55px;
-  cursor: pointer;
-`;
-
-export const TableHeader = styled.th`
-  ${text}
-  letter-spacing: 0.38px;
-  text-align: ${props => props.align};
-  padding: 4px 40px 4px 24px;
-  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);
-  font-family: 'Sofia Pro Bold';
-
-  svg {
-    vertical-align: middle;
-    color: rgba(0, 0, 0, 0.87);
-  }
-`;
-
 export const TableBodyRow = styled.tr`
   border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);
   text-transform: capitalize;

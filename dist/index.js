@@ -8,6 +8,78 @@ var React = require('react');
 var React__default = _interopDefault(React);
 var PropTypes = _interopDefault(require('prop-types'));
 
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _taggedTemplateLiteralLoose(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  strings.raw = raw;
+  return strings;
+}
+
 var MILLISECONDS_IN_MINUTE = 60000;
 
 /**
@@ -5643,121 +5715,125 @@ var dateFns_50 = dateFns.format;
 
 var CaretDown = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAR0lEQVR4Ae3OMREAIBDEQCQgBf8qkIID+P4qqnyRnUmfIUmS1NesdnU/O9VqMJUz5FTMAFPcTE7xMzHFz8QUPxNT/IwkSUoPu7I4F2kEFg8AAAAASUVORK5CYII=";
 
-var classCallCheck = function (instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-};
+function _templateObject10() {
+  var data = _taggedTemplateLiteralLoose(["\n  pointer-events: ", ";\n  border: none;\n  outline: none;\n  padding: 12px;\n  cursor: pointer;\n  svg {\n    fill: ", ";\n  }\n"]);
 
-var createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) defineProperties(Constructor, staticProps);
-    return Constructor;
+  _templateObject10 = function _templateObject10() {
+    return data;
   };
-}();
 
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
+  return data;
+}
 
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
+function _templateObject9() {
+  var data = _taggedTemplateLiteralLoose(["\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  background: none;\n  border: none;\n  outline: none;\n  width: 50px;\n  color: #757575;\n  cursor: pointer;\n  background: url(", ") 50% / 50% no-repeat #fff;\n"]);
 
-  return target;
-};
+  _templateObject9 = function _templateObject9() {
+    return data;
+  };
 
-var inherits = function (subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }
+  return data;
+}
 
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      enumerable: false,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-};
+function _templateObject8() {
+  var data = _taggedTemplateLiteralLoose(["\n  border-radius: 17px;\n  background-color: ", ";\n  color: ", ";\n  border: ", ";\n  padding: ", "\n  font-size: 12px;\n  font-family: Sofia Pro Bold;\n"]);
 
-var possibleConstructorReturn = function (self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
+  _templateObject8 = function _templateObject8() {
+    return data;
+  };
 
-  return call && (typeof call === "object" || typeof call === "function") ? call : self;
-};
+  return data;
+}
 
-var taggedTemplateLiteral = function (strings, raw) {
-  return Object.freeze(Object.defineProperties(strings, {
-    raw: {
-      value: Object.freeze(raw)
-    }
-  }));
-};
+function _templateObject7() {
+  var data = _taggedTemplateLiteralLoose(["\n  ", "\n  letter-spacing: 0.54px;\n  text-align: ", ";\n  text-transform: ", ";\n  padding: 4px 40px 4px 24px;\n"]);
 
-var _templateObject = taggedTemplateLiteral(['\n  display: flex;\n  align-items: center;\n'], ['\n  display: flex;\n  align-items: center;\n']),
-    _templateObject2 = taggedTemplateLiteral(['\n  font-size: 13px;\n  margin: 0;\n  color: rgba(0, 0, 0, 0.89);\n  letter-spacing: 0.44px;\n'], ['\n  font-size: 13px;\n  margin: 0;\n  color: rgba(0, 0, 0, 0.89);\n  letter-spacing: 0.44px;\n']),
-    _templateObject3 = taggedTemplateLiteral(['\n  ', ';\n  width: max-content;\n  margin: 50px auto;\n  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);\n'], ['\n  ', ';\n  width: max-content;\n  margin: 50px auto;\n  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);\n']),
-    _templateObject4 = taggedTemplateLiteral(['\n  width: 100%;\n  border-collapse: collapse;\n'], ['\n  width: 100%;\n  border-collapse: collapse;\n']),
-    _templateObject5 = taggedTemplateLiteral(['\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  width: 100%;\n  height: 60px;\n  color: #757575;\n  font-size: 12px;\n\n  .buttons {\n    margin-left: 20px;\n  }\n\n  .select {\n    display: flex;\n    margin-left: 32px;\n    margin-right: 32px;\n  }\n'], ['\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  width: 100%;\n  height: 60px;\n  color: #757575;\n  font-size: 12px;\n\n  .buttons {\n    margin-left: 20px;\n  }\n\n  .select {\n    display: flex;\n    margin-left: 32px;\n    margin-right: 32px;\n  }\n']),
-    _templateObject6 = taggedTemplateLiteral(['\n  height: 55px;\n  cursor: pointer;\n'], ['\n  height: 55px;\n  cursor: pointer;\n']),
-    _templateObject7 = taggedTemplateLiteral(['\n  ', '\n  letter-spacing: 0.38px;\n  text-align: ', ';\n  padding: 4px 40px 4px 24px;\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  font-family: \'Sofia Pro Bold\';\n\n  svg {\n    vertical-align: middle;\n    color: rgba(0, 0, 0, 0.87);\n  }\n'], ['\n  ', '\n  letter-spacing: 0.38px;\n  text-align: ', ';\n  padding: 4px 40px 4px 24px;\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  font-family: \'Sofia Pro Bold\';\n\n  svg {\n    vertical-align: middle;\n    color: rgba(0, 0, 0, 0.87);\n  }\n']),
-    _templateObject8 = taggedTemplateLiteral(['\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  text-transform: capitalize;\n  cursor: pointer;\n  :hover {\n    background-color: ', ';\n  }\n'], ['\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  text-transform: capitalize;\n  cursor: pointer;\n  :hover {\n    background-color: ', ';\n  }\n']),
-    _templateObject9 = taggedTemplateLiteral(['\n  ', '\n  letter-spacing: 0.54px;\n  text-align: ', ';\n  text-transform: ', ';\n  padding: 4px 40px 4px 24px;\n'], ['\n  ', '\n  letter-spacing: 0.54px;\n  text-align: ', ';\n  text-transform: ', ';\n  padding: 4px 40px 4px 24px;\n']),
-    _templateObject10 = taggedTemplateLiteral(['\n  border-radius: 17px;\n  background-color: ', ';\n  color: ', ';\n  border: ', ';\n  padding: ', '\n  font-size: 12px;\n  font-family: Sofia Pro Bold;\n'], ['\n  border-radius: 17px;\n  background-color: ', ';\n  color: ', ';\n  border: ', ';\n  padding: ', '\n  font-size: 12px;\n  font-family: Sofia Pro Bold;\n']),
-    _templateObject11 = taggedTemplateLiteral(['\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  background: none;\n  border: none;\n  outline: none;\n  width: 50px;\n  color: #757575;\n  cursor: pointer;\n  background: url(', ') 50% / 50% no-repeat #fff;\n'], ['\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  background: none;\n  border: none;\n  outline: none;\n  width: 50px;\n  color: #757575;\n  cursor: pointer;\n  background: url(', ') 50% / 50% no-repeat #fff;\n']),
-    _templateObject12 = taggedTemplateLiteral(['\n  pointer-events: ', ';\n  border: none;\n  outline: none;\n  padding: 12px;\n  cursor: pointer;\n  svg {\n    fill: ', ';\n  }\n'], ['\n  pointer-events: ', ';\n  border: none;\n  outline: none;\n  padding: 12px;\n  cursor: pointer;\n  svg {\n    fill: ', ';\n  }\n']);
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
 
-var FlexRow = styled__default.section(_templateObject);
+  return data;
+}
 
-var text = styled.css(_templateObject2);
+function _templateObject6() {
+  var data = _taggedTemplateLiteralLoose(["\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  text-transform: capitalize;\n  cursor: pointer;\n  :hover {\n    background-color: ", ";\n  }\n"]);
 
-var Paper = styled__default.div(_templateObject3, function (props) {
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteralLoose(["\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  width: 100%;\n  height: 60px;\n  color: #757575;\n  font-size: 12px;\n\n  .buttons {\n    margin-left: 20px;\n  }\n\n  .select {\n    display: flex;\n    margin-left: 32px;\n    margin-right: 32px;\n  }\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  border-collapse: collapse;\n"]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteralLoose(["\n  ", ";\n  width: max-content;\n  margin: 50px auto;\n  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteralLoose(["\n  font-size: 13px;\n  margin: 0;\n  color: rgba(0, 0, 0, 0.89);\n  letter-spacing: 0.44px;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteralLoose(["\n  display: flex;\n  align-items: center;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var FlexRow = styled__default.section(_templateObject());
+var text = styled.css(_templateObject2());
+var Paper = styled__default.div(_templateObject3(), function (props) {
   return props.style;
 });
-var TableWrapper = styled__default.table(_templateObject4);
-
-var TableFooter = styled__default.div(_templateObject5);
-
-var TableHeadRow = styled__default.tr(_templateObject6);
-
-var TableHeader = styled__default.th(_templateObject7, text, function (props) {
-  return props.align;
-});
-
-var TableBodyRow = styled__default.tr(_templateObject8, function (props) {
+var TableWrapper = styled__default.table(_templateObject4());
+var TableFooter = styled__default.div(_templateObject5());
+var TableBodyRow = styled__default.tr(_templateObject6(), function (props) {
   return props.hover && 'rgba(0, 0, 0, 0.07)';
 });
-
-var TableBodyData = styled__default.td(_templateObject9, text, function (props) {
+var TableBodyData = styled__default.td(_templateObject7(), text, function (props) {
   return props.align;
 }, function (props) {
   return props.uppercase && 'uppercase';
 });
-
 var Pill = styled__default.span.attrs(function (props) {
   return {
     'aria-label': props.children
   };
-})(_templateObject10, function (props) {
+})(_templateObject8(), function (props) {
   return props.active ? 'rgba(63,218,152,0.17)' : 'rgba(255, 100, 124, 0.17)';
 }, function (props) {
   return props.active ? '#3FDA98' : '#FF647C';
@@ -5766,10 +5842,8 @@ var Pill = styled__default.span.attrs(function (props) {
 }, function (props) {
   return props.active ? '5px 15px' : '5px 10px';
 });
-
-var Select = styled__default.select(_templateObject11, CaretDown);
-
-var IconButton = styled__default.button(_templateObject12, function (props) {
+var Select = styled__default.select(_templateObject9(), CaretDown);
+var IconButton = styled__default.button(_templateObject10(), function (props) {
   return props.disabled ? 'none' : 'auto';
 }, function (props) {
   return props.disabled ? 'rgba(0, 0, 0, 0.26)' : 'inherit';
@@ -5779,7 +5853,6 @@ var countries = {
   GH: 'Ghana',
   NG: 'Nigeria'
 };
-
 function tableSort(array, cmp) {
   return array.map(function (el, index) {
     return [el, index];
@@ -5796,9 +5869,11 @@ function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }
+
   if (b[orderBy] > a[orderBy]) {
     return 1;
   }
+
   return 0;
 }
 
@@ -5809,7 +5884,6 @@ function getSortingFn(order, orderBy) {
     return -desc(a, b, orderBy);
   };
 }
-
 function formatDate(item) {
   if (typeof item === 'string') {
     var date = new Date(item).getFullYear();
@@ -5817,21 +5891,15 @@ function formatDate(item) {
     return false;
   }
 }
-
 function formatActive(item) {
   if (typeof item === 'boolean') {
-    return item ? React__default.createElement(
-      Pill,
-      { active: true },
-      'Active'
-    ) : React__default.createElement(
-      Pill,
-      { inactive: true },
-      'Inactive'
-    );
+    return item ? React__default.createElement(Pill, {
+      active: true
+    }, "Active") : React__default.createElement(Pill, {
+      inactive: true
+    }, "Inactive");
   }
 }
-
 function formatCountry(item, key) {
   if (typeof item === 'string' && key === 'country') {
     return countries[item];
@@ -5841,42 +5909,43 @@ function formatCountry(item, key) {
 var DataContext = React.createContext(null);
 var withDataContext = function withDataContext(Component) {
   return function (props) {
-    return React__default.createElement(
-      DataContext.Consumer,
-      null,
-      function (context) {
-        return React__default.createElement(Component, _extends({}, props, { context: context }));
-      }
-    );
+    return React__default.createElement(DataContext.Consumer, null, function (context) {
+      return React__default.createElement(Component, _extends({}, props, {
+        context: context
+      }));
+    });
   };
-};
+}; // get the array of data indexes that map to the data prop
 
-// get the array of data indexes that map to the data prop
 function extractDataIndexes(headers) {
   var dataIndexes = [];
   headers.forEach(function (header) {
     if (header.dataIndex) {
-      dataIndexes.push({ dataIndex: header.dataIndex, align: header.align, style: header.style });
+      dataIndexes.push({
+        dataIndex: header.dataIndex,
+        align: header.align,
+        style: header.style
+      });
     }
   });
   return dataIndexes;
 }
 
-var DataStore = function (_PureComponent) {
-  inherits(DataStore, _PureComponent);
+var DataStore =
+/*#__PURE__*/
+function (_PureComponent) {
+  _inheritsLoose(DataStore, _PureComponent);
 
   function DataStore() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    classCallCheck(this, DataStore);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = DataStore.__proto__ || Object.getPrototypeOf(DataStore)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+    _this = _PureComponent.call.apply(_PureComponent, [this].concat(args)) || this;
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
       data: [],
       dataIndexes: [],
       desc: false,
@@ -5885,36 +5954,54 @@ var DataStore = function (_PureComponent) {
       rowsPerPage: 0,
       currentPage: 0,
       count: 0
-    }, _this.sortData = function (key) {
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "sortData", function (key) {
       var _this$state = _this.state,
           data = _this$state.data,
           desc = _this$state.desc;
 
-      _this.setState({ data: tableSort(data, getSortingFn(desc, key)) }, function () {
-        return _this.setState({ desc: !desc, active: key });
+      _this.setState({
+        data: tableSort(data, getSortingFn(desc, key))
+      }, function () {
+        return _this.setState({
+          desc: !desc,
+          active: key
+        });
       });
-    }, _this.loadData = function (data) {
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "loadData", function (data) {
       _this.setState(_extends({}, data));
-    }, _this.setCurrentPage = function (page) {
-      _this.setState({ currentPage: page });
-    }, _this.setRowsPerPage = function (rows) {
-      _this.setState({ rowsPerPage: rows });
-    }, _temp), possibleConstructorReturn(_this, _ret);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "setCurrentPage", function (page) {
+      _this.setState({
+        currentPage: page
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "setRowsPerPage", function (rows) {
+      _this.setState({
+        rowsPerPage: rows
+      });
+    });
+
+    return _this;
   }
 
-  createClass(DataStore, [{
-    key: 'render',
-    value: function render() {
-      console.log('state', this.state);
-      return React__default.createElement(
-        DataContext.Provider,
-        { value: this.value },
-        this.props.children
-      );
-    }
-  }, {
-    key: 'value',
-    get: function get$$1() {
+  var _proto = DataStore.prototype;
+
+  _proto.render = function render() {
+    console.log('state', this.state);
+    return React__default.createElement(DataContext.Provider, {
+      value: this.value
+    }, this.props.children);
+  };
+
+  _createClass(DataStore, [{
+    key: "value",
+    get: function get() {
       return _extends({}, this.state, {
         sortData: this.sortData,
         loadData: this.loadData,
@@ -5923,6 +6010,7 @@ var DataStore = function (_PureComponent) {
       });
     }
   }]);
+
   return DataStore;
 }(React.PureComponent);
 
@@ -5930,17 +6018,31 @@ DataStore.propTypes = {
   children: PropTypes.node
 };
 
-function _extends$1() {
-  _extends$1 = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }return target;
-  };return _extends$1.apply(this, arguments);
+function _templateObject2$1() {
+  var data = _taggedTemplateLiteralLoose(["\n  ", "\n  letter-spacing: 0.38px;\n  text-align: ", ";\n  padding: 4px 40px 4px 24px;\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  font-family: 'Sofia Pro Bold';\n\n  svg {\n    vertical-align: middle;\n    color: rgba(0, 0, 0, 0.87);\n  }\n"]);
+
+  _templateObject2$1 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
 }
+
+function _templateObject$1() {
+  var data = _taggedTemplateLiteralLoose(["\n  height: 55px;\n  cursor: pointer;\n"]);
+
+  _templateObject$1 = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var TableHeadRow = styled__default.tr(_templateObject$1());
+var TableHeader = styled__default.th(_templateObject2$1(), text, function (props) {
+  return props.align;
+});
+
+function _extends$1() { _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
 
 var _ref =
 /*#__PURE__*/
@@ -5955,7 +6057,7 @@ React__default.createElement("path", {
   d: "M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
 });
 
-var SvgComponent = function SvgComponent(props) {
+var SvgArrowUp = function SvgArrowUp(props) {
   return React__default.createElement("svg", _extends$1({
     width: 15,
     height: 15,
@@ -5963,17 +6065,7 @@ var SvgComponent = function SvgComponent(props) {
   }, props), _ref, _ref2);
 };
 
-function _extends$2() {
-  _extends$2 = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }return target;
-  };return _extends$2.apply(this, arguments);
-}
+function _extends$2() { _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2.apply(this, arguments); }
 
 var _ref$1 =
 /*#__PURE__*/
@@ -5989,7 +6081,7 @@ React__default.createElement("path", {
   d: "M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
 });
 
-var SvgComponent$1 = function SvgComponent(props) {
+var SvgArrowDown = function SvgArrowDown(props) {
   return React__default.createElement("svg", _extends$2({
     width: 15,
     height: 15,
@@ -6000,7 +6092,7 @@ var SvgComponent$1 = function SvgComponent(props) {
 function TableHeader$1(props) {
   var headers = props.headers,
       context = props.context;
-
+  console.log(headers);
 
   function sortData(dataIndex) {
     return function () {
@@ -6008,36 +6100,26 @@ function TableHeader$1(props) {
     };
   }
 
-  return React__default.createElement(
-    'thead',
-    null,
-    React__default.createElement(
-      TableHeadRow,
-      null,
-      headers.map(function (_ref, index) {
-        var title = _ref.title,
-            _ref$align = _ref.align,
-            align = _ref$align === undefined ? 'left' : _ref$align,
-            width = _ref.width,
-            dataIndex = _ref.dataIndex;
-
-        return React__default.createElement(
-          TableHeader,
-          { key: index, align: align, width: width, onClick: sortData(dataIndex) },
-          title,
-          ' ',
-          context.active === dataIndex && (context.desc ? React__default.createElement(SvgComponent$1, null) : React__default.createElement(SvgComponent, null))
-        );
-      })
-    )
-  );
+  return React__default.createElement("thead", null, React__default.createElement(TableHeadRow, null, headers.map(function (_ref, index) {
+    var title = _ref.title,
+        _ref$align = _ref.align,
+        align = _ref$align === void 0 ? 'left' : _ref$align,
+        width = _ref.width,
+        dataIndex = _ref.dataIndex;
+    return React__default.createElement(TableHeader, {
+      key: index,
+      align: align,
+      width: width,
+      onClick: sortData(dataIndex),
+      "data-testid": "table header"
+    }, title, " ", context.active === dataIndex && (context.desc ? React__default.createElement(SvgArrowDown, null) : React__default.createElement(SvgArrowUp, null)));
+  })));
 }
 
 TableHeader$1.propTypes = {
   headers: PropTypes.arrayOf(PropTypes.object).isRequired,
   context: PropTypes.object
 };
-
 var TableHeader$2 = withDataContext(React__default.memo(TableHeader$1));
 
 function TableRow(_ref) {
@@ -6050,23 +6132,21 @@ function TableRow(_ref) {
   function handleClick() {
     return handleRowClick(item);
   }
-  return React__default.createElement(
-    TableBodyRow,
-    { hover: hover, onClick: handleClick },
-    context.dataIndexes.map(function (_ref2, index) {
-      var key = _ref2.dataIndex,
-          _ref2$align = _ref2.align,
-          align = _ref2$align === undefined ? 'left' : _ref2$align,
-          style = _ref2.style;
 
-      return React__default.createElement(
-        TableBodyData,
-        { key: index, align: align, style: style },
-        formatDate(item[key]) || formatActive(item[key]) || formatCountry(item[key], key) || item[key] || '-'
-      );
-    }),
-    renderIcon(item)
-  );
+  return React__default.createElement(TableBodyRow, {
+    hover: hover,
+    onClick: handleClick
+  }, context.dataIndexes.map(function (_ref2, index) {
+    var key = _ref2.dataIndex,
+        _ref2$align = _ref2.align,
+        align = _ref2$align === void 0 ? 'left' : _ref2$align,
+        style = _ref2.style;
+    return React__default.createElement(TableBodyData, {
+      key: index,
+      align: align,
+      style: style
+    }, formatDate(item[key]) || formatActive(item[key]) || formatCountry(item[key], key) || item[key] || '-');
+  }), renderIcon(item));
 }
 
 TableRow.propTypes = {
@@ -6076,7 +6156,6 @@ TableRow.propTypes = {
   handleRowClick: PropTypes.func,
   context: PropTypes.object
 };
-
 var TableRow$1 = withDataContext(TableRow);
 
 function TableBody(props) {
@@ -6090,21 +6169,26 @@ function TableBody(props) {
   var loadData = context.loadData,
       currentPage = context.currentPage,
       rowsPerPage = context.rowsPerPage;
-
   var upperBound = currentPage * rowsPerPage;
   var lowerBound = currentPage * rowsPerPage + rowsPerPage;
-
   React.useEffect(function () {
-    loadData({ data: data, dataIndexes: dataIndexes, rowsPerPageOptions: rowsPerPageOptions, count: data.length, rowsPerPage: rowsPerPageOptions[0] });
+    loadData({
+      data: data,
+      dataIndexes: dataIndexes,
+      rowsPerPageOptions: rowsPerPageOptions,
+      count: data.length,
+      rowsPerPage: rowsPerPageOptions[0]
+    });
   }, []);
-
-  return React__default.createElement(
-    'tbody',
-    null,
-    context.data.slice(upperBound, lowerBound).map(function (item, index) {
-      return React__default.createElement(TableRow$1, { item: item, key: index, renderIcon: renderIcon, hover: hover, handleRowClick: handleRowClick });
-    })
-  );
+  return React__default.createElement("tbody", null, context.data.slice(upperBound, lowerBound).map(function (item, index) {
+    return React__default.createElement(TableRow$1, {
+      item: item,
+      key: index,
+      renderIcon: renderIcon,
+      hover: hover,
+      handleRowClick: handleRowClick
+    });
+  }));
 }
 
 TableBody.propTypes = {
@@ -6116,20 +6200,9 @@ TableBody.propTypes = {
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
   context: PropTypes.object
 };
-
 var TableBody$1 = withDataContext(TableBody);
 
-function _extends$3() {
-  _extends$3 = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }return target;
-  };return _extends$3.apply(this, arguments);
-}
+function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
 
 var _ref$2 =
 /*#__PURE__*/
@@ -6144,24 +6217,14 @@ React__default.createElement("path", {
   d: "M0 0h24v24H0V0z"
 });
 
-var SvgComponent$2 = function SvgComponent(props) {
+var SvgLeftArrow = function SvgLeftArrow(props) {
   return React__default.createElement("svg", _extends$3({
     width: 24,
     height: 24
   }, props), _ref$2, _ref2$2);
 };
 
-function _extends$4() {
-  _extends$4 = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }return target;
-  };return _extends$4.apply(this, arguments);
-}
+function _extends$4() { _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4.apply(this, arguments); }
 
 var _ref$3 =
 /*#__PURE__*/
@@ -6176,7 +6239,7 @@ React__default.createElement("path", {
   d: "M0 0h24v24H0V0z"
 });
 
-var SvgComponent$3 = function SvgComponent(props) {
+var SvgRightArrow = function SvgRightArrow(props) {
   return React__default.createElement("svg", _extends$4({
     width: 24,
     height: 24
@@ -6191,73 +6254,56 @@ function TableFooter$1(props) {
       currentPage = _props$context.currentPage,
       setCurrentPage = _props$context.setCurrentPage,
       setRowsPerPage = _props$context.setRowsPerPage;
-
-
   var to = Math.min(count, (currentPage + 1) * rowsPerPage);
   var from = count === 0 ? 0 : currentPage * rowsPerPage + 1;
 
   function handleSelectChange(_ref) {
     var target = _ref.target;
-
     setRowsPerPage(+target.value);
   }
 
   function handlePrevPage() {
     setCurrentPage(currentPage - 1);
   }
+
   function handleNextPage() {
     setCurrentPage(currentPage + 1);
   }
 
-  return React__default.createElement(
-    TableFooter,
-    null,
-    React__default.createElement(
-      'span',
-      { 'aria-label': 'rows-label' },
-      'Rows per page:'
-    ),
-    React__default.createElement(
-      Select,
-      { onChange: handleSelectChange, 'aria-label': 'select pages', className: 'select' },
-      rowsPerPageOptions.map(function (option) {
-        return React__default.createElement(
-          'option',
-          { key: option, value: option },
-          option
-        );
-      })
-    ),
-    React__default.createElement(
-      'span',
-      { 'aria-label': 'label rows per page' },
-      from,
-      '-',
-      to,
-      ' of ',
-      count
-    ),
-    React__default.createElement(
-      'div',
-      { className: 'buttons' },
-      React__default.createElement(
-        IconButton,
-        { disabled: currentPage === 0, onClick: handlePrevPage },
-        React__default.createElement(SvgComponent$2, { 'aria-label': 'previous page', 'data-testid': 'previous page' })
-      ),
-      React__default.createElement(
-        IconButton,
-        { disabled: currentPage >= Math.ceil(count / rowsPerPage) - 1, onClick: handleNextPage },
-        React__default.createElement(SvgComponent$3, { 'aria-label': 'next page', onClick: handleNextPage, 'data-testid': 'next page' })
-      )
-    )
-  );
+  return React__default.createElement(TableFooter, null, React__default.createElement("span", {
+    "aria-label": "rows-label"
+  }, "Rows per page:"), React__default.createElement(Select, {
+    onChange: handleSelectChange,
+    "aria-label": "select pages",
+    className: "select"
+  }, rowsPerPageOptions.map(function (option) {
+    return React__default.createElement("option", {
+      key: option,
+      value: option
+    }, option);
+  })), React__default.createElement("span", {
+    "aria-label": "label rows per page"
+  }, from, "-", to, " of ", count), React__default.createElement("div", {
+    className: "buttons"
+  }, React__default.createElement(IconButton, {
+    disabled: currentPage === 0,
+    onClick: handlePrevPage
+  }, React__default.createElement(SvgLeftArrow, {
+    "aria-label": "previous page",
+    "data-testid": "previous page"
+  })), React__default.createElement(IconButton, {
+    disabled: currentPage >= Math.ceil(count / rowsPerPage) - 1,
+    onClick: handleNextPage
+  }, React__default.createElement(SvgRightArrow, {
+    "aria-label": "next page",
+    onClick: handleNextPage,
+    "data-testid": "next page"
+  }))));
 }
 
 TableFooter$1.propTypes = {
   context: PropTypes.object
 };
-
 var TableFooter$2 = withDataContext(TableFooter$1);
 
 function Table(props) {
@@ -6270,39 +6316,26 @@ function Table(props) {
       rowsPerPageOptions = props.rowsPerPageOptions,
       emptyMessage = props.emptyMessage,
       emptyMessageStyle = props.emptyMessageStyle;
-
   var indexes = extractDataIndexes(headers);
-
-  return React__default.createElement(
-    DataStore,
-    null,
-    React__default.createElement(
-      Paper,
-      { style: tableStyle },
-      React__default.createElement(
-        'div',
-        { style: { maxHeight: '75vh', overflow: 'auto' } },
-        React__default.createElement(
-          TableWrapper,
-          null,
-          React__default.createElement(TableHeader$2, { headers: headers }),
-          data.length === 0 ? React__default.createElement(
-            'p',
-            { style: emptyMessageStyle },
-            emptyMessage || 'No data available!'
-          ) : React__default.createElement(TableBody$1, {
-            data: data,
-            dataIndexes: indexes,
-            hover: hover,
-            handleRowClick: handleRowClick,
-            renderIcon: renderIcon,
-            rowsPerPageOptions: rowsPerPageOptions
-          })
-        )
-      ),
-      data.length > 0 && React__default.createElement(TableFooter$2, null)
-    )
-  );
+  return React__default.createElement(DataStore, null, React__default.createElement(Paper, {
+    style: tableStyle
+  }, React__default.createElement("div", {
+    style: {
+      maxHeight: '75vh',
+      overflow: 'auto'
+    }
+  }, React__default.createElement(TableWrapper, null, React__default.createElement(TableHeader$2, {
+    headers: headers
+  }), data.length === 0 ? React__default.createElement("p", {
+    style: emptyMessageStyle
+  }, emptyMessage || 'No data available!') : React__default.createElement(TableBody$1, {
+    data: data,
+    dataIndexes: indexes,
+    hover: hover,
+    handleRowClick: handleRowClick,
+    renderIcon: renderIcon,
+    rowsPerPageOptions: rowsPerPageOptions
+  }))), data.length > 0 && React__default.createElement(TableFooter$2, null)));
 }
 
 Table.propTypes = {
@@ -6316,7 +6349,6 @@ Table.propTypes = {
   renderIcon: PropTypes.func,
   tableStyle: PropTypes.object
 };
-
 Table.defaultProps = {
   headers: [],
   data: [],
