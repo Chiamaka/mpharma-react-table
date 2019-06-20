@@ -13,7 +13,6 @@
     "npm": ">=5"
   },
   "scripts": {
-    "precommit": "react-scripts test --env=jsdom",
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "build": "rollup -c",
@@ -56,12 +55,18 @@
     "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-url": "^1.4.0"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test"
+    }
+  },
   "files": [
     "dist"
   ],
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "date-fns": "^1.30.1",
+    "husky": "^2.4.1",
     "react-testing-library": "^8.0.1",
     "styled-components": "^4.1.3"
   }
