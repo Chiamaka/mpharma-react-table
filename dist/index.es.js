@@ -5707,60 +5707,8 @@ var dateFns = {
 };
 var dateFns_50 = dateFns.format;
 
-var CaretDown = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAR0lEQVR4Ae3OMREAIBDEQCQgBf8qkIID+P4qqnyRnUmfIUmS1NesdnU/O9VqMJUz5FTMAFPcTE7xMzHFz8QUPxNT/IwkSUoPu7I4F2kEFg8AAAAASUVORK5CYII=";
-
-function _templateObject10() {
-  var data = _taggedTemplateLiteralLoose(["\n  pointer-events: ", ";\n  border: none;\n  outline: none;\n  padding: 12px;\n  cursor: pointer;\n  svg {\n    fill: ", ";\n  }\n"]);
-
-  _templateObject10 = function _templateObject10() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject9() {
-  var data = _taggedTemplateLiteralLoose(["\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  background: none;\n  border: none;\n  outline: none;\n  width: 50px;\n  color: #757575;\n  cursor: pointer;\n  background: url(", ") 50% / 50% no-repeat #fff;\n"]);
-
-  _templateObject9 = function _templateObject9() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject8() {
-  var data = _taggedTemplateLiteralLoose(["\n  border-radius: 17px;\n  background-color: ", ";\n  color: ", ";\n  border: ", ";\n  padding: ", "\n  font-size: 12px;\n  font-family: Sofia Pro Bold;\n"]);
-
-  _templateObject8 = function _templateObject8() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject7() {
-  var data = _taggedTemplateLiteralLoose(["\n  ", "\n  letter-spacing: 0.54px;\n  text-align: ", ";\n  text-transform: ", ";\n  padding: 4px 40px 4px 24px;\n"]);
-
-  _templateObject7 = function _templateObject7() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject6() {
-  var data = _taggedTemplateLiteralLoose(["\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  text-transform: capitalize;\n  cursor: pointer;\n  :hover {\n    background-color: ", ";\n  }\n"]);
-
-  _templateObject6 = function _templateObject6() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject5() {
-  var data = _taggedTemplateLiteralLoose(["\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  width: 100%;\n  height: 60px;\n  color: #757575;\n  font-size: 12px;\n\n  .buttons {\n    margin-left: 20px;\n  }\n\n  .select {\n    display: flex;\n    margin-left: 32px;\n    margin-right: 32px;\n  }\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n  border-radius: 17px;\n  background-color: ", ";\n  color: ", ";\n  border: ", ";\n  padding: ", "\n  font-size: 12px;\n  font-family: Sofia Pro Bold;\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -5814,20 +5762,11 @@ var Paper = styled.div(_templateObject3(), function (props) {
   return props.style;
 });
 var TableWrapper = styled.table(_templateObject4());
-var TableFooter = styled.div(_templateObject5());
-var TableBodyRow = styled.tr(_templateObject6(), function (props) {
-  return props.hover && 'rgba(0, 0, 0, 0.07)';
-});
-var TableBodyData = styled.td(_templateObject7(), text, function (props) {
-  return props.align;
-}, function (props) {
-  return props.uppercase && 'uppercase';
-});
 var Pill = styled.span.attrs(function (props) {
   return {
     'aria-label': props.children
   };
-})(_templateObject8(), function (props) {
+})(_templateObject5(), function (props) {
   return props.active ? 'rgba(63,218,152,0.17)' : 'rgba(255, 100, 124, 0.17)';
 }, function (props) {
   return props.active ? '#3FDA98' : '#FF647C';
@@ -5835,12 +5774,6 @@ var Pill = styled.span.attrs(function (props) {
   return props.active ? '1px solid #3FDA98' : '1px solid #FF647C';
 }, function (props) {
   return props.active ? '5px 15px' : '5px 10px';
-});
-var Select = styled.select(_templateObject9(), CaretDown);
-var IconButton = styled.button(_templateObject10(), function (props) {
-  return props.disabled ? 'none' : 'auto';
-}, function (props) {
-  return props.disabled ? 'rgba(0, 0, 0, 0.26)' : 'inherit';
 });
 
 var countries = {
@@ -5987,7 +5920,6 @@ function (_PureComponent) {
   var _proto = DataStore.prototype;
 
   _proto.render = function render() {
-    console.log('state', this.state);
     return React.createElement(DataContext.Provider, {
       value: this.value
     }, this.props.children);
@@ -6086,7 +6018,6 @@ var SvgArrowDown = function SvgArrowDown(props) {
 function TableHeader$1(props) {
   var headers = props.headers,
       context = props.context;
-  console.log(headers);
 
   function sortData(dataIndex) {
     return function () {
@@ -6105,8 +6036,12 @@ function TableHeader$1(props) {
       align: align,
       width: width,
       onClick: sortData(dataIndex),
-      "data-testid": "table header"
-    }, title, " ", context.active === dataIndex && (context.desc ? React.createElement(SvgArrowDown, null) : React.createElement(SvgArrowUp, null)));
+      "data-testid": "table-header"
+    }, title, ' ', context.active === dataIndex && (context.desc ? React.createElement(SvgArrowDown, {
+      "aria-label": "asc"
+    }) : React.createElement(SvgArrowUp, {
+      "aria-label": "desc"
+    })));
   })));
 }
 
@@ -6115,6 +6050,34 @@ TableHeader$1.propTypes = {
   context: PropTypes.object
 };
 var TableHeader$2 = withDataContext(React.memo(TableHeader$1));
+
+function _templateObject2$2() {
+  var data = _taggedTemplateLiteralLoose(["\n  ", "\n  letter-spacing: 0.54px;\n  text-align: ", ";\n  text-transform: ", ";\n  padding: 4px 40px 4px 24px;\n"]);
+
+  _templateObject2$2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$2() {
+  var data = _taggedTemplateLiteralLoose(["\n  height: 50px;\n  border-bottom: 0.5px solid rgba(221, 221, 221, 0.4);\n  text-transform: capitalize;\n  cursor: pointer;\n  :hover {\n    background-color: ", ";\n  }\n"]);
+
+  _templateObject$2 = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var TableBodyRow = styled.tr(_templateObject$2(), function (props) {
+  return props.hover && 'rgba(0, 0, 0, 0.07)';
+});
+var TableBodyData = styled.td(_templateObject2$2(), text, function (props) {
+  return props.align;
+}, function (props) {
+  return props.uppercase && 'uppercase';
+});
 
 function TableRow(_ref) {
   var item = _ref.item,
@@ -6129,7 +6092,8 @@ function TableRow(_ref) {
 
   return React.createElement(TableBodyRow, {
     hover: hover,
-    onClick: handleClick
+    onClick: handleClick,
+    "data-testid": "table-row"
   }, context.dataIndexes.map(function (_ref2, index) {
     var key = _ref2.dataIndex,
         _ref2$align = _ref2.align,
@@ -6174,7 +6138,9 @@ function TableBody(props) {
       rowsPerPage: rowsPerPageOptions[0]
     });
   }, []);
-  return React.createElement("tbody", null, context.data.slice(upperBound, lowerBound).map(function (item, index) {
+  return React.createElement("tbody", {
+    "data-testid": "table-body"
+  }, context.data.slice(upperBound, lowerBound).map(function (item, index) {
     return React.createElement(TableRow$1, {
       item: item,
       key: index,
@@ -6194,7 +6160,51 @@ TableBody.propTypes = {
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
   context: PropTypes.object
 };
+TableBody.defaultProps = {
+  dataIndexes: [],
+  rowsPerPageOptions: [25, 50, 100],
+  renderIcon: function renderIcon() {}
+};
 var TableBody$1 = withDataContext(TableBody);
+
+var CaretDown = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAR0lEQVR4Ae3OMREAIBDEQCQgBf8qkIID+P4qqnyRnUmfIUmS1NesdnU/O9VqMJUz5FTMAFPcTE7xMzHFz8QUPxNT/IwkSUoPu7I4F2kEFg8AAAAASUVORK5CYII=";
+
+function _templateObject3$1() {
+  var data = _taggedTemplateLiteralLoose(["\n  pointer-events: ", ";\n  border: none;\n  outline: none;\n  padding: 12px;\n  cursor: pointer;\n  svg {\n    fill: ", ";\n  }\n"]);
+
+  _templateObject3$1 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$3() {
+  var data = _taggedTemplateLiteralLoose(["\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  background: none;\n  border: none;\n  outline: none;\n  width: 50px;\n  color: #757575;\n  cursor: pointer;\n  background: url(", ") 50% / 50% no-repeat #fff;\n"]);
+
+  _templateObject2$3 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$3() {
+  var data = _taggedTemplateLiteralLoose(["\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  width: 100%;\n  height: 60px;\n  color: #757575;\n  font-size: 12px;\n\n  .buttons {\n    margin-left: 20px;\n  }\n\n  .select {\n    display: flex;\n    margin-left: 32px;\n    margin-right: 32px;\n  }\n"]);
+
+  _templateObject$3 = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var TableFooter = styled.div(_templateObject$3());
+var Select = styled.select(_templateObject2$3(), CaretDown);
+var IconButton = styled.button(_templateObject3$1(), function (props) {
+  return props.disabled ? 'none' : 'auto';
+}, function (props) {
+  return props.disabled ? 'rgba(0, 0, 0, 0.26)' : 'inherit';
+});
 
 function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
 
@@ -6269,32 +6279,32 @@ function TableFooter$1(props) {
   }, "Rows per page:"), React.createElement(Select, {
     onChange: handleSelectChange,
     "aria-label": "select pages",
-    className: "select"
+    className: "select",
+    "data-testid": "select"
   }, rowsPerPageOptions.map(function (option) {
     return React.createElement("option", {
       key: option,
       value: option
     }, option);
   })), React.createElement("span", {
-    "aria-label": "label rows per page"
+    "aria-label": "label-rows-per-page"
   }, from, "-", to, " of ", count), React.createElement("div", {
     className: "buttons"
   }, React.createElement(IconButton, {
     disabled: currentPage === 0,
-    onClick: handlePrevPage
-  }, React.createElement(SvgLeftArrow, {
-    "aria-label": "previous page",
+    onClick: handlePrevPage,
     "data-testid": "previous page"
+  }, React.createElement(SvgLeftArrow, {
+    "aria-label": "previous page"
   })), React.createElement(IconButton, {
     disabled: currentPage >= Math.ceil(count / rowsPerPage) - 1,
-    onClick: handleNextPage
-  }, React.createElement(SvgRightArrow, {
-    "aria-label": "next page",
     onClick: handleNextPage,
     "data-testid": "next page"
+  }, React.createElement(SvgRightArrow, {
+    "aria-label": "next page",
+    onClick: handleNextPage
   }))));
 }
-
 TableFooter$1.propTypes = {
   context: PropTypes.object
 };

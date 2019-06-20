@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TableHeader from './TableHeader/';
+import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
 import DataStore, { extractDataIndexes } from '../context/DataStore';
 import { TableWrapper, Paper } from './styles';
 
-function Table (props) {
+function Table(props) {
   const {
     headers,
     data,
