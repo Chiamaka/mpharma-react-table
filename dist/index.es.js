@@ -6334,7 +6334,7 @@ function Table(props) {
       maxHeight: '75vh',
       overflow: 'auto'
     }
-  }, React.createElement(TableWrapper, null, React.createElement(TableHeader$2, {
+  }, React.createElement(TableWrapper, null, React.createElement(Thead, {
     headers: headers
   }), data.length === 0 ? React.createElement("p", {
     style: emptyMessageStyle

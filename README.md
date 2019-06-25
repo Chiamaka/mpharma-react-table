@@ -45,6 +45,12 @@ function Example() {
 
 > (\*) means required
 
+## API
+
+Table - Default export (Top level) i.e `import Table from mpharma-react-table`
+
+TableHeaders - Named export i.e. `import { TableHeaders } from mpharma-react-table`
+
 ## Table Props
 
 | Name               | Type           | Default              | Description                                                                      |
@@ -59,8 +65,6 @@ function Example() {
 | emptyMessage       | string         | 'No data available!' | Customizes the message when there is no data to display                          |
 | emptyMessageStyle  | object         | None                 | Customizes the styling of the empty message                                      |
 
-handleRowClick
-
 ## Headers Props
 
 | Name      | Type                          | Default                         | Description                                                                                     |
@@ -71,6 +75,12 @@ handleRowClick
 | width     | number                        | inherit                         | Specify width for the header                                                                    |
 | style     | object                        | { textTransform: 'capitalize' } | Specify the style for the column data                                                           |
 |           |
+
+## TableHeader Props
+
+| Name      | Type           | Default | Description              |
+| --------- | -------------- | ------- | ------------------------ |
+| \*headers | array[strings] | None    | The headers of the table |
 
 ## Contributing
 
