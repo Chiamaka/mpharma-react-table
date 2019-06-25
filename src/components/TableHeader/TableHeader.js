@@ -27,7 +27,8 @@ function TableHeader(props) {
               data-testid='table-header'
             >
               {title}{' '}
-              {context.active === dataIndex &&
+              {context &&
+                context.active === dataIndex &&
                 (context.desc ? <ArrowDown aria-label='asc' /> : <ArrowUp aria-label='desc' />)}
             </StyledTableHeader>
           );

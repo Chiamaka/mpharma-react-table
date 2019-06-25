@@ -6037,7 +6037,7 @@ function TableHeader$1(props) {
       width: width,
       onClick: sortData(dataIndex),
       "data-testid": "table-header"
-    }, title, ' ', context.active === dataIndex && (context.desc ? React.createElement(SvgArrowDown, {
+    }, title, ' ', context && context.active === dataIndex && (context.desc ? React.createElement(SvgArrowDown, {
       "aria-label": "asc"
     }) : React.createElement(SvgArrowUp, {
       "aria-label": "desc"
@@ -6049,7 +6049,13 @@ TableHeader$1.propTypes = {
   headers: PropTypes.arrayOf(PropTypes.object).isRequired,
   context: PropTypes.object
 };
-var TableHeader$2 = withDataContext(React.memo(TableHeader$1));
+var Thead = withDataContext(React.memo(TableHeader$1));
+
+// Want to be able to export a standard header with box shadow to display in loader animation
+
+var TableHeader$2 = function TableHeader(props) {
+  return React.createElement(Paper, null, React.createElement("table", null, React.createElement(Thead, props)));
+};
 
 function _templateObject2$2() {
   var data = _taggedTemplateLiteralLoose(["\n  ", "\n  letter-spacing: 0.54px;\n  text-align: ", ";\n  text-transform: ", ";\n  padding: 4px 40px 4px 24px;\n"]);
@@ -6137,7 +6143,7 @@ function TableBody(props) {
       count: data.length,
       rowsPerPage: rowsPerPageOptions[0]
     });
-  }, []);
+  }, [data]);
   return React.createElement("tbody", {
     "data-testid": "table-body"
   }, context.data.slice(upperBound, lowerBound).map(function (item, index) {
@@ -6363,4 +6369,5 @@ Table.defaultProps = {
 };
 
 export default Table;
+export { TableHeader$2 as TableHeader };
 //# sourceMappingURL=index.es.js.map

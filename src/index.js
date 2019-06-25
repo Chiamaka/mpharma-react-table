@@ -1,3 +1,3 @@
-import Table from './components/Table';
+export TableHeader from './components/TableHeader';
 
-export default Table;
+export default from './components/Table';
