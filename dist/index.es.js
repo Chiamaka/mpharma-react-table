@@ -6054,7 +6054,17 @@ var Thead = withDataContext(React.memo(TableHeader$1));
 // Want to be able to export a standard header with box shadow to display in loader animation
 
 var TableHeader$2 = function TableHeader(props) {
-  return React.createElement(Paper, null, React.createElement("table", null, React.createElement(Thead, props)));
+  return React.createElement(Paper, {
+    style: props.style
+  }, React.createElement("table", {
+    style: {
+      width: '100%'
+    }
+  }, React.createElement(Thead, props)));
+};
+
+TableHeader$2.propTypes = {
+  style: PropTypes.object
 };
 
 function _templateObject2$2() {

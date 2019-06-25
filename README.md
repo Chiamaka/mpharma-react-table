@@ -78,9 +78,10 @@ TableHeaders - Named export i.e. `import { TableHeaders } from mpharma-react-tab
 
 ## TableHeader Props
 
-| Name      | Type           | Default | Description              |
-| --------- | -------------- | ------- | ------------------------ |
-| \*headers | array[strings] | None    | The headers of the table |
+| Name      | Type           | Default | Description                                 |
+| --------- | -------------- | ------- | ------------------------------------------- |
+| \*headers | array[strings] | None    | The headers of the table                    |
+| style     | object         | None    | Style object for the table header component |
 
 ## Contributing
 
