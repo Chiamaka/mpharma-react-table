@@ -27,7 +27,11 @@ function Table(props) {
           <TableWrapper>
             <TableHeader headers={headers} />
             {data.length === 0 ? (
-              <p style={emptyMessageStyle}>{emptyMessage || 'No data available!'}</p>
+              <tbody style={emptyMessageStyle}>
+                <tr>
+                  <td>{emptyMessage || 'No data available!'}</td>
+                </tr>
+              </tbody>
             ) : (
               <TableBody
                 data={data}

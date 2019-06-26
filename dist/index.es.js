@@ -6049,21 +6049,21 @@ TableHeader$1.propTypes = {
   headers: PropTypes.arrayOf(PropTypes.object).isRequired,
   context: PropTypes.object
 };
-var Thead = withDataContext(React.memo(TableHeader$1));
+var TableHeader$2 = withDataContext(React.memo(TableHeader$1));
 
 // Want to be able to export a standard header with box shadow to display in loader animation
 
-var TableHeader$2 = function TableHeader(props) {
+var TableHeader$3 = function TableHeader(props) {
   return React.createElement(Paper, {
     style: props.style
   }, React.createElement("table", {
     style: {
       width: '100%'
     }
-  }, React.createElement(Thead, props)));
+  }, React.createElement(TableHeader$2, props)));
 };
 
-TableHeader$2.propTypes = {
+TableHeader$3.propTypes = {
   style: PropTypes.object
 };
 
@@ -6344,11 +6344,11 @@ function Table(props) {
       maxHeight: '75vh',
       overflow: 'auto'
     }
-  }, React.createElement(TableWrapper, null, React.createElement(Thead, {
+  }, React.createElement(TableWrapper, null, React.createElement(TableHeader$2, {
     headers: headers
-  }), data.length === 0 ? React.createElement("p", {
+  }), data.length === 0 ? React.createElement("tbody", {
     style: emptyMessageStyle
-  }, emptyMessage || 'No data available!') : React.createElement(TableBody$1, {
+  }, React.createElement("tr", null, React.createElement("td", null, emptyMessage || 'No data available!'))) : React.createElement(TableBody$1, {
     data: data,
     dataIndexes: indexes,
     hover: hover,
@@ -6379,5 +6379,5 @@ Table.defaultProps = {
 };
 
 export default Table;
-export { TableHeader$2 as TableHeader };
+export { TableHeader$3 as TableHeader };
 //# sourceMappingURL=index.es.js.map
