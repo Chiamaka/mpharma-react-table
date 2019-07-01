@@ -7,7 +7,7 @@ export const countries = {
   NG: 'Nigeria'
 };
 
-export function tableSort (array, cmp) {
+export function tableSort(array, cmp) {
   return array
     .map((el, index) => [el, index])
     .sort((a, b) => {
@@ -18,7 +18,7 @@ export function tableSort (array, cmp) {
     .map(el => el[0]);
 }
 
-function desc (a, b, orderBy) {
+function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }
@@ -28,25 +28,25 @@ function desc (a, b, orderBy) {
   return 0;
 }
 
-export function getSortingFn (order, orderBy) {
+export function getSortingFn(order, orderBy) {
   return order ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
 }
 
-export function formatDate (item) {
+export function formatDate(item) {
   if (typeof item === 'string') {
     const date = new Date(item).getFullYear();
-    if (!isNaN(date)) return format(new Date(item), 'ddd Do MMM YYYY');
+    if (!isNaN(date)) return format(new Date(item), 'MMMM D, YYYY');
     return false;
   }
 }
 
-export function formatActive (item) {
+export function formatActive(item) {
   if (typeof item === 'boolean') {
     return item ? <Pill active>Active</Pill> : <Pill inactive>Inactive</Pill>;
   }
 }
 
-export function formatCountry (item, key) {
+export function formatCountry(item, key) {
   if (typeof item === 'string' && key === 'country') {
     return countries[item];
   }

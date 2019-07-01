@@ -5822,7 +5822,7 @@ function getSortingFn(order, orderBy) {
 function formatDate(item) {
   if (typeof item === 'string') {
     var date = new Date(item).getFullYear();
-    if (!isNaN(date)) return dateFns_50(new Date(item), 'ddd Do MMM YYYY');
+    if (!isNaN(date)) return dateFns_50(new Date(item), 'MMMM D, YYYY');
     return false;
   }
 }
