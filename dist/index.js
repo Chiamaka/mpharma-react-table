@@ -6341,6 +6341,7 @@ function Table(props) {
       handleRowClick = props.handleRowClick,
       renderIcon = props.renderIcon,
       tableStyle = props.tableStyle,
+      tableBodyStyle = props.tableBodyStyle,
       rowsPerPageOptions = props.rowsPerPageOptions,
       emptyMessage = props.emptyMessage,
       emptyMessageStyle = props.emptyMessageStyle;
@@ -6348,10 +6349,9 @@ function Table(props) {
   return React__default.createElement(DataStore, null, React__default.createElement(Paper, {
     style: tableStyle
   }, React__default.createElement("div", {
-    style: {
-      maxHeight: '75vh',
+    style: _extends({}, tableBodyStyle, {
       overflow: 'auto'
-    }
+    })
   }, React__default.createElement(TableWrapper, null, React__default.createElement(TableHeader$2, {
     headers: headers
   }), data.length === 0 ? React__default.createElement("tbody", {
@@ -6375,7 +6375,8 @@ Table.propTypes = {
   emptyMessage: PropTypes.string,
   emptyMessageStyle: PropTypes.object,
   renderIcon: PropTypes.func,
-  tableStyle: PropTypes.object
+  tableStyle: PropTypes.object,
+  tableBodyStyle: PropTypes.object
 };
 Table.defaultProps = {
   headers: [],
@@ -6383,7 +6384,10 @@ Table.defaultProps = {
   rowsPerPageOptions: [25, 50, 100],
   handleRowClick: function handleRowClick() {},
   renderIcon: function renderIcon() {},
-  tableStyle: {}
+  tableStyle: {},
+  tableBodyStyle: {
+    maxHeight: '75vh'
+  }
 };
 
 exports.TableHeader = TableHeader$3;

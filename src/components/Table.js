@@ -14,6 +14,7 @@ function Table(props) {
     handleRowClick,
     renderIcon,
     tableStyle,
+    tableBodyStyle,
     rowsPerPageOptions,
     emptyMessage,
     emptyMessageStyle
@@ -23,7 +24,7 @@ function Table(props) {
   return (
     <DataStore>
       <Paper style={tableStyle}>
-        <div style={{ maxHeight: '75vh', overflow: 'auto' }}>
+        <div style={{ ...tableBodyStyle, overflow: 'auto' }}>
           <TableWrapper>
             <TableHeader headers={headers} />
             {data.length === 0 ? (
@@ -59,7 +60,8 @@ Table.propTypes = {
   emptyMessage: PropTypes.string,
   emptyMessageStyle: PropTypes.object,
   renderIcon: PropTypes.func,
-  tableStyle: PropTypes.object
+  tableStyle: PropTypes.object,
+  tableBodyStyle: PropTypes.object
 };
 
 Table.defaultProps = {
@@ -68,7 +70,10 @@ Table.defaultProps = {
   rowsPerPageOptions: [25, 50, 100],
   handleRowClick: () => {},
   renderIcon: () => {},
-  tableStyle: {}
+  tableStyle: {},
+  tableBodyStyle: {
+    maxHeight: '75vh'
+  }
 };
 
 export default Table;
