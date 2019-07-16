@@ -5716,7 +5716,7 @@ var dateFns = {
 var dateFns_50 = dateFns.format;
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteralLoose(["\n  border-radius: 17px;\n  background-color: ", ";\n  color: ", ";\n  border: ", ";\n  padding: ", "\n  font-size: 12px;\n  font-family: Sofia Pro Bold;\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n  border-radius: 3px;\n  background-color: ", ";\n  color: ", ";\n  padding: ", "\n  font-size: 12px;\n  font-family: Sofia Pro;\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -5775,13 +5775,11 @@ var Pill = styled__default.span.attrs(function (props) {
     'aria-label': props.children
   };
 })(_templateObject5(), function (props) {
-  return props.active ? 'rgba(63,218,152,0.17)' : 'rgba(255, 100, 124, 0.17)';
+  return props.active ? 'rgba(63,218,152,0.25)' : 'rgba(255, 100, 124, 0.17)';
 }, function (props) {
   return props.active ? '#3FDA98' : '#FF647C';
 }, function (props) {
-  return props.active ? '1px solid #3FDA98' : '1px solid #FF647C';
-}, function (props) {
-  return props.active ? '5px 15px' : '5px 10px';
+  return props.active ? '4px 20px' : '4px 15px';
 });
 
 var countries = {
@@ -6199,7 +6197,7 @@ var TableBody$1 = withDataContext(TableBody);
 var CaretDown = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAR0lEQVR4Ae3OMREAIBDEQCQgBf8qkIID+P4qqnyRnUmfIUmS1NesdnU/O9VqMJUz5FTMAFPcTE7xMzHFz8QUPxNT/IwkSUoPu7I4F2kEFg8AAAAASUVORK5CYII=";
 
 function _templateObject3$1() {
-  var data = _taggedTemplateLiteralLoose(["\n  pointer-events: ", ";\n  border: none;\n  outline: none;\n  padding: 12px;\n  cursor: pointer;\n  svg {\n    fill: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n  pointer-events: ", ";\n  border: none;\n  outline: none;\n  padding: 12px;\n  cursor: pointer;\n  background-color: #fff;\n  svg {\n    fill: ", ";\n  }\n"]);
 
   _templateObject3$1 = function _templateObject3() {
     return data;

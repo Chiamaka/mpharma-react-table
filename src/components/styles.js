@@ -26,11 +26,10 @@ export const TableWrapper = styled.table`
 export const Pill = styled.span.attrs(props => ({
   'aria-label': props.children
 }))`
-  border-radius: 17px;
-  background-color: ${props => (props.active ? 'rgba(63,218,152,0.17)' : 'rgba(255, 100, 124, 0.17)')};
+  border-radius: 3px;
+  background-color: ${props => (props.active ? 'rgba(63,218,152,0.25)' : 'rgba(255, 100, 124, 0.17)')};
   color: ${props => (props.active ? '#3FDA98' : '#FF647C')};
-  border: ${props => (props.active ? '1px solid #3FDA98' : '1px solid #FF647C')};
-  padding: ${props => (props.active ? '5px 15px' : '5px 10px')}
+  padding: ${props => (props.active ? '4px 20px' : '4px 15px')}
   font-size: 12px;
-  font-family: Sofia Pro Bold;
+  font-family: Sofia Pro;
 `;

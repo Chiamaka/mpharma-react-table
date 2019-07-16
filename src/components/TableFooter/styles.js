@@ -40,6 +40,7 @@ export const IconButton = styled.button`
   outline: none;
   padding: 12px;
   cursor: pointer;
+  background-color: #fff;
   svg {
     fill: ${props => (props.disabled ? 'rgba(0, 0, 0, 0.26)' : 'inherit')};
   }
