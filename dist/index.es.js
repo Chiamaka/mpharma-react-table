@@ -5832,6 +5832,11 @@ function formatCountry(item, key) {
     return countries[item];
   }
 }
+function formatRole(item, key) {
+  if (Array.isArray(item) && key === 'roles') {
+    return item[0] && item[0].name || '-';
+  }
+}
 
 var DataContext = createContext(null);
 var withDataContext = function withDataContext(Component) {
@@ -6119,7 +6124,7 @@ function TableRow(_ref) {
       key: index,
       align: align,
       style: style
-    }, formatDate(item[key]) || formatActive(item[key]) || formatCountry(item[key], key) || item[key] || '-');
+    }, formatDate(item[key]) || formatActive(item[key]) || formatCountry(item[key], key) || formatRole(item[key], key) || item[key] || '-');
   }), renderIcon(item));
 }
 

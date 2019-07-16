@@ -51,3 +51,9 @@ export function formatCountry(item, key) {
     return countries[item];
   }
 }
+
+export function formatRole(item, key) {
+  if (Array.isArray(item) && key === 'roles') {
+    return (item[0] && item[0].name) || '-';
+  }
+}
