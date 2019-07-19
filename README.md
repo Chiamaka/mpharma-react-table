@@ -50,13 +50,16 @@ TableHeaders - Named export i.e. `import { TableHeaders } from mpharma-react-tab
 
 ## Table Props
 
-| Name           | Type           | Default                                 | Description                                                                                                                                                                |
-| -------------- | -------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \*headers      | array[objects] | None                                    | The headers of the table. See Header props for more info                                                                                                                   |
-| \*data         | array[objects] | None                                    | Data to be rendered                                                                                                                                                        |
-| renderIcon     | function       | None                                    | Funtion which renders any icon passed into it. The icon can be a react component. `Note: you can get the row data in the arg of the function passed here ie. (data) => {}` |
-| tableStyle     | object         | None                                    | Style for the table wrapper                                                                                                                                                |
-| tableBodyStyle | object         | `{maxHeight: '75vh', overflow: 'auto'}` | Style for the table body wrapper                                                                                                                                           |
+| Name      | Type           | Default | Description                                              |
+| --------- | -------------- | ------- | -------------------------------------------------------- |
+| \*headers | array[objects] | None    | The headers of the table. See Header props for more info |
+
+| \*render | Function | None |Renderer of the table cell. The return value should be a ReactNode, or an object.
+|
+| \*data | array[objects] | None | Data to be rendered |
+| renderIcon | function | None | Funtion which renders any icon passed into it. The icon can be a react component. `Note: you can get the row data in the arg of the function passed here ie. (data) => {}` |
+| tableStyle | object | None | Style for the table wrapper |
+| tableBodyStyle | object | `{maxHeight: '75vh', overflow: 'auto'}` | Style for the table body wrapper |
 
 | rowsPerPageOptions | array[numbers] | [25, 50, 100] | Customizes the options of the rows per page select field |
 | hover | bool | false | If true, the table row will shade on hover |
