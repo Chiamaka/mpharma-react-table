@@ -5824,6 +5824,17 @@ function formatDate(item) {
     return false;
   }
 }
+function filterNestedData(data, key, render) {
+  if (render) {
+    return data.map(function (item) {
+      var _extends2;
+
+      return typeof item[key] === 'object' ? _extends({}, item, (_extends2 = {}, _extends2[key] = render(item[key]), _extends2)) : item;
+    });
+  }
+
+  return data;
+}
 function formatActive(item) {
   if (typeof item === 'boolean') {
     return item ? React__default.createElement(Pill, {
@@ -5861,6 +5872,7 @@ function extractDataIndexes(headers) {
     if (header.dataIndex) {
       dataIndexes.push({
         dataIndex: header.dataIndex,
+        render: header.render,
         align: header.align,
         style: header.style
       });
@@ -5894,13 +5906,13 @@ function (_PureComponent) {
       count: 0
     });
 
-    _defineProperty(_assertThisInitialized(_this), "sortData", function (key) {
+    _defineProperty(_assertThisInitialized(_this), "sortData", function (key, render) {
       var _this$state = _this.state,
           data = _this$state.data,
           desc = _this$state.desc;
 
       _this.setState({
-        data: tableSort(data, getSortingFn(desc, key))
+        data: tableSort(filterNestedData(data, key, render), getSortingFn(desc, key))
       }, function () {
         return _this.setState({
           desc: !desc,
@@ -5931,6 +5943,7 @@ function (_PureComponent) {
   var _proto = DataStore.prototype;
 
   _proto.render = function render() {
+    console.log(this.state.data);
     return React__default.createElement(DataContext.Provider, {
       value: this.value
     }, this.props.children);
@@ -6030,9 +6043,9 @@ function TableHeader$1(props) {
   var headers = props.headers,
       context = props.context;
 
-  function sortData(dataIndex) {
+  function sortData(dataIndex, render) {
     return function () {
-      context.sortData(dataIndex);
+      context.sortData(dataIndex, render);
     };
   }
 
@@ -6041,12 +6054,14 @@ function TableHeader$1(props) {
         _ref$align = _ref.align,
         align = _ref$align === void 0 ? 'left' : _ref$align,
         width = _ref.width,
-        dataIndex = _ref.dataIndex;
+        dataIndex = _ref.dataIndex,
+        render = _ref.render;
+    // console.log(render && render(context.active));
     return React__default.createElement(TableHeader, {
       key: index,
       align: align,
       width: width,
-      onClick: sortData(dataIndex),
+      onClick: sortData(dataIndex, render),
       "data-testid": "table-header"
     }, title, ' ', context && context.active === dataIndex && (context.desc ? React__default.createElement(SvgArrowDown, {
       "aria-label": "asc"
@@ -6060,21 +6075,21 @@ TableHeader$1.propTypes = {
   headers: PropTypes.arrayOf(PropTypes.object).isRequired,
   context: PropTypes.object
 };
-var TableHeader$2 = withDataContext(React__default.memo(TableHeader$1));
+var Thead = withDataContext(React__default.memo(TableHeader$1));
 
 // Want to be able to export a standard header with box shadow to display in loader animation
 
-var TableHeader$3 = function TableHeader(props) {
+var TableHeader$2 = function TableHeader(props) {
   return React__default.createElement(Paper, {
     style: props.style
   }, React__default.createElement("table", {
     style: {
       width: '100%'
     }
-  }, React__default.createElement(TableHeader$2, props)));
+  }, React__default.createElement(Thead, props)));
 };
 
-TableHeader$3.propTypes = {
+TableHeader$2.propTypes = {
   style: PropTypes.object
 };
 
@@ -6123,6 +6138,7 @@ function TableRow(_ref) {
     "data-testid": "table-row"
   }, context.dataIndexes.map(function (_ref2, index) {
     var key = _ref2.dataIndex,
+        render = _ref2.render,
         _ref2$align = _ref2.align,
         align = _ref2$align === void 0 ? 'left' : _ref2$align,
         style = _ref2.style;
@@ -6130,7 +6146,7 @@ function TableRow(_ref) {
       key: index,
       align: align,
       style: style
-    }, formatDate(item[key]) || formatActive(item[key]) || formatCountry(item[key], key) || formatRole(item[key], key) || item[key] || '-');
+    }, formatDate(item[key]) || formatActive(item[key]) || formatCountry(item[key], key) || formatRole(item[key], key) || render && render(item[key][key]) || item[key] || '-');
   }), renderIcon(item));
 }
 
@@ -6355,7 +6371,7 @@ function Table(props) {
     style: _extends({}, tableBodyStyle, {
       overflow: 'auto'
     })
-  }, React__default.createElement(TableWrapper, null, React__default.createElement(TableHeader$2, {
+  }, React__default.createElement(TableWrapper, null, React__default.createElement(Thead, {
     headers: headers
   }), data.length === 0 ? React__default.createElement("tbody", {
     style: emptyMessageStyle
@@ -6393,6 +6409,6 @@ Table.defaultProps = {
   }
 };
 
-exports.TableHeader = TableHeader$3;
+exports.TableHeader = TableHeader$2;
 exports.default = Table;
 //# sourceMappingURL=index.js.map
