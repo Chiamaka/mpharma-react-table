@@ -67,7 +67,6 @@ class DataStore extends PureComponent {
   }
 
   render() {
-    console.log(this.state.data);
     return <DataContext.Provider value={this.value}>{this.props.children}</DataContext.Provider>;
   }
 }
