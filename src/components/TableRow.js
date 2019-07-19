@@ -29,13 +29,14 @@ function TableRow({ item, hover, handleRowClick, renderIcon, context }) {
   }
   return (
     <TableBodyRow hover={hover} onClick={handleClick} data-testid='table-row'>
-      {context.dataIndexes.map(({ dataIndex: key, align = 'left', style }, index) => {
+      {context.dataIndexes.map(({ dataIndex: key, render, align = 'left', style }, index) => {
         return (
           <TableBodyData key={index} align={align} style={style}>
             {formatDate(item[key]) ||
               formatActive(item[key]) ||
               formatCountry(item[key], key) ||
               formatRole(item[key], key) ||
+              (render && render(item[key])) ||
               item[key] ||
               '-'}
           </TableBodyData>

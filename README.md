@@ -40,6 +40,39 @@ function Example() {
 }
 ```
 
+## Rendering Nested data (using render function)
+
+```jsx
+const headers = [
+  { title: 'Name', align: 'left', dataIndex: 'name' },
+  { title: 'Age', align: 'left', dataIndex: 'age', render: item => item.real },
+  { title: 'Country', align: 'left', dataIndex: 'country' }
+];
+
+const data = [
+  {
+    name: 'Chiamaka',
+    age: {
+      fake: 30,
+      real: 24
+    },
+    country: 'Nigeria'
+  },
+  {
+    name: 'Nick',
+    age: {
+      real: 34,
+      fake: 40
+    },
+    country: 'Ghana'
+  }
+];
+
+function Example() {
+  return <Table headers={headers} data={data} />;
+}
+```
+
 > (\*) means required
 
 ## API
@@ -66,13 +99,14 @@ TableHeaders - Named export i.e. `import { TableHeaders } from mpharma-react-tab
 
 ## Headers Props
 
-| Name      | Type                          | Default                         | Description                                                                                     |
-| --------- | ----------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------- |
-| \*title   | string                        | None                            | Title of the header                                                                             |
-| align     | string: (left, center, right) | left                            | How you want the header and the corresponding data to be aligned                                |
-| dataIndex | string                        | None                            | Key that ties data to the header. Should be the key of the data that you want under this header |
-| width     | number                        | inherit                         | Specify width for the header                                                                    |
-| style     | object                        | { textTransform: 'capitalize' } | Specify the style for the column data                                                           |
+| Name      | Type                          | Default                         | Description                                                                                                                                                                                              |
+| --------- | ----------------------------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \*title   | string                        | None                            | Title of the header                                                                                                                                                                                      |
+| align     | string: (left, center, right) | left                            | How you want the header and the corresponding data to be aligned                                                                                                                                         |
+| render    | function                      | None                            | Render the table cell under a header. The return value could be a ReactNode or dataIndex's value. This would only be needed when you want to access a nested value or you want to modify the table cell. |  |
+| dataIndex | string                        | None                            | Key that ties data to the header. Should be the key of the data that you want under this header                                                                                                          |
+| width     | number                        | inherit                         | Specify width for the header                                                                                                                                                                             |
+| style     | object                        | { textTransform: 'capitalize' } | Specify the style for the column data                                                                                                                                                                    |
 |           |
 
 ## TableHeader Props

@@ -1,6 +1,6 @@
 import React, { PureComponent, createContext } from 'react';
 import PropTypes from 'prop-types';
-import { tableSort, getSortingFn } from '../utils';
+import { tableSort, getSortingFn, filterNestedData } from '../utils';
 
 const DataContext = createContext(null);
 export const withDataContext = Component => {
@@ -14,7 +14,12 @@ export function extractDataIndexes(headers) {
   const dataIndexes = [];
   headers.forEach(header => {
     if (header.dataIndex) {
-      dataIndexes.push({ dataIndex: header.dataIndex, align: header.align, style: header.style });
+      dataIndexes.push({
+        dataIndex: header.dataIndex,
+        render: header.render,
+        align: header.align,
+        style: header.style
+      });
     }
   });
   return dataIndexes;
@@ -32,9 +37,9 @@ class DataStore extends PureComponent {
     count: 0
   };
 
-  sortData = key => {
+  sortData = (key, render) => {
     const { data, desc } = this.state;
-    this.setState({ data: tableSort(data, getSortingFn(desc, key)) }, () =>
+    this.setState({ data: tableSort(filterNestedData(data, key, render), getSortingFn(desc, key)) }, () =>
       this.setState({ desc: !desc, active: key })
     );
   };

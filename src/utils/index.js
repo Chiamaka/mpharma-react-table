@@ -40,6 +40,13 @@ export function formatDate(item) {
   }
 }
 
+export function filterNestedData(data, key, render) {
+  if (render) {
+    return data.map(item => (typeof item[key] === 'object' ? { ...item, [key]: render(item[key]) } : item));
+  }
+  return data;
+}
+
 export function formatActive(item) {
   if (typeof item === 'boolean') {
     return item ? <Pill active>Active</Pill> : <Pill inactive>Inactive</Pill>;
