@@ -45,7 +45,7 @@ function Example() {
 ```jsx
 const headers = [
   { title: 'Name', align: 'left', dataIndex: 'name' },
-  { title: 'Age', align: 'left', dataIndex: 'real', render: item => item },
+  { title: 'Age', align: 'left', dataIndex: 'age', render: item => item.real },
   { title: 'Country', align: 'left', dataIndex: 'country' }
 ];
 
@@ -87,7 +87,6 @@ TableHeaders - Named export i.e. `import { TableHeaders } from mpharma-react-tab
 | -------------- | -------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | \*headers      | array[objects] | None                                    | The headers of the table. See Header props for more info                                                                                                                   |
 | \*data         | array[objects] | None                                    | Data to be rendered                                                                                                                                                        |
-| render         | functon        | None                                    | Renderer of the table cell. The return value could be a ReactNode or dataIndex value                                                                                       |
 | renderIcon     | function       | None                                    | Funtion which renders any icon passed into it. The icon can be a react component. `Note: you can get the row data in the arg of the function passed here ie. (data) => {}` |
 | tableStyle     | object         | None                                    | Style for the table wrapper                                                                                                                                                |
 | tableBodyStyle | object         | `{maxHeight: '75vh', overflow: 'auto'}` | Style for the table body wrapper                                                                                                                                           |
@@ -104,6 +103,7 @@ TableHeaders - Named export i.e. `import { TableHeaders } from mpharma-react-tab
 | --------- | ----------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------- |
 | \*title   | string                        | None                            | Title of the header                                                                             |
 | align     | string: (left, center, right) | left                            | How you want the header and the corresponding data to be aligned                                |
+| render    | function                      | None                            | Renderer of the table cell. The return value could be a ReactNode or dataIndex value            |  |
 | dataIndex | string                        | None                            | Key that ties data to the header. Should be the key of the data that you want under this header |
 | width     | number                        | inherit                         | Specify width for the header                                                                    |
 | style     | object                        | { textTransform: 'capitalize' } | Specify the style for the column data                                                           |

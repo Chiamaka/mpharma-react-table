@@ -5935,7 +5935,6 @@ function (_PureComponent) {
   var _proto = DataStore.prototype;
 
   _proto.render = function render() {
-    console.log(this.state.data);
     return React.createElement(DataContext.Provider, {
       value: this.value
     }, this.props.children);
@@ -6138,7 +6137,7 @@ function TableRow(_ref) {
       key: index,
       align: align,
       style: style
-    }, formatDate(item[key]) || formatActive(item[key]) || formatCountry(item[key], key) || formatRole(item[key], key) || render && render(item[key][key]) || item[key] || '-');
+    }, formatDate(item[key]) || formatActive(item[key]) || formatCountry(item[key], key) || formatRole(item[key], key) || render && render(item[key]) || item[key] || '-');
   }), renderIcon(item));
 }
 

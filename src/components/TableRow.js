@@ -36,7 +36,7 @@ function TableRow({ item, hover, handleRowClick, renderIcon, context }) {
               formatActive(item[key]) ||
               formatCountry(item[key], key) ||
               formatRole(item[key], key) ||
-              (render && render(item[key][key])) ||
+              (render && render(item[key])) ||
               item[key] ||
               '-'}
           </TableBodyData>
