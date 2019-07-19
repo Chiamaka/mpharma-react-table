@@ -99,14 +99,14 @@ TableHeaders - Named export i.e. `import { TableHeaders } from mpharma-react-tab
 
 ## Headers Props
 
-| Name      | Type                          | Default                         | Description                                                                                     |
-| --------- | ----------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------- |
-| \*title   | string                        | None                            | Title of the header                                                                             |
-| align     | string: (left, center, right) | left                            | How you want the header and the corresponding data to be aligned                                |
-| render    | function                      | None                            | Renderer of the table cell. The return value could be a ReactNode or dataIndex value            |  |
-| dataIndex | string                        | None                            | Key that ties data to the header. Should be the key of the data that you want under this header |
-| width     | number                        | inherit                         | Specify width for the header                                                                    |
-| style     | object                        | { textTransform: 'capitalize' } | Specify the style for the column data                                                           |
+| Name      | Type                          | Default                         | Description                                                                                                                                                                                              |
+| --------- | ----------------------------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \*title   | string                        | None                            | Title of the header                                                                                                                                                                                      |
+| align     | string: (left, center, right) | left                            | How you want the header and the corresponding data to be aligned                                                                                                                                         |
+| render    | function                      | None                            | Render the table cell under a header. The return value could be a ReactNode or dataIndex's value. This would only be needed when you want to access a nested value or you want to modify the table cell. |  |
+| dataIndex | string                        | None                            | Key that ties data to the header. Should be the key of the data that you want under this header                                                                                                          |
+| width     | number                        | inherit                         | Specify width for the header                                                                                                                                                                             |
+| style     | object                        | { textTransform: 'capitalize' } | Specify the style for the column data                                                                                                                                                                    |
 |           |
 
 ## TableHeader Props
