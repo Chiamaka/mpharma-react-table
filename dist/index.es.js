@@ -5778,11 +5778,11 @@ var countries = {
   GH: 'Ghana',
   NG: 'Nigeria'
 };
-function tableSort(array, cmp) {
+function tableSort(array, sortFn) {
   return array.map(function (el, index) {
     return [el, index];
   }).sort(function (a, b) {
-    var order = cmp(a[0], b[0]);
+    var order = sortFn(a[0], b[0]);
     if (order !== 0) return order;
     return a[1] - b[1];
   }).map(function (el) {
@@ -5839,11 +5839,6 @@ function formatActive(item) {
 function formatCountry(item, key) {
   if (typeof item === 'string' && key === 'country') {
     return countries[item];
-  }
-}
-function formatRole(item, key) {
-  if (Array.isArray(item) && key === 'roles') {
-    return item[0] && item[0].name || '-';
   }
 }
 
@@ -6066,21 +6061,21 @@ TableHeader$1.propTypes = {
   headers: PropTypes.arrayOf(PropTypes.object).isRequired,
   context: PropTypes.object
 };
-var Thead = withDataContext(React.memo(TableHeader$1));
+var TableHeader$2 = withDataContext(React.memo(TableHeader$1));
 
 // Want to be able to export a standard header with box shadow to display in loader animation
 
-var TableHeader$2 = function TableHeader(props) {
+var TableHeader$3 = function TableHeader(props) {
   return React.createElement(Paper, {
     style: props.style
   }, React.createElement("table", {
     style: {
       width: '100%'
     }
-  }, React.createElement(Thead, props)));
+  }, React.createElement(TableHeader$2, props)));
 };
 
-TableHeader$2.propTypes = {
+TableHeader$3.propTypes = {
   style: PropTypes.object
 };
 
@@ -6137,7 +6132,7 @@ function TableRow(_ref) {
       key: index,
       align: align,
       style: style
-    }, formatDate(item[key]) || formatActive(item[key]) || formatCountry(item[key], key) || formatRole(item[key], key) || render && render(item[key]) || item[key] || '-');
+    }, formatDate(item[key]) || formatActive(item[key]) || formatCountry(item[key], key) || render && render(item[key]) || item[key] || '-');
   }), renderIcon(item));
 }
 
@@ -6362,7 +6357,7 @@ function Table(props) {
     style: _extends({}, tableBodyStyle, {
       overflow: 'auto'
     })
-  }, React.createElement(TableWrapper, null, React.createElement(Thead, {
+  }, React.createElement(TableWrapper, null, React.createElement(TableHeader$2, {
     headers: headers
   }), data.length === 0 ? React.createElement("tbody", {
     style: emptyMessageStyle
@@ -6401,5 +6396,5 @@ Table.defaultProps = {
 };
 
 export default Table;
-export { TableHeader$2 as TableHeader };
+export { TableHeader$3 as TableHeader };
 //# sourceMappingURL=index.es.js.map

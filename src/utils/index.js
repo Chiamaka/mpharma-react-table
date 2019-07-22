@@ -7,11 +7,11 @@ export const countries = {
   NG: 'Nigeria'
 };
 
-export function tableSort(array, cmp) {
+export function tableSort(array, sortFn) {
   return array
     .map((el, index) => [el, index])
     .sort((a, b) => {
-      const order = cmp(a[0], b[0]);
+      const order = sortFn(a[0], b[0]);
       if (order !== 0) return order;
       return a[1] - b[1];
     })
@@ -56,11 +56,5 @@ export function formatActive(item) {
 export function formatCountry(item, key) {
   if (typeof item === 'string' && key === 'country') {
     return countries[item];
-  }
-}
-
-export function formatRole(item, key) {
-  if (Array.isArray(item) && key === 'roles') {
-    return (item[0] && item[0].name) || '-';
   }
 }

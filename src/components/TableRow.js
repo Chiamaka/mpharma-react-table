@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { text } from './styles';
 import { withDataContext } from '../context/DataStore';
-import { formatDate, formatActive, formatCountry, formatRole } from '../utils/';
+import { formatDate, formatActive, formatCountry } from '../utils/';
 
 const TableBodyRow = styled.tr`
   height: 50px;
@@ -35,7 +35,6 @@ function TableRow({ item, hover, handleRowClick, renderIcon, context }) {
             {formatDate(item[key]) ||
               formatActive(item[key]) ||
               formatCountry(item[key], key) ||
-              formatRole(item[key], key) ||
               (render && render(item[key])) ||
               item[key] ||
               '-'}
