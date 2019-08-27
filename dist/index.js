@@ -5950,7 +5950,6 @@ function (_PureComponent) {
     get: function get() {
       return _extends({}, this.state, {
         sortData: this.sortData,
-        addData: this.addData,
         loadData: this.loadData,
         setCurrentPage: this.setCurrentPage,
         setRowsPerPage: this.setRowsPerPage
