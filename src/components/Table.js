@@ -16,6 +16,7 @@ function Table(props) {
     tableStyle,
     tableBodyStyle,
     rowsPerPageOptions,
+    onNextPage,
     emptyMessage,
     emptyMessageStyle
   } = props;
@@ -45,7 +46,7 @@ function Table(props) {
             )}
           </TableWrapper>
         </div>
-        {data.length > 0 && <TableFooter />}
+        {data.length > 0 && <TableFooter onNextPage={onNextPage} />}
       </Paper>
     </DataStore>
   );
@@ -57,6 +58,7 @@ Table.propTypes = {
   hover: PropTypes.bool,
   handleRowClick: PropTypes.func,
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
+  onNextPage: PropTypes.func,
   emptyMessage: PropTypes.string,
   emptyMessageStyle: PropTypes.object,
   renderIcon: PropTypes.func,

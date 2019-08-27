@@ -10,7 +10,7 @@ function TableBody(props) {
   const lowerBound = currentPage * rowsPerPage + rowsPerPage;
 
   useEffect(() => {
-    loadData({ data, dataIndexes, rowsPerPageOptions, count: data.length, rowsPerPage: rowsPerPageOptions[0] });
+    loadData({ data, dataIndexes, rowsPerPageOptions, rowsPerPage: rowsPerPage || rowsPerPageOptions[0] });
   }, [data]);
 
   return (

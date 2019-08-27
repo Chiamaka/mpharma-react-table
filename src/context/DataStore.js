@@ -45,7 +45,7 @@ class DataStore extends PureComponent {
   };
 
   loadData = data => {
-    this.setState({ ...data });
+    this.setState({ ...data, count: data.data.length });
   };
 
   setCurrentPage = page => {

@@ -37,4 +37,11 @@ describe('Table Footer', () => {
     const expectedLabel = '1-5 of 9';
     expect(getByLabelText('label-rows-per-page').textContent).toBe(expectedLabel);
   });
+
+  it('should not be disabled when onNextPage is supplied', () => {
+    const moreProps = { onNextPage: jest.fn(), context: { ...props.context, currentPage: 1 } };
+    const { getByTestId } = renderFooter(moreProps);
+    const nextPageBtn = getByTestId('next page');
+    expect(nextPageBtn).not.toBeDisabled();
+  });
 });

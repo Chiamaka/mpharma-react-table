@@ -20,8 +20,10 @@ export function TableFooter(props) {
   function handlePrevPage() {
     setCurrentPage(currentPage - 1);
   }
+
   function handleNextPage() {
     setCurrentPage(currentPage + 1);
+    props.onNextPage && props.onNextPage();
   }
 
   return (
@@ -46,11 +48,11 @@ export function TableFooter(props) {
         </IconButton>
 
         <IconButton
-          disabled={currentPage >= Math.ceil(count / rowsPerPage) - 1}
+          disabled={!props.onNextPage ? currentPage >= Math.ceil(count / rowsPerPage) - 1 : false}
           onClick={handleNextPage}
           data-testid='next page'
         >
-          <RightArrow aria-label='next page' onClick={handleNextPage} />
+          <RightArrow aria-label='next page' />
         </IconButton>
       </div>
     </StyledTableFooter>
@@ -58,7 +60,8 @@ export function TableFooter(props) {
 }
 
 TableFooter.propTypes = {
-  context: PropTypes.object
+  context: PropTypes.object,
+  onNextPage: PropTypes.func
 };
 
 export default withDataContext(TableFooter);
