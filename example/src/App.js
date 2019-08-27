@@ -11,7 +11,7 @@ const headers = [
 
 const data = [
   {
-    name: 'Chiamaka',
+    name: 'chiamaka',
     country: 'Nigeria',
     age: 25
   },

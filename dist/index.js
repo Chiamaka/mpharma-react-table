@@ -5917,7 +5917,9 @@ function (_PureComponent) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "loadData", function (data) {
-      _this.setState(_extends({}, data));
+      _this.setState(_extends({}, data, {
+        count: data.data.length
+      }));
     });
 
     _defineProperty(_assertThisInitialized(_this), "setCurrentPage", function (page) {
@@ -5948,6 +5950,7 @@ function (_PureComponent) {
     get: function get() {
       return _extends({}, this.state, {
         sortData: this.sortData,
+        addData: this.addData,
         loadData: this.loadData,
         setCurrentPage: this.setCurrentPage,
         setRowsPerPage: this.setRowsPerPage
@@ -6171,8 +6174,7 @@ function TableBody(props) {
       data: data,
       dataIndexes: dataIndexes,
       rowsPerPageOptions: rowsPerPageOptions,
-      count: data.length,
-      rowsPerPage: rowsPerPageOptions[0]
+      rowsPerPage: rowsPerPage || rowsPerPageOptions[0]
     });
   }, [data]);
   return React__default.createElement("tbody", {
@@ -6309,6 +6311,7 @@ function TableFooter$1(props) {
 
   function handleNextPage() {
     setCurrentPage(currentPage + 1);
+    props.onNextPage && props.onNextPage();
   }
 
   return React__default.createElement(TableFooter, null, React__default.createElement("span", {
@@ -6334,16 +6337,16 @@ function TableFooter$1(props) {
   }, React__default.createElement(SvgLeftArrow, {
     "aria-label": "previous page"
   })), React__default.createElement(IconButton, {
-    disabled: currentPage >= Math.ceil(count / rowsPerPage) - 1,
+    disabled: !props.onNextPage ? currentPage >= Math.ceil(count / rowsPerPage) - 1 : false,
     onClick: handleNextPage,
     "data-testid": "next page"
   }, React__default.createElement(SvgRightArrow, {
-    "aria-label": "next page",
-    onClick: handleNextPage
+    "aria-label": "next page"
   }))));
 }
 TableFooter$1.propTypes = {
-  context: PropTypes.object
+  context: PropTypes.object,
+  onNextPage: PropTypes.func
 };
 var TableFooter$2 = withDataContext(TableFooter$1);
 
@@ -6356,6 +6359,7 @@ function Table(props) {
       tableStyle = props.tableStyle,
       tableBodyStyle = props.tableBodyStyle,
       rowsPerPageOptions = props.rowsPerPageOptions,
+      onNextPage = props.onNextPage,
       emptyMessage = props.emptyMessage,
       emptyMessageStyle = props.emptyMessageStyle;
   var indexes = extractDataIndexes(headers);
@@ -6376,7 +6380,9 @@ function Table(props) {
     handleRowClick: handleRowClick,
     renderIcon: renderIcon,
     rowsPerPageOptions: rowsPerPageOptions
-  }))), data.length > 0 && React__default.createElement(TableFooter$2, null)));
+  }))), data.length > 0 && React__default.createElement(TableFooter$2, {
+    onNextPage: onNextPage
+  })));
 }
 
 Table.propTypes = {
@@ -6385,6 +6391,7 @@ Table.propTypes = {
   hover: PropTypes.bool,
   handleRowClick: PropTypes.func,
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
+  onNextPage: PropTypes.func,
   emptyMessage: PropTypes.string,
   emptyMessageStyle: PropTypes.object,
   renderIcon: PropTypes.func,
