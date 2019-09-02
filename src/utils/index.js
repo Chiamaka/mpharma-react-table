@@ -35,7 +35,7 @@ export function getSortingFn(order, orderBy) {
 export function formatDate(item) {
   if (typeof item === 'string') {
     const date = new Date(item).getFullYear();
-    if (!isNaN(date)) return format(new Date(item), 'MMMM D, YYYY');
+    if (!isNaN(date)) return format(new Date(item), 'MMMM d, yyyy');
     return false;
   }
 }

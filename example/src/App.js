@@ -36,7 +36,7 @@ export default class App extends Component {
         hover={true}
         renderIcon={data => <MoreActions data={data} />}
         rowsPerPageOptions={[5, 10, 20]}
-        emptyMessage="Phew! sorry mate"
+        emptyMessage='Phew! sorry mate'
         tableBodyStyle={{ height: '50vh' }}
       />
     );
