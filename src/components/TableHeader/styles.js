@@ -4,6 +4,12 @@ import { text } from '../styles';
 export const TableHeadRow = styled.tr`
   height: 55px;
   cursor: pointer;
+  th {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+  }
 `;
 
 export const TableHeader = styled.th`

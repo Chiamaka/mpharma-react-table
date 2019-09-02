@@ -18,7 +18,6 @@ function TableHeader(props) {
     <thead>
       <TableHeadRow>
         {headers.map(({ title, align = 'left', width, dataIndex, render }, index) => {
-          // console.log(render && render(context.active));
           return (
             <StyledTableHeader
               key={index}

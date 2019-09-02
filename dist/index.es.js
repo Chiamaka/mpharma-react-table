@@ -5967,7 +5967,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$1() {
-  var data = _taggedTemplateLiteralLoose(["\n  height: 55px;\n  cursor: pointer;\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n  height: 55px;\n  cursor: pointer;\n  th {\n    position: sticky;\n    top: 0;\n    background-color: #fff;\n    z-index: 1;\n  }\n"]);
 
   _templateObject$1 = function _templateObject() {
     return data;
@@ -6044,7 +6044,6 @@ function TableHeader$1(props) {
         width = _ref.width,
         dataIndex = _ref.dataIndex,
         render = _ref.render;
-    // console.log(render && render(context.active));
     return React.createElement(TableHeader, {
       key: index,
       align: align,
