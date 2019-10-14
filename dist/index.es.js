@@ -3155,9 +3155,7 @@ Table.defaultProps = {
   handleRowClick: function handleRowClick() {},
   renderIcon: function renderIcon() {},
   tableStyle: {},
-  tableBodyStyle: {
-    maxHeight: '75vh'
-  }
+  tableBodyStyle: {}
 };
 
 export default Table;
