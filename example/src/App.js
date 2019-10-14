@@ -35,9 +35,9 @@ export default class App extends Component {
         data={data}
         hover={true}
         renderIcon={data => <MoreActions data={data} />}
-        rowsPerPageOptions={[5, 10, 20]}
+        rowsPerPageOptions={[25, 50]}
         emptyMessage='Phew! sorry mate'
-        tableBodyStyle={{ height: '50vh' }}
+        tableBodyStyle={{ height: '65vh' }}
       />
     );
   }

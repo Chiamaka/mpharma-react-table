@@ -18,6 +18,16 @@ export const Paper = styled.div`
   margin: 50px auto;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);
 `;
+
+export const Tabular = styled.div`
+  ${props => props.style};
+  max-height: 65vh;
+  overflow: auto;
+  @media (max-width: 600px) {
+    max-height: 45vh;
+  }
+`;
+
 export const TableWrapper = styled.table`
   width: 100%;
   border-collapse: collapse;
