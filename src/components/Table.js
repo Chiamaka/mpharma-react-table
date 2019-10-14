@@ -4,7 +4,7 @@ import TableHeader from './TableHeader/TableHeader';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
 import DataStore, { extractDataIndexes } from '../context/DataStore';
-import { TableWrapper, Paper } from './styles';
+import { TableWrapper, Paper, Tabular } from './styles';
 
 function Table(props) {
   const {
@@ -25,7 +25,7 @@ function Table(props) {
   return (
     <DataStore>
       <Paper style={tableStyle}>
-        <div style={{ ...tableBodyStyle, overflow: 'auto' }}>
+        <Tabular style={tableBodyStyle}>
           <TableWrapper>
             <TableHeader headers={headers} />
             {data.length === 0 ? (
@@ -45,7 +45,7 @@ function Table(props) {
               />
             )}
           </TableWrapper>
-        </div>
+        </Tabular>
         {data.length > 0 && <TableFooter onNextPage={onNextPage} />}
       </Paper>
     </DataStore>

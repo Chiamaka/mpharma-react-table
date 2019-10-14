@@ -2456,8 +2456,18 @@ function cleanEscapedString(input) {
   return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'");
 }
 
-function _templateObject5() {
+function _templateObject6() {
   var data = _taggedTemplateLiteralLoose(["\n  border-radius: 3px;\n  background-color: ", ";\n  color: ", ";\n  padding: ", "\n  font-size: 12px;\n  font-family: Sofia Pro;\n"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  border-collapse: collapse;\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -2467,7 +2477,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  border-collapse: collapse;\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n  ", ";\n  max-height: 65vh;\n  overflow: auto;\n  @media (max-width: 600px) {\n    max-height: 45vh;\n  }\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -2510,12 +2520,15 @@ var text = css(_templateObject2());
 var Paper = styled.div(_templateObject3(), function (props) {
   return props.style;
 });
-var TableWrapper = styled.table(_templateObject4());
+var Tabular = styled.div(_templateObject4(), function (props) {
+  return props.style;
+});
+var TableWrapper = styled.table(_templateObject5());
 var Pill = styled.span.attrs(function (props) {
   return {
     'aria-label': props.children
   };
-})(_templateObject5(), function (props) {
+})(_templateObject6(), function (props) {
   return props.active ? 'rgba(63,218,152,0.25)' : 'rgba(255, 100, 124, 0.17)';
 }, function (props) {
   return props.active ? '#3FDA98' : '#FF647C';
@@ -2948,7 +2961,7 @@ var TableBody$1 = withDataContext(TableBody);
 var CaretDown = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAR0lEQVR4Ae3OMREAIBDEQCQgBf8qkIID+P4qqnyRnUmfIUmS1NesdnU/O9VqMJUz5FTMAFPcTE7xMzHFz8QUPxNT/IwkSUoPu7I4F2kEFg8AAAAASUVORK5CYII=";
 
 function _templateObject3$1() {
-  var data = _taggedTemplateLiteralLoose(["\n  pointer-events: ", ";\n  border: none;\n  outline: none;\n  padding: 12px;\n  cursor: pointer;\n  background-color: #fff;\n  svg {\n    fill: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n  pointer-events: ", ";\n  border: none;\n  outline: none;\n  padding: 12px;\n  cursor: pointer;\n  background-color: #fff;\n  svg {\n    fill: ", ";\n  }\n\n  @media (max-width: 600px) {\n    padding: 6px;\n  }\n"]);
 
   _templateObject3$1 = function _templateObject3() {
     return data;
@@ -2968,7 +2981,7 @@ function _templateObject2$3() {
 }
 
 function _templateObject$3() {
-  var data = _taggedTemplateLiteralLoose(["\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  width: 100%;\n  height: 60px;\n  color: #757575;\n  font-size: 12px;\n\n  .buttons {\n    margin-left: 20px;\n  }\n\n  .select {\n    display: flex;\n    margin-left: 32px;\n    margin-right: 32px;\n  }\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  width: 100%;\n  height: 60px;\n  color: #757575;\n  font-size: 12px;\n\n  .buttons {\n    margin-left: 20px;\n  }\n\n  .select {\n    display: flex;\n    margin-left: 32px;\n    margin-right: 32px;\n  }\n\n  @media (max-width: 600px) {\n    .select {\n      display: flex;\n      margin-left: 16px\n      margin-right: 16px;\n    }\n\n    .buttons {\n      margin-left: 10px;\n    }\n  }\n"]);
 
   _templateObject$3 = function _templateObject() {
     return data;
@@ -3104,10 +3117,8 @@ function Table(props) {
   var indexes = extractDataIndexes(headers);
   return React.createElement(DataStore, null, React.createElement(Paper, {
     style: tableStyle
-  }, React.createElement("div", {
-    style: _extends({}, tableBodyStyle, {
-      overflow: 'auto'
-    })
+  }, React.createElement(Tabular, {
+    style: tableBodyStyle
   }, React.createElement(TableWrapper, null, React.createElement(TableHeader$2, {
     headers: headers
   }), data.length === 0 ? React.createElement("tbody", {

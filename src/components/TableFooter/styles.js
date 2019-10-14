@@ -19,6 +19,18 @@ export const TableFooter = styled.div`
     margin-left: 32px;
     margin-right: 32px;
   }
+
+  @media (max-width: 600px) {
+    .select {
+      display: flex;
+      margin-left: 16px
+      margin-right: 16px;
+    }
+
+    .buttons {
+      margin-left: 10px;
+    }
+  }
 `;
 
 export const Select = styled.select`
@@ -43,5 +55,9 @@ export const IconButton = styled.button`
   background-color: #fff;
   svg {
     fill: ${props => (props.disabled ? 'rgba(0, 0, 0, 0.26)' : 'inherit')};
+  }
+
+  @media (max-width: 600px) {
+    padding: 6px;
   }
 `;
