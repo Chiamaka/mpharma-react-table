@@ -26,6 +26,10 @@ export const Tabular = styled.div`
   @media (max-width: 600px) {
     max-height: 45vh;
   }
+
+  @media (orientation: landscape) {
+    max-height: 50vh;
+  }
 `;
 
 export const TableWrapper = styled.table`

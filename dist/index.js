@@ -2485,7 +2485,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteralLoose(["\n  ", ";\n  max-height: 65vh;\n  overflow: auto;\n  @media (max-width: 600px) {\n    max-height: 45vh;\n  }\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n  ", ";\n  max-height: 65vh;\n  overflow: auto;\n  @media (max-width: 600px) {\n    max-height: 45vh;\n  }\n\n  @media (orientation: landscape) {\n    max-height: 50vh;\n  }\n\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
