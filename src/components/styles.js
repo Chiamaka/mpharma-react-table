@@ -28,7 +28,7 @@ export const Tabular = styled.div`
   }
 
   @media (orientation: landscape) and (min-resolution: 200dpi) {
-    max-height: 55vh;
+    max-height: 50vh;
   }
 `;
 

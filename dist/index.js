@@ -2485,7 +2485,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteralLoose(["\n  ", ";\n  max-height: 65vh;\n  overflow: auto;\n  @media (max-width: 600px) {\n    max-height: 45vh;\n  }\n\n  @media (orientation: landscape) and (min-resolution: 200dpi) {\n    max-height: 55vh;\n  }\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n  ", ";\n  max-height: 65vh;\n  overflow: auto;\n  @media (max-width: 600px) {\n    max-height: 45vh;\n  }\n\n  @media (orientation: landscape) and (min-resolution: 200dpi) {\n    max-height: 50vh;\n  }\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
