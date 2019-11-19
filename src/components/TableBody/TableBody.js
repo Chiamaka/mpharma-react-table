@@ -4,20 +4,48 @@ import TableRow from '../TableRow';
 import { withDataContext } from '../../context/DataStore';
 
 function TableBody(props) {
-  const { data, dataIndexes, hover, handleRowClick, rowsPerPageOptions, renderIcon, context } = props;
-  const { loadData, currentPage, rowsPerPage } = context;
+  const {
+    data,
+    dataIndexes,
+    hover,
+    handleRowClick,
+    rowsPerPageOptions,
+    onNextPage,
+    errorOnNextPage,
+    renderIcon,
+    context
+  } = props;
+  const { loadData, currentPage, rowsPerPage, setCurrentPage } = context;
+  const lowerBound = currentPage * rowsPerPage - rowsPerPage;
   const upperBound = currentPage * rowsPerPage;
-  const lowerBound = currentPage * rowsPerPage + rowsPerPage;
 
   useEffect(() => {
-    loadData({ data, dataIndexes, rowsPerPageOptions, rowsPerPage: rowsPerPage || rowsPerPageOptions[0] });
+    loadData({
+      data,
+      dataIndexes,
+      rowsPerPageOptions,
+      rowsPerPage: rowsPerPage || rowsPerPageOptions[0]
+    });
   }, [data]);
+
+  useEffect(() => {
+    // when there's an error, backtrack to previous page
+    if (onNextPage && errorOnNextPage) {
+      setCurrentPage(currentPage - 1);
+    }
+  }, [errorOnNextPage]);
 
   return (
     <tbody data-testid='table-body'>
-      {context.data.slice(upperBound, lowerBound).map((item, index) => {
+      {context.data.slice(lowerBound, upperBound).map((item, index) => {
         return (
-          <TableRow item={item} key={index} renderIcon={renderIcon} hover={hover} handleRowClick={handleRowClick} />
+          <TableRow
+            item={item}
+            key={index}
+            renderIcon={renderIcon}
+            hover={hover}
+            handleRowClick={handleRowClick}
+          />
         );
       })}
     </tbody>
@@ -31,7 +59,9 @@ TableBody.propTypes = {
   handleRowClick: PropTypes.func,
   renderIcon: PropTypes.func,
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
-  context: PropTypes.object
+  context: PropTypes.object,
+  onNextPage: PropTypes.func,
+  errorOnNextPage: PropTypes.bool
 };
 
 TableBody.defaultProps = {
