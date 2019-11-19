@@ -7,20 +7,11 @@ import { ReactComponent as RightArrow } from '../../icons/RightArrow.svg';
 
 export function TableFooter(props) {
   const {
-    context: {
-      rowsPerPageOptions,
-      count,
-      rowsPerPage,
-      currentPage,
-      lastFetchedPage,
-      setLastFetchedPage,
-      setCurrentPage,
-      setRowsPerPage
-    }
+    context: { rowsPerPageOptions, count, rowsPerPage, currentPage, setCurrentPage, setRowsPerPage }
   } = props;
 
-  const from = currentPage === 1 ? 0 : (currentPage - 1) * rowsPerPage;
-  const to = Math.min(count, currentPage * rowsPerPage);
+  const to = Math.min(count, (currentPage + 1) * rowsPerPage);
+  const from = count === 0 ? 0 : currentPage * rowsPerPage + 1;
 
   function handleSelectChange({ target }) {
     setRowsPerPage(+target.value);
@@ -31,37 +22,14 @@ export function TableFooter(props) {
   }
 
   function handleNextPage() {
-    if (!props.onNextPage) {
-      setCurrentPage(currentPage + 1);
-    }
-
-    if (props.onNextPage && !props.errorOnNextPage) {
-      setCurrentPage(currentPage + 1);
-      // only advance when currentPage equals lastFetched
-      // so as not to fetch already fetched data
-      if (currentPage >= lastFetchedPage) {
-        setLastFetchedPage(currentPage + 1);
-        props.onNextPage(currentPage + 1);
-      }
-      return;
-    }
-    // if an error occured, only fetch new data and advance the current page
-    // when the current page is <= last fetched page
-    if (currentPage <= lastFetchedPage) {
-      props.onNextPage(currentPage + 1);
-      setCurrentPage(currentPage + 1);
-    }
+    setCurrentPage(currentPage + 1);
+    props.onNextPage && props.onNextPage();
   }
 
   return (
     <StyledTableFooter>
       <span aria-label='rows-label'>Rows per page:</span>
-      <Select
-        onChange={handleSelectChange}
-        aria-label='select pages'
-        className='select'
-        data-testid='select'
-      >
+      <Select onChange={handleSelectChange} aria-label='select pages' className='select' data-testid='select'>
         {rowsPerPageOptions.map(option => {
           return (
             <option key={option} value={option}>
@@ -75,20 +43,12 @@ export function TableFooter(props) {
         {from}-{to} of {count}
       </span>
       <div className='buttons'>
-        <IconButton
-          disabled={currentPage === 1}
-          onClick={handlePrevPage}
-          data-testid='previous page'
-        >
+        <IconButton disabled={currentPage === 0} onClick={handlePrevPage} data-testid='previous page'>
           <LeftArrow aria-label='previous page' />
         </IconButton>
 
         <IconButton
-          disabled={
-            !props.onNextPage
-              ? currentPage >= Math.ceil(count / rowsPerPage) - 1
-              : false
-          }
+          disabled={!props.onNextPage ? currentPage >= Math.ceil(count / rowsPerPage) - 1 : false}
           onClick={handleNextPage}
           data-testid='next page'
         >
@@ -101,8 +61,7 @@ export function TableFooter(props) {
 
 TableFooter.propTypes = {
   context: PropTypes.object,
-  onNextPage: PropTypes.func,
-  errorOnNextPage: PropTypes.bool
+  onNextPage: PropTypes.func
 };
 
 export default withDataContext(TableFooter);

@@ -14,7 +14,7 @@ describe('Table Footer', () => {
       rowsPerPageOptions: [5, 10],
       count: 9,
       rowsPerPage: 5,
-      currentPage: 1,
+      currentPage: 0,
       setCurrentPage: jest.fn(),
       setRowsPerPage: jest.fn()
     }
@@ -34,7 +34,7 @@ describe('Table Footer', () => {
 
   it('should display correct label', () => {
     const { getByLabelText } = renderFooter(props);
-    const expectedLabel = '0-5 of 9';
+    const expectedLabel = '1-5 of 9';
     expect(getByLabelText('label-rows-per-page').textContent).toBe(expectedLabel);
   });
 

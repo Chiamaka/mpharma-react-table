@@ -2651,8 +2651,7 @@ function (_PureComponent) {
       active: null,
       rowsPerPageOptions: [],
       rowsPerPage: 0,
-      currentPage: 1,
-      lastFetchedPage: 1,
+      currentPage: 0,
       count: 0
     });
 
@@ -2683,12 +2682,6 @@ function (_PureComponent) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "setLastFetchedPage", function (page) {
-      _this.setState({
-        lastFetchedPage: page
-      });
-    });
-
     _defineProperty(_assertThisInitialized(_this), "setRowsPerPage", function (rows) {
       _this.setState({
         rowsPerPage: rows
@@ -2713,8 +2706,7 @@ function (_PureComponent) {
         sortData: this.sortData,
         loadData: this.loadData,
         setCurrentPage: this.setCurrentPage,
-        setRowsPerPage: this.setRowsPerPage,
-        setLastFetchedPage: this.setLastFetchedPage
+        setRowsPerPage: this.setRowsPerPage
       });
     }
   }]);
@@ -2922,16 +2914,13 @@ function TableBody(props) {
       hover = props.hover,
       handleRowClick = props.handleRowClick,
       rowsPerPageOptions = props.rowsPerPageOptions,
-      onNextPage = props.onNextPage,
-      errorOnNextPage = props.errorOnNextPage,
       renderIcon = props.renderIcon,
       context = props.context;
   var loadData = context.loadData,
       currentPage = context.currentPage,
-      rowsPerPage = context.rowsPerPage,
-      setCurrentPage = context.setCurrentPage;
-  var lowerBound = currentPage * rowsPerPage - rowsPerPage;
+      rowsPerPage = context.rowsPerPage;
   var upperBound = currentPage * rowsPerPage;
+  var lowerBound = currentPage * rowsPerPage + rowsPerPage;
   useEffect(function () {
     loadData({
       data: data,
@@ -2940,15 +2929,9 @@ function TableBody(props) {
       rowsPerPage: rowsPerPage || rowsPerPageOptions[0]
     });
   }, [data]);
-  useEffect(function () {
-    // when there's an error, backtrack to previous page
-    if (onNextPage && errorOnNextPage) {
-      setCurrentPage(currentPage - 1);
-    }
-  }, [errorOnNextPage]);
   return React.createElement("tbody", {
     "data-testid": "table-body"
-  }, context.data.slice(lowerBound, upperBound).map(function (item, index) {
+  }, context.data.slice(upperBound, lowerBound).map(function (item, index) {
     return React.createElement(TableRow$1, {
       item: item,
       key: index,
@@ -2966,9 +2949,7 @@ TableBody.propTypes = {
   handleRowClick: PropTypes.func,
   renderIcon: PropTypes.func,
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
-  context: PropTypes.object,
-  onNextPage: PropTypes.func,
-  errorOnNextPage: PropTypes.bool
+  context: PropTypes.object
 };
 TableBody.defaultProps = {
   dataIndexes: [],
@@ -3066,12 +3047,10 @@ function TableFooter$1(props) {
       count = _props$context.count,
       rowsPerPage = _props$context.rowsPerPage,
       currentPage = _props$context.currentPage,
-      lastFetchedPage = _props$context.lastFetchedPage,
-      setLastFetchedPage = _props$context.setLastFetchedPage,
       setCurrentPage = _props$context.setCurrentPage,
       setRowsPerPage = _props$context.setRowsPerPage;
-  var from = currentPage === 1 ? 0 : (currentPage - 1) * rowsPerPage;
-  var to = Math.min(count, currentPage * rowsPerPage);
+  var to = Math.min(count, (currentPage + 1) * rowsPerPage);
+  var from = count === 0 ? 0 : currentPage * rowsPerPage + 1;
 
   function handleSelectChange(_ref) {
     var target = _ref.target;
@@ -3083,28 +3062,8 @@ function TableFooter$1(props) {
   }
 
   function handleNextPage() {
-    if (!props.onNextPage) {
-      setCurrentPage(currentPage + 1);
-    }
-
-    if (props.onNextPage && !props.errorOnNextPage) {
-      setCurrentPage(currentPage + 1); // only advance when currentPage equals lastFetched
-      // so as not to fetch already fetched data
-
-      if (currentPage >= lastFetchedPage) {
-        setLastFetchedPage(currentPage + 1);
-        props.onNextPage(currentPage + 1);
-      }
-
-      return;
-    } // if an error occured, only fetch new data and advance the current page
-    // when the current page is <= last fetched page
-
-
-    if (currentPage <= lastFetchedPage) {
-      props.onNextPage(currentPage + 1);
-      setCurrentPage(currentPage + 1);
-    }
+    setCurrentPage(currentPage + 1);
+    props.onNextPage && props.onNextPage();
   }
 
   return React.createElement(TableFooter, null, React.createElement("span", {
@@ -3124,7 +3083,7 @@ function TableFooter$1(props) {
   }, from, "-", to, " of ", count), React.createElement("div", {
     className: "buttons"
   }, React.createElement(IconButton, {
-    disabled: currentPage === 1,
+    disabled: currentPage === 0,
     onClick: handlePrevPage,
     "data-testid": "previous page"
   }, React.createElement(SvgLeftArrow, {
@@ -3139,8 +3098,7 @@ function TableFooter$1(props) {
 }
 TableFooter$1.propTypes = {
   context: PropTypes.object,
-  onNextPage: PropTypes.func,
-  errorOnNextPage: PropTypes.bool
+  onNextPage: PropTypes.func
 };
 var TableFooter$2 = withDataContext(TableFooter$1);
 
@@ -3154,7 +3112,6 @@ function Table(props) {
       tableBodyStyle = props.tableBodyStyle,
       rowsPerPageOptions = props.rowsPerPageOptions,
       onNextPage = props.onNextPage,
-      errorOnNextPage = props.errorOnNextPage,
       emptyMessage = props.emptyMessage,
       emptyMessageStyle = props.emptyMessageStyle;
   var indexes = extractDataIndexes(headers);
@@ -3172,12 +3129,9 @@ function Table(props) {
     hover: hover,
     handleRowClick: handleRowClick,
     renderIcon: renderIcon,
-    rowsPerPageOptions: rowsPerPageOptions,
-    onNextPage: onNextPage,
-    errorOnNextPage: errorOnNextPage
+    rowsPerPageOptions: rowsPerPageOptions
   }))), data.length > 0 && React.createElement(TableFooter$2, {
-    onNextPage: onNextPage,
-    errorOnNextPage: errorOnNextPage
+    onNextPage: onNextPage
   })));
 }
 
@@ -3188,7 +3142,6 @@ Table.propTypes = {
   handleRowClick: PropTypes.func,
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
   onNextPage: PropTypes.func,
-  errorOnNextPage: PropTypes.bool,
   emptyMessage: PropTypes.string,
   emptyMessageStyle: PropTypes.object,
   renderIcon: PropTypes.func,
@@ -3202,8 +3155,7 @@ Table.defaultProps = {
   handleRowClick: function handleRowClick() {},
   renderIcon: function renderIcon() {},
   tableStyle: {},
-  tableBodyStyle: {},
-  errorOnNextPage: false
+  tableBodyStyle: {}
 };
 
 export default Table;
