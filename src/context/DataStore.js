@@ -33,7 +33,8 @@ class DataStore extends PureComponent {
     active: null,
     rowsPerPageOptions: [],
     rowsPerPage: 0,
-    currentPage: 0,
+    currentPage: 1,
+    lastFetchedPage: 1,
     count: 0
   };
 
@@ -52,6 +53,10 @@ class DataStore extends PureComponent {
     this.setState({ currentPage: page });
   };
 
+  setLastFetchedPage = page => {
+    this.setState({ lastFetchedPage: page });
+  };
+
   setRowsPerPage = rows => {
     this.setState({ rowsPerPage: rows });
   };
@@ -62,7 +67,8 @@ class DataStore extends PureComponent {
       sortData: this.sortData,
       loadData: this.loadData,
       setCurrentPage: this.setCurrentPage,
-      setRowsPerPage: this.setRowsPerPage
+      setRowsPerPage: this.setRowsPerPage,
+      setLastFetchedPage: this.setLastFetchedPage
     };
   }
 

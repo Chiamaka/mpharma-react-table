@@ -17,6 +17,7 @@ function Table(props) {
     tableBodyStyle,
     rowsPerPageOptions,
     onNextPage,
+    errorOnNextPage,
     emptyMessage,
     emptyMessageStyle
   } = props;
@@ -42,11 +43,18 @@ function Table(props) {
                 handleRowClick={handleRowClick}
                 renderIcon={renderIcon}
                 rowsPerPageOptions={rowsPerPageOptions}
+                onNextPage={onNextPage}
+                errorOnNextPage={errorOnNextPage}
               />
             )}
           </TableWrapper>
         </Tabular>
-        {data.length > 0 && <TableFooter onNextPage={onNextPage} />}
+        {data.length > 0 && (
+          <TableFooter
+            onNextPage={onNextPage}
+            errorOnNextPage={errorOnNextPage}
+          />
+        )}
       </Paper>
     </DataStore>
   );
@@ -59,6 +67,7 @@ Table.propTypes = {
   handleRowClick: PropTypes.func,
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
   onNextPage: PropTypes.func,
+  errorOnNextPage: PropTypes.bool,
   emptyMessage: PropTypes.string,
   emptyMessageStyle: PropTypes.object,
   renderIcon: PropTypes.func,
@@ -73,7 +82,8 @@ Table.defaultProps = {
   handleRowClick: () => {},
   renderIcon: () => {},
   tableStyle: {},
-  tableBodyStyle: {}
+  tableBodyStyle: {},
+  errorOnNextPage: false
 };
 
 export default Table;
