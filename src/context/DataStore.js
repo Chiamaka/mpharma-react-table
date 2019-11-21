@@ -5,7 +5,11 @@ import { tableSort, getSortingFn, filterNestedData } from '../utils';
 const DataContext = createContext(null);
 export const withDataContext = Component => {
   return props => {
-    return <DataContext.Consumer>{context => <Component {...props} context={context} />}</DataContext.Consumer>;
+    return (
+      <DataContext.Consumer>
+        {context => <Component {...props} context={context} />}
+      </DataContext.Consumer>
+    );
   };
 };
 
@@ -39,13 +43,25 @@ class DataStore extends PureComponent {
 
   sortData = (key, render) => {
     const { data, desc } = this.state;
-    this.setState({ data: tableSort(filterNestedData(data, key, render), getSortingFn(desc, key)) }, () =>
-      this.setState({ desc: !desc, active: key })
+    this.setState(
+      {
+        data: tableSort(
+          filterNestedData(data, key, render),
+          getSortingFn(desc, key)
+        )
+      },
+      () => this.setState({ desc: !desc, active: key })
     );
   };
 
   loadData = data => {
-    this.setState({ ...data, count: data.data.length });
+    this.setState({
+      ...data,
+      count:
+        data.count < data.data.length
+          ? data.data.length
+          : data.count || data.data.length
+    });
   };
 
   setCurrentPage = page => {
@@ -67,7 +83,11 @@ class DataStore extends PureComponent {
   }
 
   render() {
-    return <DataContext.Provider value={this.value}>{this.props.children}</DataContext.Provider>;
+    return (
+      <DataContext.Provider value={this.value}>
+        {this.props.children}
+      </DataContext.Provider>
+    );
   }
 }
 

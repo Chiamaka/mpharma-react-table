@@ -7,7 +7,14 @@ import { ReactComponent as RightArrow } from '../../icons/RightArrow.svg';
 
 export function TableFooter(props) {
   const {
-    context: { rowsPerPageOptions, count, rowsPerPage, currentPage, setCurrentPage, setRowsPerPage }
+    context: {
+      rowsPerPageOptions,
+      count,
+      rowsPerPage,
+      currentPage,
+      setCurrentPage,
+      setRowsPerPage
+    }
   } = props;
 
   const to = Math.min(count, (currentPage + 1) * rowsPerPage);
@@ -29,7 +36,12 @@ export function TableFooter(props) {
   return (
     <StyledTableFooter>
       <span aria-label='rows-label'>Rows per page:</span>
-      <Select onChange={handleSelectChange} aria-label='select pages' className='select' data-testid='select'>
+      <Select
+        onChange={handleSelectChange}
+        aria-label='select pages'
+        className='select'
+        data-testid='select'
+      >
         {rowsPerPageOptions.map(option => {
           return (
             <option key={option} value={option}>
@@ -43,12 +55,16 @@ export function TableFooter(props) {
         {from}-{to} of {count}
       </span>
       <div className='buttons'>
-        <IconButton disabled={currentPage === 0} onClick={handlePrevPage} data-testid='previous page'>
+        <IconButton
+          disabled={currentPage === 0}
+          onClick={handlePrevPage}
+          data-testid='previous page'
+        >
           <LeftArrow aria-label='previous page' />
         </IconButton>
 
         <IconButton
-          disabled={!props.onNextPage ? currentPage >= Math.ceil(count / rowsPerPage) - 1 : false}
+          disabled={!props.onNextPage || to === count}
           onClick={handleNextPage}
           data-testid='next page'
         >

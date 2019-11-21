@@ -2680,7 +2680,7 @@ function (_PureComponent) {
 
     _defineProperty(_assertThisInitialized(_this), "loadData", function (data) {
       _this.setState(_extends({}, data, {
-        count: data.data.length
+        count: data.count < data.data.length ? data.data.length : data.count || data.data.length
       }));
     });
 
@@ -2919,6 +2919,7 @@ var TableRow$1 = withDataContext(TableRow);
 function TableBody(props) {
   var data = props.data,
       dataIndexes = props.dataIndexes,
+      count = props.count,
       hover = props.hover,
       handleRowClick = props.handleRowClick,
       rowsPerPageOptions = props.rowsPerPageOptions,
@@ -2932,6 +2933,7 @@ function TableBody(props) {
   React.useEffect(function () {
     loadData({
       data: data,
+      count: count,
       dataIndexes: dataIndexes,
       rowsPerPageOptions: rowsPerPageOptions,
       rowsPerPage: rowsPerPage || rowsPerPageOptions[0]
@@ -2954,6 +2956,7 @@ TableBody.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   dataIndexes: PropTypes.arrayOf(PropTypes.object).isRequired,
   hover: PropTypes.bool,
+  count: PropTypes.number,
   handleRowClick: PropTypes.func,
   renderIcon: PropTypes.func,
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
@@ -3097,7 +3100,7 @@ function TableFooter$1(props) {
   }, React__default.createElement(SvgLeftArrow, {
     "aria-label": "previous page"
   })), React__default.createElement(IconButton, {
-    disabled: !props.onNextPage ? currentPage >= Math.ceil(count / rowsPerPage) - 1 : false,
+    disabled: !props.onNextPage || to === count,
     onClick: handleNextPage,
     "data-testid": "next page"
   }, React__default.createElement(SvgRightArrow, {
@@ -3113,6 +3116,7 @@ var TableFooter$2 = withDataContext(TableFooter$1);
 function Table(props) {
   var headers = props.headers,
       data = props.data,
+      count = props.count,
       hover = props.hover,
       handleRowClick = props.handleRowClick,
       renderIcon = props.renderIcon,
@@ -3132,6 +3136,7 @@ function Table(props) {
   }), data.length === 0 ? React__default.createElement("tbody", {
     style: emptyMessageStyle
   }, React__default.createElement("tr", null, React__default.createElement("td", null, emptyMessage || 'No data available!'))) : React__default.createElement(TableBody$1, {
+    count: count,
     data: data,
     dataIndexes: indexes,
     hover: hover,
@@ -3147,6 +3152,7 @@ Table.propTypes = {
   headers: PropTypes.arrayOf(PropTypes.object).isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   hover: PropTypes.bool,
+  count: PropTypes.number,
   handleRowClick: PropTypes.func,
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
   onNextPage: PropTypes.func,

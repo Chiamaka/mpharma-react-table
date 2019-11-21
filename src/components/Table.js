@@ -10,6 +10,7 @@ function Table(props) {
   const {
     headers,
     data,
+    count,
     hover,
     handleRowClick,
     renderIcon,
@@ -36,6 +37,7 @@ function Table(props) {
               </tbody>
             ) : (
               <TableBody
+                count={count}
                 data={data}
                 dataIndexes={indexes}
                 hover={hover}
@@ -56,6 +58,7 @@ Table.propTypes = {
   headers: PropTypes.arrayOf(PropTypes.object).isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   hover: PropTypes.bool,
+  count: PropTypes.number,
   handleRowClick: PropTypes.func,
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
   onNextPage: PropTypes.func,
