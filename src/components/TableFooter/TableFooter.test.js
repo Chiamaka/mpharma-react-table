@@ -12,7 +12,7 @@ describe('Table Footer', () => {
   const props = {
     context: {
       rowsPerPageOptions: [5, 10],
-      count: 9,
+      count: 30,
       rowsPerPage: 5,
       currentPage: 0,
       setCurrentPage: jest.fn(),
@@ -34,12 +34,17 @@ describe('Table Footer', () => {
 
   it('should display correct label', () => {
     const { getByLabelText } = renderFooter(props);
-    const expectedLabel = '1-5 of 9';
-    expect(getByLabelText('label-rows-per-page').textContent).toBe(expectedLabel);
+    const expectedLabel = '1-5 of 30';
+    expect(getByLabelText('label-rows-per-page').textContent).toBe(
+      expectedLabel
+    );
   });
 
-  it('should not be disabled when onNextPage is supplied', () => {
-    const moreProps = { onNextPage: jest.fn(), context: { ...props.context, currentPage: 1 } };
+  it('should not be disabled when onNextPage and count prop is supplied', () => {
+    const moreProps = {
+      onNextPage: jest.fn(),
+      context: { ...props.context, currentPage: 1 }
+    };
     const { getByTestId } = renderFooter(moreProps);
     const nextPageBtn = getByTestId('next page');
     expect(nextPageBtn).not.toBeDisabled();

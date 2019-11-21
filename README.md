@@ -13,25 +13,25 @@ npm install git://github.com/chiamaka/mpharma-react-table.git#master
 ## Usage
 
 ```jsx
-import React from 'react';
-import Table from 'mpharma-react-table';
+import React from "react";
+import Table from "mpharma-react-table";
 
 const headers = [
-  { title: 'Name', align: 'left', dataIndex: 'name' },
-  { title: 'Age', align: 'left', dataIndex: 'age' },
-  { title: 'Country', align: 'left', dataIndex: 'country' }
+  { title: "Name", align: "left", dataIndex: "name" },
+  { title: "Age", align: "left", dataIndex: "age" },
+  { title: "Country", align: "left", dataIndex: "country" }
 ];
 
 const data = [
   {
-    name: 'Chiamaka',
+    name: "Chiamaka",
     age: 25,
-    country: 'Nigeria'
+    country: "Nigeria"
   },
   {
-    name: 'Nick',
+    name: "Nick",
     age: 30,
-    country: 'Ghana'
+    country: "Ghana"
   }
 ];
 
@@ -44,27 +44,27 @@ function Example() {
 
 ```jsx
 const headers = [
-  { title: 'Name', align: 'left', dataIndex: 'name' },
-  { title: 'Age', align: 'left', dataIndex: 'age', render: item => item.real },
-  { title: 'Country', align: 'left', dataIndex: 'country' }
+  { title: "Name", align: "left", dataIndex: "name" },
+  { title: "Age", align: "left", dataIndex: "age", render: item => item.real },
+  { title: "Country", align: "left", dataIndex: "country" }
 ];
 
 const data = [
   {
-    name: 'Chiamaka',
+    name: "Chiamaka",
     age: {
       fake: 30,
       real: 24
     },
-    country: 'Nigeria'
+    country: "Nigeria"
   },
   {
-    name: 'Nick',
+    name: "Nick",
     age: {
       real: 34,
       fake: 40
     },
-    country: 'Ghana'
+    country: "Ghana"
   }
 ];
 
@@ -87,6 +87,8 @@ TableHeaders - Named export i.e. `import { TableHeaders } from mpharma-react-tab
 | ------------------ | -------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | \*headers          | array[objects] | None                                    | The headers of the table. See Header props for more info                                                                                                                   |
 | \*data             | array[objects] | None                                    | Data to be rendered                                                                                                                                                        |
+| \*count            | number         | None                                    | Total number of records to be displayed in the table footer                                                                                                                |
+|                    |
 | renderIcon         | function       | None                                    | Funtion which renders any icon passed into it. The icon can be a react component. `Note: you can get the row data in the arg of the function passed here ie. (data) => {}` |
 | tableStyle         | object         | None                                    | Style for the table wrapper                                                                                                                                                |
 | tableBodyStyle     | object         | `{maxHeight: '65vh', overflow: 'auto'}` | Style for the table body wrapper                                                                                                                                           |
