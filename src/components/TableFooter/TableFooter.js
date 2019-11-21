@@ -84,11 +84,7 @@ export function TableFooter(props) {
         </IconButton>
 
         <IconButton
-          disabled={
-            !props.onNextPage
-              ? currentPage >= Math.ceil(count / rowsPerPage) - 1
-              : false
-          }
+          disabled={!props.onNextPage || to === count}
           onClick={handleNextPage}
           data-testid='next page'
         >

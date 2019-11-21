@@ -6,6 +6,7 @@ import { withDataContext } from '../../context/DataStore';
 function TableBody(props) {
   const {
     data,
+    count,
     dataIndexes,
     hover,
     handleRowClick,
@@ -22,6 +23,7 @@ function TableBody(props) {
   useEffect(() => {
     loadData({
       data,
+      count,
       dataIndexes,
       rowsPerPageOptions,
       rowsPerPage: rowsPerPage || rowsPerPageOptions[0]
@@ -60,6 +62,7 @@ TableBody.propTypes = {
   renderIcon: PropTypes.func,
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
   context: PropTypes.object,
+  count: PropTypes.number,
   onNextPage: PropTypes.func,
   errorOnNextPage: PropTypes.bool
 };

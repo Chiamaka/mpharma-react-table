@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import TableHeader from './TableHeader/TableHeader';
-import TableBody from './TableBody';
-import TableFooter from './TableFooter';
-import DataStore, { extractDataIndexes } from '../context/DataStore';
-import { TableWrapper, Paper, Tabular } from './styles';
+import React from "react";
+import PropTypes from "prop-types";
+import TableHeader from "./TableHeader/TableHeader";
+import TableBody from "./TableBody";
+import TableFooter from "./TableFooter";
+import DataStore, { extractDataIndexes } from "../context/DataStore";
+import { TableWrapper, Paper, Tabular } from "./styles";
 
 function Table(props) {
   const {
@@ -14,6 +14,7 @@ function Table(props) {
     handleRowClick,
     renderIcon,
     tableStyle,
+    count,
     tableBodyStyle,
     rowsPerPageOptions,
     onNextPage,
@@ -32,13 +33,14 @@ function Table(props) {
             {data.length === 0 ? (
               <tbody style={emptyMessageStyle}>
                 <tr>
-                  <td>{emptyMessage || 'No data available!'}</td>
+                  <td>{emptyMessage || "No data available!"}</td>
                 </tr>
               </tbody>
             ) : (
               <TableBody
                 data={data}
                 dataIndexes={indexes}
+                count={count}
                 hover={hover}
                 handleRowClick={handleRowClick}
                 renderIcon={renderIcon}
@@ -69,6 +71,7 @@ Table.propTypes = {
   onNextPage: PropTypes.func,
   errorOnNextPage: PropTypes.bool,
   emptyMessage: PropTypes.string,
+  count: PropTypes.number,
   emptyMessageStyle: PropTypes.object,
   renderIcon: PropTypes.func,
   tableStyle: PropTypes.object,
