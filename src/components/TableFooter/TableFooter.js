@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withDataContext } from '../../context/DataStore';
-import { TableFooter as StyledTableFooter, Select, IconButton } from './styles';
-import { ReactComponent as LeftArrow } from '../../icons/LeftArrow.svg';
-import { ReactComponent as RightArrow } from '../../icons/RightArrow.svg';
+import React from "react";
+import PropTypes from "prop-types";
+import { withDataContext } from "../../context/DataStore";
+import { TableFooter as StyledTableFooter, Select, IconButton } from "./styles";
+import { ReactComponent as LeftArrow } from "../../icons/LeftArrow.svg";
+import { ReactComponent as RightArrow } from "../../icons/RightArrow.svg";
 
 export function TableFooter(props) {
   const {
@@ -29,18 +29,19 @@ export function TableFooter(props) {
   }
 
   function handleNextPage() {
-    setCurrentPage(currentPage + 1);
-    props.onNextPage && props.onNextPage();
+    const nextPage = currentPage + 1;
+    setCurrentPage(nextPage);
+    props.onNextPage && props.onNextPage(nextPage);
   }
 
   return (
     <StyledTableFooter>
-      <span aria-label='rows-label'>Rows per page:</span>
+      <span aria-label="rows-label">Rows per page:</span>
       <Select
         onChange={handleSelectChange}
-        aria-label='select pages'
-        className='select'
-        data-testid='select'
+        aria-label="select pages"
+        className="select"
+        data-testid="select"
       >
         {rowsPerPageOptions.map(option => {
           return (
@@ -51,24 +52,24 @@ export function TableFooter(props) {
         })}
       </Select>
 
-      <span aria-label='label-rows-per-page'>
+      <span aria-label="label-rows-per-page">
         {from}-{to} of {count}
       </span>
-      <div className='buttons'>
+      <div className="buttons">
         <IconButton
           disabled={currentPage === 0}
           onClick={handlePrevPage}
-          data-testid='previous page'
+          data-testid="previous page"
         >
-          <LeftArrow aria-label='previous page' />
+          <LeftArrow aria-label="previous page" />
         </IconButton>
 
         <IconButton
           disabled={!props.onNextPage || to === count}
           onClick={handleNextPage}
-          data-testid='next page'
+          data-testid="next page"
         >
-          <RightArrow aria-label='next page' />
+          <RightArrow aria-label="next page" />
         </IconButton>
       </div>
     </StyledTableFooter>
