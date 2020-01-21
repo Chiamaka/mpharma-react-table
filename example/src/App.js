@@ -28,6 +28,9 @@ const data = [
 ];
 
 export default class App extends Component {
+  handleNextPage = nextPage => {
+    console.log(nextPage);
+  };
   render() {
     return (
       <Table
@@ -39,6 +42,7 @@ export default class App extends Component {
         rowsPerPageOptions={[25, 50]}
         emptyMessage="Phew! sorry mate"
         tableBodyStyle={{ height: "65vh" }}
+        onNextPage={this.handleNextPage}
       />
     );
   }
