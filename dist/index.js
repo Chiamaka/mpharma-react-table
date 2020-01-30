@@ -82,26 +82,6 @@ function _taggedTemplateLiteralLoose(strings, raw) {
   return strings;
 }
 
-function toInteger(dirtyNumber) {
-  if (dirtyNumber === null || dirtyNumber === true || dirtyNumber === false) {
-    return NaN;
-  }
-
-  var number = Number(dirtyNumber);
-
-  if (isNaN(number)) {
-    return number;
-  }
-
-  return number < 0 ? Math.ceil(number) : Math.floor(number);
-}
-
-function requiredArgs(required, args) {
-  if (args.length < required) {
-    throw new TypeError(required + ' argument' + required > 1 ? 's' : '' + ' required, but only ' + args.length + ' present');
-  }
-}
-
 /**
  * @name toDate
  * @category Common Helpers
@@ -132,9 +112,11 @@ function requiredArgs(required, args) {
  * const result = toDate(1392098430000)
  * //=> Tue Feb 11 2014 11:30:30
  */
-
 function toDate(argument) {
-  requiredArgs(1, arguments);
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present');
+  }
+
   var argStr = Object.prototype.toString.call(argument); // Clone the date
 
   if (argument instanceof Date || typeof argument === 'object' && argStr === '[object Date]') {
@@ -152,6 +134,20 @@ function toDate(argument) {
 
     return new Date(NaN);
   }
+}
+
+function toInteger(dirtyNumber) {
+  if (dirtyNumber === null || dirtyNumber === true || dirtyNumber === false) {
+    return NaN;
+  }
+
+  var number = Number(dirtyNumber);
+
+  if (isNaN(number)) {
+    return number;
+  }
+
+  return number < 0 ? Math.ceil(number) : Math.floor(number);
 }
 
 /**
@@ -178,7 +174,10 @@ function toDate(argument) {
  */
 
 function addMilliseconds(dirtyDate, dirtyAmount) {
-  requiredArgs(2, arguments);
+  if (arguments.length < 2) {
+    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present');
+  }
+
   var timestamp = toDate(dirtyDate).getTime();
   var amount = toInteger(dirtyAmount);
   return new Date(timestamp + amount);
@@ -199,7 +198,7 @@ var MILLISECONDS_IN_MINUTE = 60000;
 
 function getTimezoneOffsetInMilliseconds(dirtyDate) {
   var date = new Date(dirtyDate.getTime());
-  var baseTimezoneOffset = Math.ceil(date.getTimezoneOffset());
+  var baseTimezoneOffset = date.getTimezoneOffset();
   date.setSeconds(0, 0);
   var millisecondsPartOfTimezoneOffset = date.getTime() % MILLISECONDS_IN_MINUTE;
   return baseTimezoneOffset * MILLISECONDS_IN_MINUTE + millisecondsPartOfTimezoneOffset;
@@ -234,7 +233,7 @@ function getTimezoneOffsetInMilliseconds(dirtyDate) {
  *   | `new Date('')`            | `false`       | `false`       |
  *   | `new Date(1488370835081)` | `true`        | `true`        |
  *   | `new Date(NaN)`           | `false`       | `false`       |
- *   | `'2016-01-01'`            | `TypeError`   | `false`       |
+ *   | `'2016-01-01'`            | `TypeError`   | `true`        |
  *   | `''`                      | `TypeError`   | `false`       |
  *   | `1488370835081`           | `TypeError`   | `true`        |
  *   | `NaN`                     | `TypeError`   | `false`       |
@@ -264,7 +263,10 @@ function getTimezoneOffsetInMilliseconds(dirtyDate) {
  */
 
 function isValid(dirtyDate) {
-  requiredArgs(1, arguments);
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present');
+  }
+
   var date = toDate(dirtyDate);
   return !isNaN(date);
 }
@@ -615,7 +617,7 @@ function buildMatchFn(args) {
     var value;
 
     if (Object.prototype.toString.call(parsePatterns) === '[object Array]') {
-      value = findIndex(parsePatterns, function (pattern) {
+      value = parsePatterns.findIndex(function (pattern) {
         return pattern.test(string);
       });
     } else {
@@ -636,14 +638,6 @@ function buildMatchFn(args) {
 function findKey(object, predicate) {
   for (var key in object) {
     if (object.hasOwnProperty(key) && predicate(object[key])) {
-      return key;
-    }
-  }
-}
-
-function findIndex(array, predicate) {
-  for (var key = 0; key < array.length; key++) {
-    if (predicate(array[key])) {
       return key;
     }
   }
@@ -756,7 +750,6 @@ var match = {
  */
 
 var locale = {
-  code: 'en-US',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -794,7 +787,10 @@ var locale = {
  */
 
 function subMilliseconds(dirtyDate, dirtyAmount) {
-  requiredArgs(2, arguments);
+  if (arguments.length < 2) {
+    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present');
+  }
+
   var amount = toInteger(dirtyAmount);
   return addMilliseconds(dirtyDate, -amount);
 }
@@ -895,7 +891,10 @@ var MILLISECONDS_IN_DAY = 86400000; // This function will be a part of public AP
 // See issue: https://github.com/date-fns/date-fns/issues/376
 
 function getUTCDayOfYear(dirtyDate) {
-  requiredArgs(1, arguments);
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present');
+  }
+
   var date = toDate(dirtyDate);
   var timestamp = date.getTime();
   date.setUTCMonth(0, 1);
@@ -908,7 +907,10 @@ function getUTCDayOfYear(dirtyDate) {
 // See issue: https://github.com/date-fns/date-fns/issues/376
 
 function startOfUTCISOWeek(dirtyDate) {
-  requiredArgs(1, arguments);
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present');
+  }
+
   var weekStartsOn = 1;
   var date = toDate(dirtyDate);
   var day = date.getUTCDay();
@@ -921,7 +923,10 @@ function startOfUTCISOWeek(dirtyDate) {
 // See issue: https://github.com/date-fns/date-fns/issues/376
 
 function getUTCISOWeekYear(dirtyDate) {
-  requiredArgs(1, arguments);
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present');
+  }
+
   var date = toDate(dirtyDate);
   var year = date.getUTCFullYear();
   var fourthOfJanuaryOfNextYear = new Date(0);
@@ -945,7 +950,10 @@ function getUTCISOWeekYear(dirtyDate) {
 // See issue: https://github.com/date-fns/date-fns/issues/376
 
 function startOfUTCISOWeekYear(dirtyDate) {
-  requiredArgs(1, arguments);
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present');
+  }
+
   var year = getUTCISOWeekYear(dirtyDate);
   var fourthOfJanuary = new Date(0);
   fourthOfJanuary.setUTCFullYear(year, 0, 4);
@@ -958,7 +966,10 @@ var MILLISECONDS_IN_WEEK = 604800000; // This function will be a part of public 
 // See issue: https://github.com/date-fns/date-fns/issues/376
 
 function getUTCISOWeek(dirtyDate) {
-  requiredArgs(1, arguments);
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present');
+  }
+
   var date = toDate(dirtyDate);
   var diff = startOfUTCISOWeek(date).getTime() - startOfUTCISOWeekYear(date).getTime(); // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
@@ -970,7 +981,10 @@ function getUTCISOWeek(dirtyDate) {
 // See issue: https://github.com/date-fns/date-fns/issues/376
 
 function startOfUTCWeek(dirtyDate, dirtyOptions) {
-  requiredArgs(1, arguments);
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present');
+  }
+
   var options = dirtyOptions || {};
   var locale = options.locale;
   var localeWeekStartsOn = locale && locale.options && locale.options.weekStartsOn;
@@ -992,7 +1006,10 @@ function startOfUTCWeek(dirtyDate, dirtyOptions) {
 // See issue: https://github.com/date-fns/date-fns/issues/376
 
 function getUTCWeekYear(dirtyDate, dirtyOptions) {
-  requiredArgs(1, arguments);
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present');
+  }
+
   var date = toDate(dirtyDate, dirtyOptions);
   var year = date.getUTCFullYear();
   var options = dirtyOptions || {};
@@ -1026,7 +1043,10 @@ function getUTCWeekYear(dirtyDate, dirtyOptions) {
 // See issue: https://github.com/date-fns/date-fns/issues/376
 
 function startOfUTCWeekYear(dirtyDate, dirtyOptions) {
-  requiredArgs(1, arguments);
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present');
+  }
+
   var options = dirtyOptions || {};
   var locale = options.locale;
   var localeFirstWeekContainsDate = locale && locale.options && locale.options.firstWeekContainsDate;
@@ -1044,7 +1064,10 @@ var MILLISECONDS_IN_WEEK$1 = 604800000; // This function will be a part of publi
 // See issue: https://github.com/date-fns/date-fns/issues/376
 
 function getUTCWeek(dirtyDate, options) {
-  requiredArgs(1, arguments);
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present');
+  }
+
   var date = toDate(dirtyDate);
   var diff = startOfUTCWeek(date, options).getTime() - startOfUTCWeekYear(date, options).getTime(); // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
@@ -2032,7 +2055,7 @@ var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
 
 var longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
-var escapedStringRegExp = /^'([^]*?)'?$/;
+var escapedStringRegExp = /^'(.*?)'?$/;
 var doubleQuoteRegExp = /''/g;
 var unescapedLatinCharacterRegExp = /[a-zA-Z]/;
 /**
@@ -2315,7 +2338,6 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  *   see: https://git.io/fxCyr
  * @returns {String} the formatted date string
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `localize` property
  * @throws {RangeError} `options.locale` must contain `formatLong` property
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
@@ -2346,7 +2368,10 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  */
 
 function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
-  requiredArgs(2, arguments);
+  if (arguments.length < 2) {
+    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present');
+  }
+
   var formatStr = String(dirtyFormatStr);
   var options = dirtyOptions || {};
   var locale$1 = options.locale || locale;
@@ -2555,10 +2580,12 @@ function getSortingFn(order, orderBy) {
   };
 }
 function formatDate(item) {
-  if (typeof item === 'string') {
-    var date = new Date(item).getFullYear();
-    if (!isNaN(date)) return format(new Date(item), 'MMMM d, yyyy');
-    return false;
+  // matches an ISO date string like `2019-09-18T11:10:41.508877Z`
+  var datetimeFormatRegex = /\d{4}-[01]\d-[0-9]\dT[0-9]\d:[0-5]\d:[0-5]\d\.\d+(?:[+-][0-2]\d:[0-5]\d|Z)/;
+
+  if (datetimeFormatRegex.test(item)) {
+    var date = new Date(item);
+    return format(date, 'MMMM d, yyyy');
   }
 }
 function filterNestedData(data, key, render) {
@@ -3143,6 +3170,7 @@ Table.defaultProps = {
   data: [],
   rowsPerPageOptions: [25, 50, 100],
   handleRowClick: function handleRowClick() {},
+  onNextPage: function onNextPage() {},
   renderIcon: function renderIcon() {},
   tableStyle: {},
   tableBodyStyle: {}

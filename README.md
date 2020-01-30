@@ -13,25 +13,25 @@ npm install git://github.com/chiamaka/mpharma-react-table.git#master
 ## Usage
 
 ```jsx
-import React from "react";
-import Table from "mpharma-react-table";
+import React from 'react';
+import Table from 'mpharma-react-table';
 
 const headers = [
-  { title: "Name", align: "left", dataIndex: "name" },
-  { title: "Age", align: "left", dataIndex: "age" },
-  { title: "Country", align: "left", dataIndex: "country" }
+  { title: 'Name', align: 'left', dataIndex: 'name' },
+  { title: 'Age', align: 'left', dataIndex: 'age' },
+  { title: 'Country', align: 'left', dataIndex: 'country' }
 ];
 
 const data = [
   {
-    name: "Chiamaka",
+    name: 'Chiamaka',
     age: 25,
-    country: "Nigeria"
+    country: 'Nigeria'
   },
   {
-    name: "Nick",
+    name: 'Nick',
     age: 30,
-    country: "Ghana"
+    country: 'Ghana'
   }
 ];
 
@@ -44,27 +44,27 @@ function Example() {
 
 ```jsx
 const headers = [
-  { title: "Name", align: "left", dataIndex: "name" },
-  { title: "Age", align: "left", dataIndex: "age", render: item => item.real },
-  { title: "Country", align: "left", dataIndex: "country" }
+  { title: 'Name', align: 'left', dataIndex: 'name' },
+  { title: 'Age', align: 'left', dataIndex: 'age', render: item => item.real },
+  { title: 'Country', align: 'left', dataIndex: 'country' }
 ];
 
 const data = [
   {
-    name: "Chiamaka",
+    name: 'Chiamaka',
     age: {
       fake: 30,
       real: 24
     },
-    country: "Nigeria"
+    country: 'Nigeria'
   },
   {
-    name: "Nick",
+    name: 'Nick',
     age: {
       real: 34,
       fake: 40
     },
-    country: "Ghana"
+    country: 'Ghana'
   }
 ];
 
@@ -97,7 +97,7 @@ TableHeaders - Named export i.e. `import { TableHeaders } from mpharma-react-tab
 | handleRowClick     | function       | () => {}                                | Function to call when a row is clicked                                                                                                                                     |
 | emptyMessage       | string         | 'No data available!'                    | Customizes the message when there is no data to display                                                                                                                    |
 | emptyMessageStyle  | object         | None                                    | Customizes the styling of the empty message                                                                                                                                |
-| onNextPage         | function       | None                                    | Callback fired when next button is clicked. `Note: you can get the next page in the arg of the function passed here ie. (nextPage) => {}`                                  |
+| onNextPage         | function       | () => {}                                | Callback fired when next button is clicked. `Note: you can get the next page in the arg of the function passed here ie. (nextPage) => {}`                                  |
 
 ## Headers Props
 
