@@ -74,6 +74,7 @@ Table.defaultProps = {
   data: [],
   rowsPerPageOptions: [25, 50, 100],
   handleRowClick: () => {},
+  onNextPage: () => {},
   renderIcon: () => {},
   tableStyle: {},
   tableBodyStyle: {}
