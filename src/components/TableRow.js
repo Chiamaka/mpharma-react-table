@@ -28,10 +28,10 @@ function TableRow({ item, hover, handleRowClick, renderIcon, context }) {
     return handleRowClick(item);
   }
   return (
-    <TableBodyRow hover={hover} onClick={handleClick} data-testid='table-row'>
+    <TableBodyRow hover={hover} data-testid="table-row">
       {context.dataIndexes.map(({ dataIndex: key, render, align = 'left', style }, index) => {
         return (
-          <TableBodyData key={index} align={align} style={style}>
+          <TableBodyData key={index} align={align} style={style} onClick={handleClick}>
             {formatDate(item[key]) ||
               formatActive(item[key]) ||
               formatCountry(item[key], key) ||
