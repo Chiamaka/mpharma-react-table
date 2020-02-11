@@ -1,6 +1,6 @@
 {
   "name": "mpharma-react-table",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "A simple reusable table component in React",
   "author": "chiamaka",
   "license": "MIT",
@@ -38,6 +38,7 @@
     "@testing-library/react": "^9.1.3",
     "cross-env": "^5.2.1",
     "eslint": "6.3.0",
+    "eslint-config-prettier": "^6.10.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-react": "^9.1.0",
     "eslint-plugin-import": "^2.18.2",

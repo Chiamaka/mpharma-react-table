@@ -33,12 +33,12 @@ export default class App extends Component {
       <Table
         headers={headers}
         data={data}
-        count={30}
+        count={data.length}
         hover={true}
         renderIcon={data => <MoreActions data={data} />}
         rowsPerPageOptions={[25, 50]}
         emptyMessage="Phew! sorry mate"
-        tableBodyStyle={{ height: "65vh" }}
+        tableBodyStyle={{ height: '65vh' }}
       />
     );
   }

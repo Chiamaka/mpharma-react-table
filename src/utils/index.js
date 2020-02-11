@@ -33,10 +33,11 @@ export function getSortingFn(order, orderBy) {
 }
 
 export function formatDate(item) {
-  if (typeof item === 'string') {
-    const date = new Date(item).getFullYear();
-    if (!isNaN(date)) return format(new Date(item), 'MMMM d, yyyy');
-    return false;
+  // matches an ISO date string like `2019-09-18T11:10:41.508877Z`
+  const datetimeFormatRegex = /\d{4}-[01]\d-[0-9]\dT[0-9]\d:[0-5]\d:[0-5]\d\.\d+(?:[+-][0-2]\d:[0-5]\d|Z)/;
+  if (datetimeFormatRegex.test(item)) {
+    const date = new Date(item);
+    return format(date, 'MMMM d, yyyy');
   }
 }
 

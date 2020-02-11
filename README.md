@@ -97,7 +97,7 @@ TableHeaders - Named export i.e. `import { TableHeaders } from mpharma-react-tab
 | handleRowClick     | function       | () => {}                                | Function to call when a row is clicked                                                                                                                                     |
 | emptyMessage       | string         | 'No data available!'                    | Customizes the message when there is no data to display                                                                                                                    |
 | emptyMessageStyle  | object         | None                                    | Customizes the styling of the empty message                                                                                                                                |
-| onNextPage         | function       | None                                    | Callback fired when next button is clicked                                                                                                                                 |
+| onNextPage         | function       | () => {}                                | Callback fired when next button is clicked. `Note: you can get the next page in the arg of the function passed here ie. (nextPage) => {}`                                  |
 
 ## Headers Props
 

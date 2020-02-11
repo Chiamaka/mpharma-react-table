@@ -2572,10 +2572,12 @@ function getSortingFn(order, orderBy) {
   };
 }
 function formatDate(item) {
-  if (typeof item === 'string') {
-    var date = new Date(item).getFullYear();
-    if (!isNaN(date)) return format(new Date(item), 'MMMM d, yyyy');
-    return false;
+  // matches an ISO date string like `2019-09-18T11:10:41.508877Z`
+  var datetimeFormatRegex = /\d{4}-[01]\d-[0-9]\dT[0-9]\d:[0-5]\d:[0-5]\d\.\d+(?:[+-][0-2]\d:[0-5]\d|Z)/;
+
+  if (datetimeFormatRegex.test(item)) {
+    var date = new Date(item);
+    return format(date, 'MMMM d, yyyy');
   }
 }
 function filterNestedData(data, key, render) {
@@ -3065,8 +3067,9 @@ function TableFooter$1(props) {
   }
 
   function handleNextPage() {
-    setCurrentPage(currentPage + 1);
-    props.onNextPage && props.onNextPage();
+    var nextPage = currentPage + 1;
+    setCurrentPage(nextPage);
+    props.onNextPage && props.onNextPage(nextPage);
   }
 
   return React.createElement(TableFooter, null, React.createElement("span", {
@@ -3159,6 +3162,7 @@ Table.defaultProps = {
   data: [],
   rowsPerPageOptions: [25, 50, 100],
   handleRowClick: function handleRowClick() {},
+  onNextPage: function onNextPage() {},
   renderIcon: function renderIcon() {},
   tableStyle: {},
   tableBodyStyle: {}
