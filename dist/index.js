@@ -2893,7 +2893,6 @@ function TableRow(_ref) {
 
   return React__default.createElement(TableBodyRow, {
     hover: hover,
-    onClick: handleClick,
     "data-testid": "table-row"
   }, context.dataIndexes.map(function (_ref2, index) {
     var key = _ref2.dataIndex,
@@ -2904,7 +2903,8 @@ function TableRow(_ref) {
     return React__default.createElement(TableBodyData, {
       key: index,
       align: align,
-      style: style
+      style: style,
+      onClick: handleClick
     }, formatDate(item[key]) || formatActive(item[key]) || formatCountry(item[key], key) || render && render(item[key]) || item[key] || '-');
   }), renderIcon(item));
 }
