@@ -4,32 +4,74 @@ import { Pill } from '../components/styles';
 
 export const countries = {
   GH: 'Ghana',
-  NG: 'Nigeria'
+  NG: 'Nigeria',
+  ZM: 'Zambia'
 };
 
 export function tableSort(array, sortFn) {
   return array
-    .map((el, index) => [el, index])
+    .map(el => [el])
     .sort((a, b) => {
       const order = sortFn(a[0], b[0]);
       if (order !== 0) return order;
-      return a[1] - b[1];
     })
     .map(el => el[0]);
 }
 
-function desc(a, b, orderBy) {
+export function getSortingFn(order, orderBy, customSortFn) {
+  return order
+    ? (a, b) => desc(a, b, orderBy, customSortFn)
+    : (a, b) => -desc(a, b, orderBy, customSortFn);
+}
+
+function desc(a, b, orderBy, customSortFn) {
+  if (customSortFn) {
+    return customSortFn(a, b);
+  }
+
+  if (typeof a[orderBy] === 'string' && typeof b[orderBy] === 'string') {
+    const A = a[orderBy] ? a[orderBy].toLowerCase() : '';
+    const B = b[orderBy] ? b[orderBy].toLowerCase() : '';
+    if (B < A) {
+      return -1;
+    }
+    if (B > A) {
+      return 1;
+    }
+    return 0;
+  }
+
+  // if orderBy is `app_type`
+  if (orderBy === 'app_type') {
+    const prevItem = findGreatestElement(a[orderBy]);
+    const item = findGreatestElement(b[orderBy]);
+    if (item < prevItem) {
+      return -1;
+    }
+    if (item > prevItem) {
+      return 1;
+    }
+    return 0;
+  }
+
   if (b[orderBy] < a[orderBy]) {
     return -1;
-  }
-  if (b[orderBy] > a[orderBy]) {
+  } else if (b[orderBy] > a[orderBy]) {
     return 1;
   }
   return 0;
 }
 
-export function getSortingFn(order, orderBy) {
-  return order ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
+function findGreatestElement(array) {
+  if (array === null) return '';
+  if (array.length === 1) return array[0].toLowerCase();
+  let greatest = '';
+  for (let i = 1; i < array.length; i++) {
+    if (array[i].toLowerCase() > array[i - 1].toLowerCase()) {
+      greatest = array[i].toLowerCase();
+    }
+  }
+  return greatest;
 }
 
 export function formatDate(item) {
@@ -39,13 +81,6 @@ export function formatDate(item) {
     const date = new Date(item);
     return format(date, 'MMMM d, yyyy');
   }
-}
-
-export function filterNestedData(data, key, render) {
-  if (render) {
-    return data.map(item => (typeof item[key] === 'object' ? { ...item, [key]: render(item[key]) } : item));
-  }
-  return data;
 }
 
 export function formatActive(item) {
