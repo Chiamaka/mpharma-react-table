@@ -1,6 +1,6 @@
 import React, { PureComponent, createContext } from 'react';
 import PropTypes from 'prop-types';
-import { tableSort, getSortingFn, filterNestedData } from '../utils';
+import { tableSort, getSortingFn } from '../utils';
 
 const DataContext = createContext(null);
 export const withDataContext = Component => {
@@ -41,14 +41,11 @@ class DataStore extends PureComponent {
     count: 0
   };
 
-  sortData = (key, render) => {
+  sortData = (key, sortFn) => {
     const { data, desc } = this.state;
     this.setState(
       {
-        data: tableSort(
-          filterNestedData(data, key, render),
-          getSortingFn(desc, key)
-        )
+        data: tableSort(data, getSortingFn(desc, key, sortFn))
       },
       () => this.setState({ desc: !desc, active: key })
     );
@@ -57,10 +54,7 @@ class DataStore extends PureComponent {
   loadData = data => {
     this.setState({
       ...data,
-      count:
-        data.count < data.data.length
-          ? data.data.length
-          : data.count || data.data.length
+      count: data.count < data.data.length ? data.data.length : data.count || data.data.length
     });
   };
 
@@ -83,11 +77,7 @@ class DataStore extends PureComponent {
   }
 
   render() {
-    return (
-      <DataContext.Provider value={this.value}>
-        {this.props.children}
-      </DataContext.Provider>
-    );
+    return <DataContext.Provider value={this.value}>{this.props.children}</DataContext.Provider>;
   }
 }
 

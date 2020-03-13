@@ -7,29 +7,28 @@ import { ReactComponent as ArrowDown } from '../../icons/ArrowDown.svg';
 
 function TableHeader(props) {
   const { headers, context } = props;
-
-  function sortData(dataIndex, render) {
+  function sortData(dataIndex, sortFn) {
     return function() {
-      context.sortData(dataIndex, render);
+      context.sortData(dataIndex, sortFn);
     };
   }
 
   return (
     <thead>
       <TableHeadRow>
-        {headers.map(({ title, align = 'left', width, dataIndex, render }, index) => {
+        {headers.map(({ title, align = 'left', width, dataIndex, sortFn }, index) => {
           return (
             <StyledTableHeader
               key={index}
               align={align}
               width={width}
-              onClick={sortData(dataIndex, render)}
-              data-testid='table-header'
+              onClick={sortData(dataIndex, sortFn)}
+              data-testid="table-header"
             >
               {title}{' '}
               {context &&
                 context.active === dataIndex &&
-                (context.desc ? <ArrowDown aria-label='asc' /> : <ArrowUp aria-label='desc' />)}
+                (context.desc ? <ArrowDown aria-label="asc" /> : <ArrowUp aria-label="desc" />)}
             </StyledTableHeader>
           );
         })}

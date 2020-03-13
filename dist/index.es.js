@@ -2538,39 +2538,86 @@ var Pill = styled.span.attrs(function (props) {
 
 var countries = {
   GH: 'Ghana',
-  NG: 'Nigeria'
+  NG: 'Nigeria',
+  ZM: 'Zambia'
 };
 function tableSort(array, sortFn) {
-  return array.map(function (el, index) {
-    return [el, index];
+  return array.map(function (el) {
+    return [el];
   }).sort(function (a, b) {
     var order = sortFn(a[0], b[0]);
     if (order !== 0) return order;
-    return a[1] - b[1];
   }).map(function (el) {
     return el[0];
   });
 }
+function getSortingFn(order, orderBy, customSortFn) {
+  return order ? function (a, b) {
+    return desc(a, b, orderBy, customSortFn);
+  } : function (a, b) {
+    return -desc(a, b, orderBy, customSortFn);
+  };
+}
 
-function desc(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
+function desc(a, b, orderBy, customSortFn) {
+  if (customSortFn) {
+    return customSortFn(a, b);
   }
 
-  if (b[orderBy] > a[orderBy]) {
+  if (typeof a[orderBy] === 'string' && typeof b[orderBy] === 'string') {
+    var A = a[orderBy] ? a[orderBy].toLowerCase() : '';
+    var B = b[orderBy] ? b[orderBy].toLowerCase() : '';
+
+    if (B < A) {
+      return -1;
+    }
+
+    if (B > A) {
+      return 1;
+    }
+
+    return 0;
+  } // if orderBy is `app_type`
+
+
+  if (orderBy === 'app_type') {
+    var prevItem = findGreatestElement(a[orderBy]);
+    var item = findGreatestElement(b[orderBy]);
+
+    if (item < prevItem) {
+      return -1;
+    }
+
+    if (item > prevItem) {
+      return 1;
+    }
+
+    return 0;
+  }
+
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  } else if (b[orderBy] > a[orderBy]) {
     return 1;
   }
 
   return 0;
 }
 
-function getSortingFn(order, orderBy) {
-  return order ? function (a, b) {
-    return desc(a, b, orderBy);
-  } : function (a, b) {
-    return -desc(a, b, orderBy);
-  };
+function findGreatestElement(array) {
+  if (array === null) return '';
+  if (array.length === 1) return array[0].toLowerCase();
+  var greatest = '';
+
+  for (var i = 1; i < array.length; i++) {
+    if (array[i].toLowerCase() > array[i - 1].toLowerCase()) {
+      greatest = array[i].toLowerCase();
+    }
+  }
+
+  return greatest;
 }
+
 function formatDate(item) {
   // matches an ISO date string like `2019-09-18T11:10:41.508877Z`
   var datetimeFormatRegex = /\d{4}-[01]\d-[0-9]\dT[0-9]\d:[0-5]\d:[0-5]\d\.\d+(?:[+-][0-2]\d:[0-5]\d|Z)/;
@@ -2579,17 +2626,6 @@ function formatDate(item) {
     var date = new Date(item);
     return format(date, 'MMMM d, yyyy');
   }
-}
-function filterNestedData(data, key, render) {
-  if (render) {
-    return data.map(function (item) {
-      var _extends2;
-
-      return typeof item[key] === 'object' ? _extends({}, item, (_extends2 = {}, _extends2[key] = render(item[key]), _extends2)) : item;
-    });
-  }
-
-  return data;
 }
 function formatActive(item) {
   if (typeof item === 'boolean') {
@@ -2657,13 +2693,13 @@ function (_PureComponent) {
       count: 0
     });
 
-    _defineProperty(_assertThisInitialized(_this), "sortData", function (key, render) {
+    _defineProperty(_assertThisInitialized(_this), "sortData", function (key, sortFn) {
       var _this$state = _this.state,
           data = _this$state.data,
           desc = _this$state.desc;
 
       _this.setState({
-        data: tableSort(filterNestedData(data, key, render), getSortingFn(desc, key))
+        data: tableSort(data, getSortingFn(desc, key, sortFn))
       }, function () {
         return _this.setState({
           desc: !desc,
@@ -2795,9 +2831,9 @@ function TableHeader$1(props) {
   var headers = props.headers,
       context = props.context;
 
-  function sortData(dataIndex, render) {
+  function sortData(dataIndex, sortFn) {
     return function () {
-      context.sortData(dataIndex, render);
+      context.sortData(dataIndex, sortFn);
     };
   }
 
@@ -2807,12 +2843,12 @@ function TableHeader$1(props) {
         align = _ref$align === void 0 ? 'left' : _ref$align,
         width = _ref.width,
         dataIndex = _ref.dataIndex,
-        render = _ref.render;
+        sortFn = _ref.sortFn;
     return React.createElement(TableHeader, {
       key: index,
       align: align,
       width: width,
-      onClick: sortData(dataIndex, render),
+      onClick: sortData(dataIndex, sortFn),
       "data-testid": "table-header"
     }, title, ' ', context && context.active === dataIndex && (context.desc ? React.createElement(SvgArrowDown, {
       "aria-label": "asc"

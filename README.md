@@ -7,7 +7,7 @@
 ## Install
 
 ```bash
-npm install git://github.com/chiamaka/mpharma-react-table.git#master
+npm install git://github.com/chiamaka/mpharma-react-table.git#tag
 ```
 
 ## Usage
@@ -79,7 +79,7 @@ function Example() {
 
 Table - Default export (Top level) i.e `import Table from mpharma-react-table`
 
-TableHeaders - Named export i.e. `import { TableHeaders } from mpharma-react-table`
+TableHeader - Named export i.e. `import { TableHeader } from mpharma-react-table`
 
 ## Table Props
 
@@ -88,7 +88,6 @@ TableHeaders - Named export i.e. `import { TableHeaders } from mpharma-react-tab
 | \*headers          | array[objects] | None                                    | The headers of the table. See Header props for more info                                                                                                                   |
 | \*data             | array[objects] | None                                    | Data to be rendered                                                                                                                                                        |
 | \*count            | number         | None                                    | Total number of records to be displayed in the table footer                                                                                                                |
-|                    |
 | renderIcon         | function       | None                                    | Funtion which renders any icon passed into it. The icon can be a react component. `Note: you can get the row data in the arg of the function passed here ie. (data) => {}` |
 | tableStyle         | object         | None                                    | Style for the table wrapper                                                                                                                                                |
 | tableBodyStyle     | object         | `{maxHeight: '65vh', overflow: 'auto'}` | Style for the table body wrapper                                                                                                                                           |
@@ -101,15 +100,15 @@ TableHeaders - Named export i.e. `import { TableHeaders } from mpharma-react-tab
 
 ## Headers Props
 
-| Name      | Type                          | Default                         | Description                                                                                                                                                                                              |
-| --------- | ----------------------------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \*title   | string                        | None                            | Title of the header                                                                                                                                                                                      |
-| align     | string: (left, center, right) | left                            | How you want the header and the corresponding data to be aligned                                                                                                                                         |
-| render    | function                      | None                            | Render the table cell under a header. The return value could be a ReactNode or dataIndex's value. This would only be needed when you want to access a nested value or you want to modify the table cell. |  |
-| dataIndex | string                        | None                            | Key that ties data to the header. Should be the key of the data that you want under this header                                                                                                          |
-| width     | number                        | inherit                         | Specify width for the header                                                                                                                                                                             |
-| style     | object                        | { textTransform: 'capitalize' } | Specify the style for the column data                                                                                                                                                                    |
-|           |
+| Name      | Type                          | Default                         | Description                                                                                                                                                                                                                                                                                                                                        |
+| --------- | ----------------------------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \*title   | string                        | None                            | Title of the header                                                                                                                                                                                                                                                                                                                                |
+| align     | string: (left, center, right) | left                            | How you want the header and the corresponding data to be aligned                                                                                                                                                                                                                                                                                   |
+| render    | function                      | None                            | Render the table cell under a header. The return value could be a ReactNode or dataIndex's value. This would only be needed when you want to access a nested value or you want to modify the table cell.                                                                                                                                           |  |
+| dataIndex | string                        | None                            | Key that ties data to the header. Should be the key of the data that you want under this header                                                                                                                                                                                                                                                    |
+| width     | number                        | inherit                         | Specify width for the header                                                                                                                                                                                                                                                                                                                       |
+| style     | object                        | { textTransform: 'capitalize' } | Specify the style for the column data                                                                                                                                                                                                                                                                                                              |
+| sortFn    | function                      | (a, b) => {}                    | Custom sorting function for values other than `strings`, `numbers` and `booleans`. `a` and `b` represent the first element and second element for comparison respectively. For more info, check out the [sort in JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) (_It follows a similar pattern_) |
 
 ## TableHeader Props
 
